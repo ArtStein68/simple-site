@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href='/style.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-dark text-light">
+  <header>
+    <include src="header.html"></include>
+  </header>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-auto">
+        <img src="https://i.pinimg.com/474x/6b/6e/5d/6b6e5d23fcad9252411149beded07a03.jpg" alt="About Me"
+          class="img-fluid mb-4 rounded" style="width: 200px;">
+      </div>
+      <div class="col">
+        <h1>ComfyUI Developer | ML Engineer | Visual Producer</h1>
+        <p>🔗 Open to collaboration in multimodal AI systems, avatar generation, personalization, and creative visual content.</p>
+        <h2>🔹 About</h2>
+        <p>Experienced ComfyUI developer and visual AI specialist with a focus on image and video generation, model training (LoRA), custom node development, interface design, and post-production. I specialize in creating personalized media content from photos and videos using state-of-the-art diffusion models, with expertise across the full production pipeline — from prompt engineering to video editing.</p>
+      </div>
+    </div>
+
+    <h2>💼 Key Skills & Technologies</h2>
+    <ul>
+      <li>AI & Diffusion Models: ComfyUI, Stable Diffusion 1.5 / SDXL / 3.5, WAN 2.1, ChilloutMix, MeinaMix, Taiyi</li>
+      <li>Video Generation: AnimateDiff, SVD-XT, Mochi, CogVideoX, MimicMotion, Face Fusion</li>
+      <li>Model Training: LoRA / LoCon / LyCORIS using kohya_ss, PEFT, Diffusers, Google Colab</li>
+      <li>Prompt Engineering: BLIP, CLIP Interrogator, LM Studio, ImageBind, Ollama</li>
+      <li>Node Development: Custom ComfyUI nodes, motion tracking, batch-video pipelines</li>
+      <li>Post-processing: DaVinci Resolve, Fusion, ffmpeg, Alpha rendering, retiming</li>
+      <li>Web Tools: FastAPI, Gradio, Flask, Vue.js, TailwindCSS</li>
+      <li>Other Tools: CUDA, OpenCV, Python, Auto1111, Runway, HeyGen, FaceSwap</li>
+    </ul>
+
+    <h2>🖼️ Image Generation</h2>
+    <ul>
+      <li>Graph construction in ComfyUI: text2img, img2img, inpainting, style transfer</li>
+      <li>Face-based generation: LoRA training, IPAdapter (face insert), ControlNet + OpenPose</li>
+      <li>LoRA blending, masking, detail enhancement, VAE optimization</li>
+    </ul>
+
+    <h2>🎬 Video Generation</h2>
+    <ul>
+      <li>Actor/client face generation via LoRA + AnimateDiff</li>
+      <li>IPAdapter + AnimateDiff or CogVideoX from image</li>
+      <li>Face Fusion by keyframes or morphing series</li>
+      <li>Video-to-video with consistent face style</li>
+      <li>Post-processing: stabilization, alpha render, edit in Resolve</li>
+    </ul>
+
+    <h2>🧠 Model Training (LoRA)</h2>
+    <ul>
+      <li>Face/character training on 5–20 images</li>
+      <li>Auto-captioning: BLIP, DeepBooru</li>
+      <li>Cropping, padding, face enhancement</li>
+      <li>Tools: kohya_ss, PEFT, Colab, Diffusers</li>
+    </ul>
+
+    <h2>✏️ Prompt Engineering</h2>
+    <ul>
+      <li>Actor-specific prompts: style, emotion, pose</li>
+      <li>Sequential prompts for morphing</li>
+      <li>Prompt generation via BLIP, CLIP, LM Studio, etc.</li>
+    </ul>
+
+    <h2>🧱 Custom Node Development</h2>
+    <ul>
+      <li>Nodes for:</li>
+      <ul>
+        <li>LoRA creation from photos</li>
+        <li>Face Extract + Merge</li>
+        <li>Morph transitions</li>
+        <li>External API integrations (Runway, HeyGen, LM API)</li>
+      </ul>
+      <li>Support for FaceSwap, motion tracking, batch generation</li>
+    </ul>
+
+    <h2>🌐 Web Interfaces</h2>
+    <ul>
+      <li>Custom UI for photo/video → generation → preview → export</li>
+      <li>Options for LoRA/IPAdapter selection and prompt generation</li>
+      <li>Built with FastAPI, Gradio, Vue, Tailwind</li>
+    </ul>
+
+    <h2>🎨 Post-production in DaVinci Resolve</h2>
+    <ul>
+      <li>Portrait color correction, LUTs, skin tone balance</li>
+      <li>AI character/face insertion</li>
+      <li>Background replacement using AI + Chromakey</li>
+      <li>Final montage of avatars and morphing videos</li>
+    </ul>
+
+    <h2>✅ Currently open to freelance and collaboration on projects involving:</h2>
+    <ul>
+      <li>Multimodal AI & personalization</li>
+      <li>Avatar and face-based generation</li>
+      <li>Video pipelines, visual storytelling, and real-time content creation</li>
+    </ul>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script defer type="text/javascript" src="/main.js"></script>
+</body>
+
+</html>
