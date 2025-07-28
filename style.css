@@ -1,13 +1,46 @@
 /* Add styles here */
-.welcome-block {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    text-align: left;
+.welcome-block .row {
+    justify-content: center;
+    align-items: center; /* Added to vertically center content */
 }
 
 .welcome-text-column {
-    padding-left: 120px;
+    text-align: left; /* Changed to left */
+    padding-right: 20px; /* Restore padding-right if needed, adjust as per original or desired spacing */
+    padding-left: 200px; /* Added padding-left to shift text right */
 }
+
+.welcome-block .row .col-md-4 {
+    display: flex;
+    justify-content: center; /* Changed from flex-end to center */
+    align-items: center; /* Added to vertically center image */
+}
+
+.small-text {
+    font-size: 0.8em; /* Здесь вы можете поменять значение 0.9em на нужное вам */
+}
+  
+
+.navbar-nav .nav-link.active:not([data-bs-toggle="modal"]) {
+        border-bottom: 2px solid white; /* Белая черта */
+        padding-bottom: 2px; /* Небольшой отступ, чтобы черта не прилипала к тексту */
+    }
+
+.form-control.success {
+  color: green;
+}
+
+.form-control.error {
+  color: red;
+}
+
+.small-format {
+  font-size: 0.8em; /* Или любой другой размер, который вам нужен */
+  /* Вы также можете добавить другие стили, если нужно, например, цвет */
+  /* color: #888; */
+}
+
+
 
 .p-5 {
     padding: 0.5rem !important;
@@ -36,6 +69,29 @@
     text-align: center;
 }
 
+.card {
+    background-color: transparent !important; /* Или укажите нужный цвет */
+    /*border: 1px solid white !important; */
+    border: none !important;
+}
+
+.card.bg-secondary {
+    background-color: transparent !important; /* Или укажите нужный цвет */
+}
+
+.card img,
+.card video {
+  display: block; /* Убираем лишнее пространство под медиаэлементами */
+  width: 100%; /* Ширина элемента равна ширине контейнера */
+  height: 200px; /* Задаем фиксированную высоту для всех медиаэлементов */
+  object-fit: cover; /* Обрезаем изображение/видео, чтобы оно заполняло контейнер, сохраняя пропорции */
+}
+
+.card-body {
+  height: auto; /* Позволяем телу карточки автоматически подстраивать высоту */
+}
+
+
 .pricing-photo-placeholder {
     width: 100%;
     height: 150px; /* Adjust as needed */
@@ -62,3 +118,8 @@
     margin-right: 5px;
     color: green; /* Or any color you prefer for the tickmark */
 }
+
+.bg-dark.text-light.py-4.mt-5 {
+    border-top: 1px solid white; /* Добавляем тонкую белую полосу сверху */
+}
+
