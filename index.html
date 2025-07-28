@@ -2,9 +2,16 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bootstrap Main Page Template</title>
+  <title>AI Gifts | Photo, Video production powered AI | Unique Content Generation</title>
+  <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+  <link rel="shortcut icon" href="/img/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+  <link rel="manifest" href="/img/site.webmanifest" />
+  <link rel="manifest" href="/site.webmanifest" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href='/style.css' rel='stylesheet'>
@@ -16,7 +23,11 @@
 <body class="bg-dark text-light">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">AI Art Studio</a>
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.png" alt="AI Gifts Studio Logo" height="30" class="d-inline-block align-text-top">
+        AI Gifts Studio
+      </a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -235,7 +246,125 @@
   </div>
 
 
+
+
   <!-- Lead Form Modal -->
+  <div class="modal fade" id="leadFormModal" tabindex="-1" aria-labelledby="leadFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="leadFormModalLabel">Закажи прямо сейчас</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Выбери уникальный подарок для себя, родных или близких.</p>
+          <hr class="text-light">
+
+          <!-- Первая страница формы -->
+          <div id="formPage1">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>PhotoShow</h4>
+                  <div>
+                    <!-- (все ваши чекбоксы для PhotoShow здесь) -->
+                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                        value="tree_of_life_photoshow" id="treeOfLifePhotoshow"><label class="form-check-label"
+                        for="treeOfLifePhotoshow">Tree of Life</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                        value="road_to_the_future_photoshow" id="roadToTheFuturePhotoshow"><label
+                        class="form-check-label" for="roadToTheFuturePhotoshow">Road to the Future</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                        value="another_world_photoshow" id="anotherWorldPhotoshow"><label class="form-check-label"
+                        for="anotherWorldPhotoshow">Another World</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" value="luxury_photoshow"
+                        id="luxuryPhotoshow"><label class="form-check-label" for="luxuryPhotoshow">Luxury</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                        value="social_media_photoshow" id="socialMediaPhotoshow"><label class="form-check-label"
+                        for="socialMediaPhotoshow">Social Media</label></div>
+                    <hr>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" value="other_option"
+                        id="otherOptionCheckbox"><label class="form-check-label" for="otherOptionCheckbox">Другое
+                        (опишите)</label></div>
+                    <div class="mt-2" id="otherOptionContainer" style="display: none;"><textarea class="form-control"
+                        id="otherOptionText" rows="3" placeholder="Опишите ваши пожелания..."></textarea></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h4>Video Show</h4>
+                  <div>
+                    <!-- (все ваши чекбоксы для VideoShow здесь) -->
+                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                        value="tree_of_life_videoshow" id="treeOfLifeVideoshow"><label class="form-check-label"
+                        for="treeOfLifeVideoshow">Tree of Life</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                        value="road_to_the_future_videoshow" id="roadToTheFutureVideoshow"><label
+                        class="form-check-label" for="roadToTheFutureVideoshow">Road to the Future</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                        value="another_world_videoshow" id="anotherWorldVideoshow"><label class="form-check-label"
+                        for="anotherWorldVideoshow">Another World</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" value="luxury_videoshow"
+                        id="luxuryVideoshow"><label class="form-check-label" for="luxuryVideoshow">Luxury</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                        value="social_media_videoshow" id="socialMediaVideoshow"><label class="form-check-label"
+                        for="socialMediaVideoshow">Social Media</label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вторая страница формы (скрыта по умолчанию) -->
+          <div id="formPage2" style="display: none;">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>Ваши контактные данные</h4>
+                  <div class="mb-3">
+                    <label for="fullName" class="form-label">Имя</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Введите ваше имя">
+                    <!-- === ИЗМЕНЕНИЕ №1: ПОДСКАЗКА ДЛЯ ИМЕНИ === -->
+                    <div class="form-text">Пожалуйста, вводите только буквы.</div>
+                    <div id="nameError" class="text-danger mt-1" style="display: none;">Имя не должно содержать цифры.
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Телефон / Whatsapp</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="(123) 456-7890">
+                    <!-- === ИЗМЕНЕНИЕ №2: ПОДСКАЗКА ДЛЯ ТЕЛЕФОНА === -->
+                    <div class="form-text">Номер будет отформатирован автоматически.</div>
+                    <div id="phoneError" class="text-danger mt-1" style="display: none;">Пожалуйста, введите корректный
+                      10-значный номер.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Блоки для сообщений об успехе/ошибке -->
+          <div id="formSuccessMessage" style="display: none;" class="alert alert-success">
+            <h4>Спасибо!</h4>
+            <p>Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.</p>
+          </div>
+          <div id="formErrorMessage" style="display: none;" class="alert alert-danger">
+            <h4>Произошла ошибка</h4>
+            <p>Не удалось отправить заявку. Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую.</p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <!-- Кнопки футера -->
+          <span class="modal-page-indicator me-auto">1/2</span>
+          <button type="button" class="btn btn-secondary" id="minimizeModalButton">Закрыть</button>
+          <button type="button" class="btn btn-primary" id="nextPageBtn">Далее</button>
+          <button type="button" class="btn btn-secondary" id="backPageBtn" style="display: none;">Назад</button>
+          <button type="button" class="btn btn-success" id="submitOrderBtn" style="display: none;">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
   <!-- Minimized Icon -->
@@ -253,6 +382,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/imask"></script>
   <script defer type="text/javascript" src="/main.js"></script>
 
   <footer>

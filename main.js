@@ -1,81 +1,115 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // --- 1. ПОЛУЧАЕМ ВСЕ НУЖНЫЕ ЭЛЕМЕНТЫ СО СТРАНИЦЫ ---
     var leadFormModalElement = document.getElementById('leadFormModal');
-    var leadFormModal = new bootstrap.Modal(leadFormModalElement, { backdrop: 'static', keyboard: false });
+    var leadFormModal = bootstrap.Modal.getOrCreateInstance(leadFormModalElement, {
+        backdrop: 'static',
+        keyboard: false
+    });
     var minimizedLeadForm = document.getElementById('minimizedLeadForm');
     var showModalIcon = document.getElementById('showModalIcon');
+    const fullNameInput = document.getElementById('fullName');
+    const nameError = document.getElementById('nameError');
+    const phoneInput = document.getElementById('phone');
+    const phoneError = document.getElementById('phoneError');
+    const submitOrderBtn = document.getElementById('submitOrderBtn');
+    let phoneMask = null; 
 
+    // --- 2. ФУНКЦИИ ВАЛИДАЦИИ И УПРАВЛЕНИЯ КНОПКОЙ ---
+    function validateName(name) {
+        // Возвращает true, если в имени НЕТ цифр и оно не пустое
+        return !/\d/.test(name) && name.length > 0;
+    }
+
+    function updateSubmitButtonState() {
+        if (!submitOrderBtn || !fullNameInput || !phoneMask) return;
+        const isNameValid = validateName(fullNameInput.value);
+        const isPhoneValid = phoneMask.masked.isComplete;
+        // Кнопка активна, только если ОБА поля валидны
+        submitOrderBtn.disabled = !(isNameValid && isPhoneValid);
+    }
+
+    // --- 3. НАСТРОЙКА ВАЛИДАЦИИ ПОЛЕЙ ВВОДА ---
+
+    // Настройка маски и валидации телефона с помощью IMask.js
+    if (phoneInput) {
+        phoneMask = IMask(phoneInput, {
+            mask: '(000) 000-0000',
+            lazy: false 
+        });
+        
+        phoneMask.on('accept', function() {
+            if (phoneMask.masked.isComplete) {
+                phoneInput.classList.remove('is-invalid');
+                phoneInput.classList.add('is-valid');
+                if (phoneError) phoneError.style.display = 'none';
+            } else {
+                phoneInput.classList.remove('is-valid');
+                if (phoneMask.value.length > 0) phoneInput.classList.add('is-invalid');
+                else phoneInput.classList.remove('is-invalid');
+            }
+            updateSubmitButtonState(); // Обновляем состояние кнопки при каждом изменении телефона
+        });
+    }
+
+    // Настройка валидации имени
+    if (fullNameInput) {
+        fullNameInput.addEventListener('input', function() {
+            const isValid = validateName(this.value);
+            if (isValid) {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+                if (nameError) nameError.style.display = 'none';
+            } else {
+                this.classList.remove('is-valid');
+                if (this.value.length > 0) {
+                    this.classList.add('is-invalid');
+                    if (nameError) nameError.style.display = 'block';
+                } else {
+                    this.classList.remove('is-invalid');
+                    if (nameError) nameError.style.display = 'none';
+                }
+            }
+            updateSubmitButtonState(); // Обновляем состояние кнопки при каждом изменении имени
+        });
+    }
+
+    // --- 4. ОСНОВНАЯ ЛОГИКА МОДАЛЬНОГО ОКНА И КНОПОК ---
     if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
         leadFormModal.show();
     }
-
-    showModalIcon.addEventListener('click', function() {
-        minimizedLeadForm.style.display = 'none';
-        leadFormModal.show();
-    });
-
-    leadFormModalElement.addEventListener('hidden.bs.modal', function () {
-        const backdrop = document.querySelector('.modal-backdrop');
-        if (backdrop) {
-            backdrop.remove();
-        }
-        minimizedLeadForm.style.display = 'block';
-    });
-
-    document.addEventListener('click', function (event) {
-        const isClickInsideModal = leadFormModalElement.contains(event.target);
-        const isClickOnMinimizedIcon = minimizedLeadForm.contains(event.target);
-        if (leadFormModalElement.classList.contains('show') && !isClickInsideModal && !isClickOnMinimizedIcon) {
-            event.stopPropagation();
-        }
-    }, true);
+    showModalIcon.addEventListener('click', function() { minimizedLeadForm.style.display = 'none'; leadFormModal.show(); });
+    leadFormModalElement.addEventListener('hidden.bs.modal', function () { const b = document.querySelector('.modal-backdrop'); if (b) b.remove(); minimizedLeadForm.style.display = 'block'; });
+    document.addEventListener('click', function (e) { const i = leadFormModalElement.contains(e.target); if (leadFormModalElement.classList.contains('show') && !i) e.stopPropagation(); }, true);
 
     leadFormModalElement.addEventListener('shown.bs.modal', function () {
         const formPage1 = document.getElementById('formPage1');
         const formPage2 = document.getElementById('formPage2');
         const nextPageBtn = document.getElementById('nextPageBtn');
-        const submitOrderBtn = document.getElementById('submitOrderBtn');
         const pageIndicator = document.querySelector('.modal-page-indicator');
-        const minimizeModalButton = document.getElementById('minimizeModalButton');
         const backPageBtn = document.getElementById('backPageBtn');
-
-        // === НАЧАЛО НОВОГО КОДА ДЛЯ ПОЛЯ "ДРУГОЕ" ===
-        // Получаем доступ к новым элементам
         const otherOptionCheckbox = document.getElementById('otherOptionCheckbox');
         const otherOptionContainer = document.getElementById('otherOptionContainer');
 
-        // Добавляем обработчик на чекбокс "Другое"
         if (otherOptionCheckbox) {
             otherOptionCheckbox.addEventListener('change', function() {
-                // Если чекбокс отмечен, показываем текстовое поле, иначе - скрываем
-                if (this.checked) {
-                    otherOptionContainer.style.display = 'block';
-                } else {
-                    otherOptionContainer.style.display = 'none';
-                }
+                if (this.checked) otherOptionContainer.style.display = 'block';
+                else otherOptionContainer.style.display = 'none';
             });
         }
-        // === КОНЕЦ НОВОГО КОДА ДЛЯ ПОЛЯ "ДРУГОЕ" ===
-
-        if (minimizeModalButton) {
-            minimizeModalButton.addEventListener('click', function() {
-                leadFormModal.hide();
-                minimizedLeadForm.style.display = 'block';
-            });
-        }
-
+        
         if (nextPageBtn) {
             nextPageBtn.addEventListener('click', function() {
+                const anyCheckboxChecked = document.querySelector('#formPage1 input[type="checkbox"]:checked');
+                if (!anyCheckboxChecked) { alert('Пожалуйста, выберите хотя бы одну услугу.'); return; }
                 formPage1.style.display = 'none';
                 formPage2.style.display = 'block';
                 nextPageBtn.style.display = 'none';
                 submitOrderBtn.style.display = 'block';
                 backPageBtn.style.display = 'block';
-                if (pageIndicator) {
-                    pageIndicator.textContent = '2/2';
-                }
+                if (pageIndicator) pageIndicator.textContent = '2/2';
+                updateSubmitButtonState(); // Проверяем состояние кнопки при переходе на вторую страницу
             });
         }
-
         if (backPageBtn) {
             backPageBtn.addEventListener('click', function() {
                 formPage2.style.display = 'none';
@@ -83,89 +117,55 @@ document.addEventListener('DOMContentLoaded', function() {
                 backPageBtn.style.display = 'none';
                 submitOrderBtn.style.display = 'none';
                 nextPageBtn.style.display = 'block';
-                if (pageIndicator) {
-                    pageIndicator.textContent = '1/2';
-                }
+                if (pageIndicator) pageIndicator.textContent = '1/2';
             });
         }
 
-        // ОБНОВЛЕННЫЙ ОБРАБОТЧИК КНОПКИ "ОТПРАВИТЬ"
         if (submitOrderBtn) {
             submitOrderBtn.addEventListener('click', function(event) {
                 event.preventDefault();
-
+                if (submitOrderBtn.disabled) return;
+                
                 const formSuccessMessage = document.getElementById('formSuccessMessage');
                 const formErrorMessage = document.getElementById('formErrorMessage');
-
                 submitOrderBtn.disabled = true;
                 submitOrderBtn.textContent = 'Отправка...';
 
-                const fullName = document.getElementById('fullName').value;
-                const phone = document.getElementById('phone').value;
-
-                if (!fullName || !phone) {
-                    alert('Пожалуйста, введите ваше имя и телефон.');
-                    submitOrderBtn.disabled = false;
-                    submitOrderBtn.textContent = 'Отправить';
-                    return;
-                }
-                
-                // Получаем текст из поля "Другое"
-                const otherDetailsText = document.getElementById('otherOptionText').value;
-
                 const formData = new FormData();
-                formData.append('name', fullName);
-                formData.append('phone', phone);
-                // Добавляем данные из "Другого" в отправку
-                formData.append('other_details', otherDetailsText);
-
-                const checkboxes = document.querySelectorAll('#formPage1 input[type="checkbox"]');
-                checkboxes.forEach(function(checkbox) {
-                    if (checkbox.checked) {
-                        formData.append(checkbox.value, 'true');
-                    }
-                });
-
-                // Убедитесь, что здесь ваш URL из Google Apps Script
+                formData.append('name', fullNameInput.value);
+                formData.append('phone', phoneInput.value);
+                formData.append('other_details', document.getElementById('otherOptionText').value);
+                document.querySelectorAll('#formPage1 input[type="checkbox"]:checked').forEach(c => formData.append(c.value, 'true'));
+                
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbxxDLgpbYZzN0Q2L-xEyOQY9vPnBU5-RVJbRTipeRCGBlGvPBa961VX7opuf75r_6cHig/exec';
 
-                fetch(scriptURL, { method: 'POST', body: formData })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.result === 'success') {
-                            formPage1.style.display = 'none';
-                            formPage2.style.display = 'none';
-                            document.querySelector('.modal-footer').style.display = 'none';
-                            if (formSuccessMessage) formSuccessMessage.style.display = 'block';
-                        } else {
-                            throw new Error(data.message || 'Неизвестная ошибка скрипта');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Ошибка при отправке заявки:', error);
-                        if (formErrorMessage) formErrorMessage.style.display = 'block';
-                        submitOrderBtn.disabled = false;
-                        submitOrderBtn.textContent = 'Отправить';
-                    });
+                fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                .then(() => {
+                    formPage1.style.display = 'none';
+                    formPage2.style.display = 'none';
+                    document.querySelector('.modal-footer').style.display = 'none';
+                    if (formSuccessMessage) formSuccessMessage.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Критическая ошибка при отправке:', error);
+                    if (formErrorMessage) formErrorMessage.style.display = 'block';
+                    submitOrderBtn.disabled = false;
+                    submitOrderBtn.textContent = 'Отправить';
+                });
             });
         }
     });
 
-    // Функция includeHTML остается без изменений
     async function includeHTML() {
-      let includes = document.getElementsByTagName('include');
-      for (var i = 0; i < includes.length; i++) {
-        let file = includes[i].getAttribute('src');
-        if (file) {
-          let response = await fetch(file);
-          if (response.ok) {
-            let text = await response.text();
-            includes[i].outerHTML = text;
-          } else {
-            includes[i].outerHTML = "Page not found.";
-          }
+        let includes = document.getElementsByTagName('include');
+        for (var i = 0; i < includes.length; i++) {
+            let file = includes[i].getAttribute('src');
+            if (file) {
+                let response = await fetch(file);
+                if (response.ok) { let text = await response.text(); includes[i].outerHTML = text; }
+                else { includes[i].outerHTML = "Page not found."; }
+            }
         }
-      }
     }
     includeHTML();
 });
