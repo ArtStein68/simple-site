@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. ПОЛУЧАЕМ ВСЕ НУЖНЫЕ ЭЛЕМЕНТЫ СО СТРАНИЦЫ ---
     var leadFormModalElement = document.getElementById('leadFormModal');
     var leadFormModal = bootstrap.Modal.getOrCreateInstance(leadFormModalElement, {
         backdrop: 'static',
         keyboard: false
     });
-    var minimizedLeadForm = document.getElementById('minimizedLeadForm');
-    var showModalIcon = document.getElementById('showModalIcon');
+
     const fullNameInput = document.getElementById('fullName');
     const nameError = document.getElementById('nameError');
     const phoneInput = document.getElementById('phone');
@@ -14,50 +12,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitOrderBtn = document.getElementById('submitOrderBtn');
     let phoneMask = null; 
 
-    // --- 2. ФУНКЦИИ ВАЛИДАЦИИ И УПРАВЛЕНИЯ КНОПКОЙ ---
-    function validateName(name) {
-        // Возвращает true, если в имени НЕТ цифр и оно не пустое
-        return !/\d/.test(name) && name.length > 0;
-    }
+    function validateName(name) { return !/\d/.test(name) && name.length > 0; }
 
     function updateSubmitButtonState() {
         if (!submitOrderBtn || !fullNameInput || !phoneMask) return;
         const isNameValid = validateName(fullNameInput.value);
         const isPhoneValid = phoneMask.masked.isComplete;
-        // Кнопка активна, только если ОБА поля валидны
         submitOrderBtn.disabled = !(isNameValid && isPhoneValid);
     }
 
-    // --- 3. НАСТРОЙКА ВАЛИДАЦИИ ПОЛЕЙ ВВОДА ---
-
-    // Настройка маски и валидации телефона с помощью IMask.js
     if (phoneInput) {
-        phoneMask = IMask(phoneInput, {
-            mask: '(000) 000-0000',
-            lazy: false 
-        });
-        
+        phoneMask = IMask(phoneInput, { mask: '(000) 000-0000', lazy: false });
         phoneMask.on('accept', function() {
             if (phoneMask.masked.isComplete) {
-                phoneInput.classList.remove('is-invalid');
-                phoneInput.classList.add('is-valid');
+                phoneInput.classList.remove('is-invalid'); phoneInput.classList.add('is-valid');
                 if (phoneError) phoneError.style.display = 'none';
             } else {
                 phoneInput.classList.remove('is-valid');
                 if (phoneMask.value.length > 0) phoneInput.classList.add('is-invalid');
                 else phoneInput.classList.remove('is-invalid');
             }
-            updateSubmitButtonState(); // Обновляем состояние кнопки при каждом изменении телефона
+            updateSubmitButtonState();
         });
     }
 
-    // Настройка валидации имени
     if (fullNameInput) {
         fullNameInput.addEventListener('input', function() {
             const isValid = validateName(this.value);
             if (isValid) {
-                this.classList.remove('is-invalid');
-                this.classList.add('is-valid');
+                this.classList.remove('is-invalid'); this.classList.add('is-valid');
                 if (nameError) nameError.style.display = 'none';
             } else {
                 this.classList.remove('is-valid');
@@ -69,14 +52,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (nameError) nameError.style.display = 'none';
                 }
             }
-            updateSubmitButtonState(); // Обновляем состояние кнопки при каждом изменении имени
+            updateSubmitButtonState();
         });
     }
 
-    // --- 4. ОСНОВНАЯ ЛОГИКА МОДАЛЬНОГО ОКНА И КНОПОК ---
-    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-        leadFormModal.show();
-    }
+    var minimizedLeadForm = document.getElementById('minimizedLeadForm');
+    var showModalIcon = document.getElementById('showModalIcon');
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') { leadFormModal.show(); }
     showModalIcon.addEventListener('click', function() { minimizedLeadForm.style.display = 'none'; leadFormModal.show(); });
     leadFormModalElement.addEventListener('hidden.bs.modal', function () { const b = document.querySelector('.modal-backdrop'); if (b) b.remove(); minimizedLeadForm.style.display = 'block'; });
     document.addEventListener('click', function (e) { const i = leadFormModalElement.contains(e.target); if (leadFormModalElement.classList.contains('show') && !i) e.stopPropagation(); }, true);
@@ -87,27 +69,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextPageBtn = document.getElementById('nextPageBtn');
         const pageIndicator = document.querySelector('.modal-page-indicator');
         const backPageBtn = document.getElementById('backPageBtn');
-        const otherOptionCheckbox = document.getElementById('otherOptionCheckbox');
-        const otherOptionContainer = document.getElementById('otherOptionContainer');
 
-        if (otherOptionCheckbox) {
-            otherOptionCheckbox.addEventListener('change', function() {
-                if (this.checked) otherOptionContainer.style.display = 'block';
-                else otherOptionContainer.style.display = 'none';
+        if (minimizeModalButton) {
+            minimizeModalButton.addEventListener('click', function() {
+                leadFormModal.hide(); // Просто скрываем модальное окно
             });
         }
-        
+
         if (nextPageBtn) {
             nextPageBtn.addEventListener('click', function() {
+                // ПРОВЕРКА: можно перейти дальше, даже если ничего не выбрано, но есть текст в "Другом"
                 const anyCheckboxChecked = document.querySelector('#formPage1 input[type="checkbox"]:checked');
-                if (!anyCheckboxChecked) { alert('Пожалуйста, выберите хотя бы одну услугу.'); return; }
+                const otherText = document.getElementById('otherOptionText').value;
+                if (!anyCheckboxChecked && !otherText) { alert('Пожалуйста, выберите хотя бы одну услугу или опишите ваши пожелания.'); return; }
+                
                 formPage1.style.display = 'none';
                 formPage2.style.display = 'block';
                 nextPageBtn.style.display = 'none';
                 submitOrderBtn.style.display = 'block';
                 backPageBtn.style.display = 'block';
                 if (pageIndicator) pageIndicator.textContent = '2/2';
-                updateSubmitButtonState(); // Проверяем состояние кнопки при переходе на вторую страницу
+                updateSubmitButtonState();
             });
         }
         if (backPageBtn) {
