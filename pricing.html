@@ -50,8 +50,14 @@
         <div class="card bg-secondary text-light mb-4 pricing-card">
           <div class="card-body">
             <h5 class="card-title">Photoshow</h5>
-            <img src="/img/tree-of-life-photoshow-crop.jpg" class="img-fluid rounded-start"
-                alt="Дерево жизни. Step 1. Image">
+            <!-- Оберточный div с фиксированными размерами -->
+            <div class="image-container" style="width: 317px; height: 178px; overflow: hidden;">
+               <!-- Убран класс img-fluid, добавлены стили width/height/object-fit -->
+               <img src="/img/tree-of-life-photoshow-crop.jpg" 
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                    class="rounded-start" <!-- Оставляем класс для скругления углов -->
+                    alt="Дерево жизни. Step 1. Image">
+            </div>
             <div class="pricing-price-placeholder">300 - 500 $</div>
             <button class="btn btn-primary mt-3">Order</button>
             <ul class="pricing-features list-unstyled mt-3">
@@ -66,7 +72,7 @@
           <div class="card-body">
             <h5 class="card-title">Videoshow</h5>
             <div class="video-container" style="width: 317px; height: 178px; overflow: hidden;">
-              <video src="/video/tree-of-life-videoshow.mp4" style="width: 100%; height: 100%; object-fit: cover;" autoplay loop muted></video>
+              <video src="/video/tree-of-life.mp4" style="width: 100%; height: 100%; object-fit: cover;" autoplay loop muted></video>
             </div>
             <div class="pricing-price-placeholder">от 1000$</div>
             <button class="btn btn-primary mt-3">Order</button>
@@ -83,8 +89,14 @@
         <div class="card bg-secondary text-light mb-4 pricing-card">
           <div class="card-body">
             <h5 class="card-title">Commercial</h5>
-            <img src="/img/commercial-crop.jpg" class="img-fluid rounded-start"
-                alt="Дерево жизни. Step 1. Image">
+             <!-- Оберточный div с фиксированными размерами -->
+            <div class="image-container" style="width: 317px; height: 178px; overflow: hidden;">
+               <!-- Убран класс img-fluid, добавлены стили width/height/object-fit -->
+               <img src="/img/commercial-crop.jpg" 
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                    class="rounded-start" 
+                    alt="Дерево жизни. Step 1. Image">
+            </div>
             <div class="pricing-price-placeholder">Individuals</div>
             <button class="btn btn-primary mt-3">Order</button>
             <ul class="pricing-features list-unstyled mt-3">
