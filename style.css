@@ -41,6 +41,26 @@
 }
 
 
+/* Исправление для белого текста в списке стран intl-tel-input */
+.iti__country-list {
+    color: #212529;
+  }
+  
+  /* Стилизация полей ввода внутри темной формы */
+  .modal-content.bg-dark .form-control {
+    background-color: #212529; /* Темный фон */
+    color: #fff;              /* Белый текст */
+    border: 1px solid #495057; /* Темно-серая рамка */
+  }
+  
+  /* Стиль при фокусе (когда пользователь кликает на поле) */
+  .modal-content.bg-dark .form-control:focus {
+    background-color: #212529;
+    color: #fff;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+  }
+
 
 .p-5 {
     padding: 0.5rem !important;

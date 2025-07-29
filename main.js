@@ -1,41 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // --- 1. ПОЛУЧАЕМ ВСЕ НУЖНЫЕ ЭЛЕМЕНТЫ СО СТРАНИЦЫ ---
     var leadFormModalElement = document.getElementById('leadFormModal');
     var leadFormModal = bootstrap.Modal.getOrCreateInstance(leadFormModalElement, {
         backdrop: 'static',
         keyboard: false
     });
-
+    var minimizedLeadForm = document.getElementById('minimizedLeadForm');
+    var showModalIcon = document.getElementById('showModalIcon');
     const fullNameInput = document.getElementById('fullName');
     const nameError = document.getElementById('nameError');
     const phoneInput = document.getElementById('phone');
     const phoneError = document.getElementById('phoneError');
     const submitOrderBtn = document.getElementById('submitOrderBtn');
-    let phoneMask = null; 
 
+    // --- 2. ИНИЦИАЛИЗАЦИЯ НОВОЙ БИБЛИОТЕКИ INTl-TEL-INPUT ---
+    let iti = null; // Эта переменная будет хранить экземпляр библиотеки
+    if (phoneInput) {
+        iti = intlTelInput(phoneInput, {
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js", // <-- Обязательно для валидации!
+            initialCountry: "auto",
+            geoIpLookup: function(callback) {
+                fetch("https://ipapi.co/json")
+                  .then(res => res.json())
+                  .then(data => callback(data.country_code))
+                  .catch(() => callback("us")); // Запасной вариант - США
+            },
+            separateDialCode: true,
+        });
+    }
+
+    // --- 3. ФУНКЦИИ ВАЛИДАЦИИ И УПРАВЛЕНИЯ КНОПКОЙ ---
     function validateName(name) { return !/\d/.test(name) && name.length > 0; }
 
     function updateSubmitButtonState() {
-        if (!submitOrderBtn || !fullNameInput || !phoneMask) return;
+        if (!submitOrderBtn || !fullNameInput || !iti) return;
         const isNameValid = validateName(fullNameInput.value);
-        const isPhoneValid = phoneMask.masked.isComplete;
+        // ИСПОЛЬЗУЕМ МЕТОД НОВОЙ БИБЛИОТЕКИ
+        const isPhoneValid = iti.isValidNumber();
         submitOrderBtn.disabled = !(isNameValid && isPhoneValid);
     }
 
+    // --- 4. НАСТРОЙКА ВАЛИДАЦИИ ПОЛЕЙ ВВОДА ---
+    // Новый обработчик для телефона
     if (phoneInput) {
-        phoneMask = IMask(phoneInput, { mask: '(000) 000-0000', lazy: false });
-        phoneMask.on('accept', function() {
-            if (phoneMask.masked.isComplete) {
+        phoneInput.addEventListener('input', function() {
+            if (iti.isValidNumber()) {
                 phoneInput.classList.remove('is-invalid'); phoneInput.classList.add('is-valid');
                 if (phoneError) phoneError.style.display = 'none';
             } else {
                 phoneInput.classList.remove('is-valid');
-                if (phoneMask.value.length > 0) phoneInput.classList.add('is-invalid');
-                else phoneInput.classList.remove('is-invalid');
+                if (phoneInput.value.trim().length > 0) {
+                    phoneInput.classList.add('is-invalid');
+                    if (phoneError) phoneError.style.display = 'block';
+                } else {
+                    phoneInput.classList.remove('is-invalid');
+                    if (phoneError) phoneError.style.display = 'none';
+                }
             }
             updateSubmitButtonState();
         });
     }
 
+    // Валидация имени (остается без изменений)
     if (fullNameInput) {
         fullNameInput.addEventListener('input', function() {
             const isValid = validateName(this.value);
@@ -56,8 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    var minimizedLeadForm = document.getElementById('minimizedLeadForm');
-    var showModalIcon = document.getElementById('showModalIcon');
+    // --- 5. ОСНОВНАЯ ЛОГИКА МОДАЛЬНОГО ОКНА И КНОПОК ---
     if (window.location.pathname === '/' || window.location.pathname === '/index.html') { leadFormModal.show(); }
     showModalIcon.addEventListener('click', function() { minimizedLeadForm.style.display = 'none'; leadFormModal.show(); });
     leadFormModalElement.addEventListener('hidden.bs.modal', function () { const b = document.querySelector('.modal-backdrop'); if (b) b.remove(); minimizedLeadForm.style.display = 'block'; });
@@ -69,16 +94,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextPageBtn = document.getElementById('nextPageBtn');
         const pageIndicator = document.querySelector('.modal-page-indicator');
         const backPageBtn = document.getElementById('backPageBtn');
+        const minimizeModalButton = document.getElementById('minimizeModalButton');
 
         if (minimizeModalButton) {
-            minimizeModalButton.addEventListener('click', function() {
-                leadFormModal.hide(); // Просто скрываем модальное окно
-            });
+            minimizeModalButton.addEventListener('click', function() { leadFormModal.hide(); });
         }
-
+        
         if (nextPageBtn) {
             nextPageBtn.addEventListener('click', function() {
-                // ПРОВЕРКА: можно перейти дальше, даже если ничего не выбрано, но есть текст в "Другом"
                 const anyCheckboxChecked = document.querySelector('#formPage1 input[type="checkbox"]:checked');
                 const otherText = document.getElementById('otherOptionText').value;
                 if (!anyCheckboxChecked && !otherText) { alert('Пожалуйста, выберите хотя бы одну услугу или опишите ваши пожелания.'); return; }
@@ -115,7 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const formData = new FormData();
                 formData.append('name', fullNameInput.value);
-                formData.append('phone', phoneInput.value);
+                // --- ИЗМЕНЕНИЕ: ОТПРАВЛЯЕМ НОМЕР В МЕЖДУНАРОДНОМ ФОРМАТЕ ---
+                formData.append('phone', iti.getNumber()); 
                 formData.append('other_details', document.getElementById('otherOptionText').value);
                 document.querySelectorAll('#formPage1 input[type="checkbox"]:checked').forEach(c => formData.append(c.value, 'true'));
                 
@@ -138,16 +162,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    async function includeHTML() {
-        let includes = document.getElementsByTagName('include');
-        for (var i = 0; i < includes.length; i++) {
-            let file = includes[i].getAttribute('src');
-            if (file) {
-                let response = await fetch(file);
-                if (response.ok) { let text = await response.text(); includes[i].outerHTML = text; }
-                else { includes[i].outerHTML = "Page not found."; }
+    // --- 6. ВАША ФУНКЦИЯ ЗАГРУЗКИ ФУТЕРА (ОСТАЕТСЯ БЕЗ ИЗМЕНЕНИЙ) ---
+    async function loadFooter() {
+        const footerPlaceholder = document.getElementById('footer-placeholder');
+        if (footerPlaceholder) {
+            try {
+                const response = await fetch('footer.html');
+                if (response.ok) {
+                    const footerHtml = await response.text();
+                    footerPlaceholder.innerHTML = footerHtml;
+                } else {
+                    console.error('Ошибка загрузки футера:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Ошибка при получении файла футера:', error);
             }
         }
     }
-    includeHTML();
+
+    loadFooter();
 });

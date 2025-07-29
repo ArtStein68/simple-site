@@ -21,10 +21,10 @@ This is a framework-less web project built with HTML, CSS, and JavaScript. It sh
 
 ## Plan for Current Change
 
-- Remove the gray background from the welcome section on `index.html`.
-- Add a white horizontal line below the welcome section for separation.
+- Revert the changes made to the navigation bar in `index.html`.
 
 ## Changes Made
 
+- Reverted the modifications to the navigation bar structure in `index.html`, removing the `ms-auto` and `me-auto` classes and restoring the previous layout.
 - Removed the `bg-secondary` class from the welcome section div in `index.html`.
 - Added an `<hr class="mt-3 bg-light">` tag after the welcome section div in `index.html` to create a white separator line.
