@@ -29,7 +29,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           <img src="img/logo.png" alt="AI Gifts Studio Logo" height="30" class="d-inline-block align-text-top">
           AI Gifts Studio
         </a>
@@ -48,7 +48,7 @@
             <a class="nav-link" href="pricing.html">Pricing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="examples.html">Examples</a>
+            <a class="nav-link active" href="examples.html">Examples</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
@@ -65,14 +65,16 @@
     <div class="row">
       <!-- Боковое меню -->
       <div class="col-md-3">
-          <div class="sticky-top" style="top: 30px;">
+        <div class="sticky-top" style="top: 30px;">
+          <div id="side-menu-top">
             <h4 class="mb-3 text-md-center">ПРИМЕРЫ:</h4>
             <div class="accordion" id="examplesAccordion">
               <!-- PERSONAL -->
               <div class="accordion-item bg-secondary text-light">
                 <h2 class="accordion-header" id="personalHeading">
-                  <button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#personalCollapse" aria-expanded="false" aria-controls="personalCollapse">
+                  <button class="accordion-button collapsed bg-secondary text-light" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#personalCollapse" aria-expanded="false"
+                    aria-controls="personalCollapse">
                     PERSONAL
                   </button>
                 </h2>
@@ -82,13 +84,17 @@
                     <ul class="list-unstyled mb-0">
                       <li><a href="#tree-of-life-photoshow" class="text-light">Tree of Life. Photoshow</a></li>
                       <li><a href="#tree-of-life-videoshow" class="text-light">Tree of Life. Videoshow</a></li>
-                      <li><a href="#road-to-the-future-photoshow" class="text-light">Road to the Future. Photoshow</a></li>
-                      <li><a href="#road-to-the-future-videoshow" class="text-light">Road to the Future. Videoshow</a></li>
+                      <li><a href="#road-to-the-future-photoshow" class="text-light">Road to the Future. Photoshow</a>
+                      </li>
+                      <li><a href="#road-to-the-future-videoshow" class="text-light">Road to the Future. Videoshow</a>
+                      </li>
                       <li><a href="#another-world-photoshow" class="text-light">Another World. Photoshow</a></li>
                       <li><a href="#another-world-videoshow" class="text-light">Another World. Videoshow</a></li>
-                      <li><a href="#historical-interview-photoshow" class="text-light">Historical Interview. Photoshow</a>
+                      <li><a href="#historical-interview-photoshow" class="text-light">Historical Interview.
+                          Photoshow</a>
                       </li>
-                      <li><a href="#historical-interview-videoshow" class="text-light">Historical Interview. Videoshow</a>
+                      <li><a href="#historical-interview-videoshow" class="text-light">Historical Interview.
+                          Videoshow</a>
                       </li>
                       <li><a href="#luxury-photoshow" class="text-light">Luxury. Photoshow</a></li>
                       <li><a href="#luxury-videoshow" class="text-light">Luxury. Videoshow</a></li>
@@ -105,8 +111,9 @@
               <!-- COMMERCIAL -->
               <div class="accordion-item bg-secondary text-light">
                 <h2 class="accordion-header" id="commercialHeading">
-                  <button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#commercialCollapse" aria-expanded="false" aria-controls="commercialCollapse">
+                  <button class="accordion-button collapsed bg-secondary text-light" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#commercialCollapse" aria-expanded="false"
+                    aria-controls="commercialCollapse">
                     COMMERCIAL
                   </button>
                 </h2>
@@ -128,8 +135,9 @@
               <!-- FANDOM STYLES -->
               <div class="accordion-item bg-secondary text-light">
                 <h2 class="accordion-header" id="fandomHeading">
-                  <button class="accordion-button collapsed bg-secondary text-light" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#fandomCollapse" aria-expanded="false" aria-controls="fandomCollapse">
+                  <button class="accordion-button collapsed bg-secondary text-light" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#fandomCollapse" aria-expanded="false"
+                    aria-controls="fandomCollapse">
                     FANDOM STYLES
                   </button>
                 </h2>
@@ -151,7 +159,8 @@
                 </div>
               </div>
             </div>
-        </div>  
+          </div>
+        </div>
       </div>
 
       <!-- Основной контент -->
@@ -180,8 +189,8 @@
         <div class="example-block mb-5" id="tree-of-life-videoshow">
           <hr class="text-light">
           <h2>Tree of Life. Videoshow</h2>
-          <img src="/webp/tree-of-life-video.webp" alt="Tree of Life Video" class="img-fluid mb-3"
-            style="max-width:350px;">
+          <video src="/video/tree-of-life.mp4" class="img-fluid rounded-start" autoplay loop muted
+            style="max-width:350px;"></video>
           <h4>О проекте</h4>
           <p>Видеошоу "Tree of Life" — это динамичный рассказ о вашей семье, созданный на основе ваших фотографий и
             видеофрагментов. Мы оживим семейную историю с помощью современных технологий и трогательных сюжетов.</p>
@@ -219,8 +228,8 @@
         <div class="example-block mb-5" id="road-to-the-future-videoshow">
           <hr class="text-light">
           <h2>Road to the Future. Videoshow</h2>
-          <img src="/webp/look-future-video.webp" alt="Road to the Future Video" class="img-fluid mb-3"
-            style="max-width:350px;">
+          <video src="/video/look-future.mp4" class="img-fluid rounded-start" autoplay loop muted
+            style="max-width:350px;"></video>
           <h4>О проекте</h4>
           <p>Видеошоу "Road to the Future" — это вдохновляющий видеоролик о развитии вашей семьи, о мечтах и
             достижениях. Мы создадим динамичный сюжет, который подчеркнёт уникальность вашей истории.</p>
@@ -256,8 +265,9 @@
         <div class="example-block mb-5" id="another-world-videoshow">
           <hr class="text-light">
           <h2>Another World. Videoshow</h2>
-          <img src="/webp/another-world-video.webp" alt="Another World Video" class="img-fluid mb-3"
-            style="max-width:350px;">
+                    <video src="/video/another-world.mp4" class="img-fluid rounded-start" autoplay loop muted
+            style="max-width:350px;"></video>
+
           <h4>О проекте</h4>
           <p>Видеошоу "Another World" — это путешествие в фантастические миры, где вы и ваши близкие становитесь героями
             необычных историй. Я создам для вас уникальный видеоролик с эффектами и анимацией.</p>
@@ -275,7 +285,7 @@
         <div class="example-block mb-5" id="historical-interview-photoshow">
           <hr class="text-light">
           <h2>Historical Interview. Photoshow</h2>
-          <img src="/webp/historical-interview.webp" alt="Historical Interview" class="img-fluid mb-3"
+          <img src="/webp/interview.webp" alt="Historical Interview" class="img-fluid mb-3"
             style="max-width:350px;">
           <h4>О проекте</h4>
           <p>"Historical Interview" — фотошоу в стиле интервью с вашими родственниками. Мы создадим визуальный рассказ,
@@ -293,8 +303,8 @@
         <div class="example-block mb-5" id="historical-interview-videoshow">
           <hr class="text-light">
           <h2>Historical Interview. Videoshow</h2>
-          <img src="/webp/historical-interview-video.webp" alt="Historical Interview Video" class="img-fluid mb-3"
-            style="max-width:350px;">
+          <video src="/video/interview-video.mp4" class="img-fluid rounded-start" autoplay loop muted
+            style="max-width:350px;"></video>
           <h4>О проекте</h4>
           <p>Видеошоу "Historical Interview" — это видеоинтервью с вашими родственниками, оформленное в современном
             стиле. Я помогу сохранить важные воспоминания и истории для будущих поколений.</p>
@@ -331,7 +341,8 @@
         <div class="example-block mb-5" id="luxury-videoshow">
           <hr class="text-light">
           <h2>Luxury. Videoshow</h2>
-          <img src="/webp/luxury-video.webp" alt="Luxury Video" class="img-fluid mb-3" style="max-width:350px;">
+          <video src="/video/social-media-video.mp4" class="img-fluid rounded-start" autoplay loop muted
+            style="max-width:350px;"></video>
           <h4>О проекте</h4>
           <p>Видеошоу "Luxury" — это видео в стиле роскоши и гламура. Я создам для вас ролик, который подчеркнёт вашу
             индивидуальность и стиль.</p>
@@ -368,8 +379,8 @@
         <div class="example-block mb-5" id="social-media-videoshow">
           <hr class="text-light">
           <h2>Social Media. Videoshow</h2>
-          <img src="/webp/social-media-video.webp" alt="Social Media Video" class="img-fluid mb-3"
-            style="max-width:350px;">
+          <video src="/video/social-media-photo.mp4" class="img-fluid rounded-start" autoplay loop muted
+            style="max-width:350px;"></video>
           <h4>О проекте</h4>
           <p>Видеошоу "Social Media" — это современный видеоролик для ваших соцсетей. Я создам стильное и динамичное
             видео, которое поможет вам выделиться.</p>
@@ -406,7 +417,8 @@
         <div class="example-block mb-5" id="cosplay-videoshow">
           <hr class="text-light">
           <h2>Cosplay. Videoshow</h2>
-          <img src="/webp/cosplay-video.webp" alt="Cosplay Video" class="img-fluid mb-3" style="max-width:350px;">
+          <video src="/video/cosplay-video.mp4" class="img-fluid rounded-start" autoplay loop muted
+            style="max-width:350px;"></video>
           <h4>О проекте</h4>
           <p>Видеошоу "Cosplay" — это ролик для поклонников косплея, в котором ваши образы оживают на экране. Я создам
             динамичное и яркое видео в выбранном стиле.</p>
@@ -442,8 +454,8 @@
         <div class="example-block mb-5" id="presentation-videoshow">
           <hr class="text-light">
           <h2>Презентация. Videoshow</h2>
-          <img src="/webp/presentation-video.webp" alt="Презентация Video" class="img-fluid mb-3"
-            style="max-width:350px;">
+          <video src="/video/presentation-video.mp4" class="img-fluid rounded-start" autoplay loop muted
+            style="max-width:350px;"></video>
           <h4>О проекте</h4>
           <p>Видеошоу "Презентация" — это профессиональный видеоролик для портфолио, презентаций и резюме. Я помогу вам
             создать современный и запоминающийся образ.</p>
@@ -456,96 +468,128 @@
           <h4>Результат</h4>
           <p>Вы получите видео, которое поможет вам выделиться и достичь поставленных целей.</p>
         </div>
-<!-- COMMERCIAL. Раздел 1. Photoshow -->
-<div class="example-block mb-5" id="commercial-1-photoshow">
-  <hr class="text-light">
-  <h2>COMMERCIAL. Раздел 1. Photoshow</h2>
-  <img src="/webp/commercial-1-photo.webp" alt="Commercial 1 Photoshow" class="img-fluid mb-3" style="max-width:350px;">
-  <h4>О проекте</h4>
-  <p>Фотошоу для бизнеса — это профессиональная визуализация ваших товаров, услуг или бренда. Мы создаём яркие и запоминающиеся образы, которые помогут выделиться на рынке и привлечь новых клиентов.</p>
-  <h4>Как заказать</h4>
-  <p>Свяжитесь со мной через Buy или по контактам сайта, расскажите о вашей задаче и предоставьте необходимые материалы. Мы обсудим детали, стиль и сроки.</p>
-  <h4>Что я сделаю</h4>
-  <p>Я обработаю ваши фотографии, добавлю фирменные элементы, логотипы и создам презентацию, которая подчеркнёт преимущества вашего бизнеса.</p>
-  <h4>Результат</h4>
-  <p>Вы получите профессиональное фотошоу, готовое для размещения на сайте, в соцсетях или для презентаций.</p>
-</div>
+        <!-- COMMERCIAL. Раздел 1. Photoshow -->
+        <div class="example-block mb-5" id="commercial-1-photoshow">
+          <hr class="text-light">
+          <h2>COMMERCIAL. Раздел 1. Photoshow</h2>
+          <img src="/webp/commercial-1-photo.webp" alt="Commercial 1 Photoshow" class="img-fluid mb-3"
+            style="max-width:350px;">
+          <h4>О проекте</h4>
+          <p>Фотошоу для бизнеса — это профессиональная визуализация ваших товаров, услуг или бренда. Мы создаём яркие и
+            запоминающиеся образы, которые помогут выделиться на рынке и привлечь новых клиентов.</p>
+          <h4>Как заказать</h4>
+          <p>Свяжитесь со мной через Buy или по контактам сайта, расскажите о вашей задаче и предоставьте необходимые
+            материалы. Мы обсудим детали, стиль и сроки.</p>
+          <h4>Что я сделаю</h4>
+          <p>Я обработаю ваши фотографии, добавлю фирменные элементы, логотипы и создам презентацию, которая подчеркнёт
+            преимущества вашего бизнеса.</p>
+          <h4>Результат</h4>
+          <p>Вы получите профессиональное фотошоу, готовое для размещения на сайте, в соцсетях или для презентаций.</p>
+        </div>
 
-<!-- COMMERCIAL. Раздел 1. Videoshow -->
-<div class="example-block mb-5" id="commercial-1-videoshow">
-  <hr class="text-light">
-  <h2>COMMERCIAL. Раздел 1. Videoshow</h2>
-  <img src="/webp/commercial-1-video.webp" alt="Commercial 1 Videoshow" class="img-fluid mb-3" style="max-width:350px;">
-  <h4>О проекте</h4>
-  <p>Видеошоу для бизнеса — это динамичный видеоролик, который выгодно презентует ваши услуги или продукты. Современный монтаж, анимация и фирменный стиль помогут привлечь внимание вашей аудитории.</p>
-  <h4>Как заказать</h4>
-  <p>Свяжитесь со мной через Buy или по контактам сайта, опишите ваши цели и предоставьте материалы. Мы согласуем сценарий и стиль ролика.</p>
-  <h4>Что я сделаю</h4>
-  <p>Я смонтирую видео с использованием AI, добавлю анимацию, титры, музыку и фирменные элементы для максимального эффекта.</p>
-  <h4>Результат</h4>
-  <p>Вы получите готовый видеоролик для рекламы, сайта или презентаций.</p>
-</div>
+        <!-- COMMERCIAL. Раздел 1. Videoshow -->
+        <div class="example-block mb-5" id="commercial-1-videoshow">
+          <hr class="text-light">
+          <h2>COMMERCIAL. Раздел 1. Videoshow</h2>
+          <img src="/webp/commercial-1-video.webp" alt="Commercial 1 Videoshow" class="img-fluid mb-3"
+            style="max-width:350px;">
+          <h4>О проекте</h4>
+          <p>Видеошоу для бизнеса — это динамичный видеоролик, который выгодно презентует ваши услуги или продукты.
+            Современный монтаж, анимация и фирменный стиль помогут привлечь внимание вашей аудитории.</p>
+          <h4>Как заказать</h4>
+          <p>Свяжитесь со мной через Buy или по контактам сайта, опишите ваши цели и предоставьте материалы. Мы
+            согласуем сценарий и стиль ролика.</p>
+          <h4>Что я сделаю</h4>
+          <p>Я смонтирую видео с использованием AI, добавлю анимацию, титры, музыку и фирменные элементы для
+            максимального эффекта.</p>
+          <h4>Результат</h4>
+          <p>Вы получите готовый видеоролик для рекламы, сайта или презентаций.</p>
+        </div>
 
-<!-- COMMERCIAL. Раздел 2. Photoshow -->
-<div class="example-block mb-5" id="commercial-2-photoshow">
-  <hr class="text-light">
-  <h2>COMMERCIAL. Раздел 2. Photoshow</h2>
-  <img src="/webp/commercial-2-photo.webp" alt="Commercial 2 Photoshow" class="img-fluid mb-3" style="max-width:350px;">
-  <h4>О проекте</h4>
-  <p>Фотошоу для мероприятий — отличный способ рассказать о прошедших событиях, конференциях или выставках. Я создам яркую подборку снимков, отражающих атмосферу и успех вашего мероприятия.</p>
-  <h4>Как заказать</h4>
-  <p>Свяжитесь со мной через Buy или по контактам сайта, отправьте фотографии и опишите ваши пожелания. Мы обсудим формат и стиль фотошоу.</p>
-  <h4>Что я сделаю</h4>
-  <p>Я обработаю фотографии, добавлю фирменные цвета, логотипы и оформлю всё в едином стиле.</p>
-  <h4>Результат</h4>
-  <p>Вы получите фотошоу, которое можно использовать для отчётов, публикаций и продвижения бренда.</p>
-</div>
+        <!-- COMMERCIAL. Раздел 2. Photoshow -->
+        <div class="example-block mb-5" id="commercial-2-photoshow">
+          <hr class="text-light">
+          <h2>COMMERCIAL. Раздел 2. Photoshow</h2>
+          <img src="/webp/commercial-2-photo.webp" alt="Commercial 2 Photoshow" class="img-fluid mb-3"
+            style="max-width:350px;">
+          <h4>О проекте</h4>
+          <p>Фотошоу для мероприятий — отличный способ рассказать о прошедших событиях, конференциях или выставках. Я
+            создам яркую подборку снимков, отражающих атмосферу и успех вашего мероприятия.</p>
+          <h4>Как заказать</h4>
+          <p>Свяжитесь со мной через Buy или по контактам сайта, отправьте фотографии и опишите ваши пожелания. Мы
+            обсудим формат и стиль фотошоу.</p>
+          <h4>Что я сделаю</h4>
+          <p>Я обработаю фотографии, добавлю фирменные цвета, логотипы и оформлю всё в едином стиле.</p>
+          <h4>Результат</h4>
+          <p>Вы получите фотошоу, которое можно использовать для отчётов, публикаций и продвижения бренда.</p>
+        </div>
 
-<!-- COMMERCIAL. Раздел 2. Videoshow -->
-<div class="example-block mb-5" id="commercial-2-videoshow">
-  <hr class="text-light">
-  <h2>COMMERCIAL. Раздел 2. Videoshow</h2>
-  <img src="/webp/commercial-2-video.webp" alt="Commercial 2 Videoshow" class="img-fluid mb-3" style="max-width:350px;">
-  <h4>О проекте</h4>
-  <p>Видеошоу для мероприятий — это динамичный ролик, который передаёт атмосферу события и демонстрирует его ключевые моменты. Отлично подходит для отчётов и продвижения будущих мероприятий.</p>
-  <h4>Как заказать</h4>
-  <p>Свяжитесь со мной через Buy или по контактам сайта, отправьте фото и видео с мероприятия. Мы согласуем сценарий и стиль.</p>
-  <h4>Что я сделаю</h4>
-  <p>Я смонтирую видео, добавлю анимацию, титры, фирменные элементы и музыку для создания яркого и запоминающегося ролика.</p>
-  <h4>Результат</h4>
-  <p>Вы получите профессиональное видео для отчётов, соцсетей и сайта.</p>
-</div>
+        <!-- COMMERCIAL. Раздел 2. Videoshow -->
+        <div class="example-block mb-5" id="commercial-2-videoshow">
+          <hr class="text-light">
+          <h2>COMMERCIAL. Раздел 2. Videoshow</h2>
+          <img src="/webp/commercial-2-video.webp" alt="Commercial 2 Videoshow" class="img-fluid mb-3"
+            style="max-width:350px;">
+          <h4>О проекте</h4>
+          <p>Видеошоу для мероприятий — это динамичный ролик, который передаёт атмосферу события и демонстрирует его
+            ключевые моменты. Отлично подходит для отчётов и продвижения будущих мероприятий.</p>
+          <h4>Как заказать</h4>
+          <p>Свяжитесь со мной через Buy или по контактам сайта, отправьте фото и видео с мероприятия. Мы согласуем
+            сценарий и стиль.</p>
+          <h4>Что я сделаю</h4>
+          <p>Я смонтирую видео, добавлю анимацию, титры, фирменные элементы и музыку для создания яркого и
+            запоминающегося ролика.</p>
+          <h4>Результат</h4>
+          <p>Вы получите профессиональное видео для отчётов, соцсетей и сайта.</p>
+        </div>
 
-<!-- COMMERCIAL. Раздел 3. Photoshow -->
-<div class="example-block mb-5" id="commercial-3-photoshow">
-  <hr class="text-light">
-  <h2>COMMERCIAL. Раздел 3. Photoshow</h2>
-  <img src="/webp/commercial-3-photo.webp" alt="Commercial 3 Photoshow" class="img-fluid mb-3" style="max-width:350px;">
-  <h4>О проекте</h4>
-  <p>Фотошоу для рекламы — это креативная подборка изображений, которая привлечёт внимание к вашему продукту или услуге. Я помогу выделить ваши преимущества и создать привлекательный визуальный ряд.</p>
-  <h4>Как заказать</h4>
-  <p>Свяжитесь со мной через Buy или по контактам сайта, расскажите о продукте и предоставьте материалы. Мы обсудим концепцию и стиль.</p>
-  <h4>Что я сделаю</h4>
-  <p>Я обработаю фотографии, добавлю рекламные слоганы, фирменные цвета и создам эффектную презентацию.</p>
-  <h4>Результат</h4>
-  <p>Вы получите фотошоу, готовое для рекламы в интернете, соцсетях и на мероприятиях.</p>
-</div>
+        <!-- COMMERCIAL. Раздел 3. Photoshow -->
+        <div class="example-block mb-5" id="commercial-3-photoshow">
+          <hr class="text-light">
+          <h2>COMMERCIAL. Раздел 3. Photoshow</h2>
+          <img src="/webp/commercial-3-photo.webp" alt="Commercial 3 Photoshow" class="img-fluid mb-3"
+            style="max-width:350px;">
+          <h4>О проекте</h4>
+          <p>Фотошоу для рекламы — это креативная подборка изображений, которая привлечёт внимание к вашему продукту или
+            услуге. Я помогу выделить ваши преимущества и создать привлекательный визуальный ряд.</p>
+          <h4>Как заказать</h4>
+          <p>Свяжитесь со мной через Buy или по контактам сайта, расскажите о продукте и предоставьте материалы. Мы
+            обсудим концепцию и стиль.</p>
+          <h4>Что я сделаю</h4>
+          <p>Я обработаю фотографии, добавлю рекламные слоганы, фирменные цвета и создам эффектную презентацию.</p>
+          <h4>Результат</h4>
+          <p>Вы получите фотошоу, готовое для рекламы в интернете, соцсетях и на мероприятиях.</p>
+        </div>
 
-<!-- COMMERCIAL. Раздел 3. Videoshow -->
-<div class="example-block mb-5" id="commercial-3-videoshow">
-  <hr class="text-light">
-  <h2>COMMERCIAL. Раздел 3. Videoshow</h2>
-  <img src="/webp/commercial-3-video.webp" alt="Commercial 3 Videoshow" class="img-fluid mb-3" style="max-width:350px;">
-  <h4>О проекте</h4>
-  <p>Видеошоу для рекламы — это короткий и яркий видеоролик, который быстро донесёт вашу идею до клиента. Современный монтаж, анимация и фирменный стиль — всё для эффективного продвижения.</p>
-  <h4>Как заказать</h4>
-  <p>Свяжитесь со мной через Buy или по контактам сайта, расскажите о продукте и предоставьте материалы. Мы согласуем сценарий и формат.</p>
-  <h4>Что я сделаю</h4>
-  <p>Я смонтирую видео с использованием AI, добавлю анимацию, титры, музыку и рекламные элементы.</p>
-  <h4>Результат</h4>
-  <p>Вы получите видеоролик, готовый для рекламы в интернете, на ТВ или для презентаций.</p>
-</div>
+        <!-- COMMERCIAL. Раздел 3. Videoshow -->
+        <div class="example-block mb-5" id="commercial-3-videoshow">
+          <hr class="text-light">
+          <h2>COMMERCIAL. Раздел 3. Videoshow</h2>
+          <img src="/webp/commercial-3-video.webp" alt="Commercial 3 Videoshow" class="img-fluid mb-3"
+            style="max-width:350px;">
+          <h4>О проекте</h4>
+          <p>Видеошоу для рекламы — это короткий и яркий видеоролик, который быстро донесёт вашу идею до клиента.
+            Современный монтаж, анимация и фирменный стиль — всё для эффективного продвижения.</p>
+          <h4>Как заказать</h4>
+          <p>Свяжитесь со мной через Buy или по контактам сайта, расскажите о продукте и предоставьте материалы. Мы
+            согласуем сценарий и формат.</p>
+          <h4>Что я сделаю</h4>
+          <p>Я смонтирую видео с использованием AI, добавлю анимацию, титры, музыку и рекламные элементы.</p>
+          <h4>Результат</h4>
+          <p>Вы получите видеоролик, готовый для рекламы в интернете, на ТВ или для презентаций.</p>
+        </div>
 
+
+        <a href="#side-menu-top" class="btn btn-secondary btn-sm p-1 d-md-none position-fixed"
+          style="bottom: 90px; right: 20px; top: auto; z-index: 2000; font-size: 1.1rem; min-width: 36px; min-height: 36px;">
+          <i class="fa fa-arrow-up"></i>
+        </a>
+
+        <!-- Кнопка "Наверх" для ПК -->
+        <a href="#side-menu-top" class="btn btn-secondary btn-sm d-none d-md-flex justify-content-center align-items-center position-fixed"
+          style="bottom: 40px; right: 40px; z-index: 2000; font-size: 1.3rem; min-width: 44px; min-height: 44px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); padding: 0;">
+          <i class="fa fa-arrow-up"></i>
+        </a>
 
 
 
@@ -553,7 +597,7 @@
 
       </div>
 
-      
+
 
 
 
