@@ -149,3 +149,61 @@
     border-top: 1px solid white; /* Добавляем тонкую белую полосу сверху */
 }
 
+/* Убрать серый фон и полоски у бокового меню-аккордеона */
+.accordion-item,
+.accordion-button {
+  background-color: transparent !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Белая стрелка для аккордеона */
+.accordion-button::after {
+  filter: brightness(0) invert(1);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+
+.accordion-body {
+  background-color: transparent !important;
+  color: #fff !important;
+  border: none !important;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* Стили для подразделов аккордеона (боковое меню) */
+.accordion-body ul li a {
+  text-decoration: none !important;
+  color: #fff !important;
+  display: block;
+  padding-left: 18px;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.accordion-body ul li a:hover {
+  color: #86b7fe !important; /* подсветка при наведении */
+}
+
+/* Убрать полоски между элементами */
+.accordion-item {
+  border: none !important;
+}
+
+.col-md-10 img {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    height: auto;
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
