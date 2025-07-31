@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- 3. ФУНКЦИИ ВАЛИДАЦИИ И УПРАВЛЕНИЯ КНОПКОЙ ---
-    function validateName(name) { return !/\d/.test(name) && name.length > 0; }
+    function validateName(name) { return !/d/.test(name) && name.length > 0; }
 
     function updateSubmitButtonState() {
         if (!submitOrderBtn || !fullNameInput || !iti) return;
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (nameError) nameError.style.display = 'block';
                 } else {
                     this.classList.remove('is-invalid');
-                    if (nameError) nameError.style.display = 'none';
+                    if (nameError) phoneError.style.display = 'none';
                 }
             }
             updateSubmitButtonState();
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const footerPlaceholder = document.getElementById('footer-placeholder');
         if (footerPlaceholder) {
             try {
-                const response = await fetch('footer.html');
+                const response = await fetch('../footer.html'); // Changed path here
                 if (response.ok) {
                     const footerHtml = await response.text();
                     footerPlaceholder.innerHTML = footerHtml;
