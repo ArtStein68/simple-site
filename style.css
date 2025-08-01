@@ -22,9 +22,22 @@
   
 
 .navbar-nav .nav-link.active:not([data-bs-toggle="modal"]) {
-        border-bottom: 2px solid white; /* Белая черта */
+        border-bottom: 2px solid #ff9900; /* Белая черта */
         padding-bottom: 2px; /* Небольшой отступ, чтобы черта не прилипала к тексту */
     }
+
+
+.text-custom-orange {
+  color: #ff9900 !important; /* Ваш точный оттенок оранжевого. !important на случай, если Bootstrap перебивает стиль */
+}
+
+.hr-custom-orange {
+  border: 0;
+  border-top: 2px solid #ff9900; /* Ваш точный оттенок оранжевого */
+  opacity: 1; /* Делаем линию непрозрачной */
+}   
+    
+
 
 
 /*
