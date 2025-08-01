@@ -26,6 +26,26 @@
         padding-bottom: 2px; /* Небольшой отступ, чтобы черта не прилипала к тексту */
     }
 
+
+/*
+ * Стиль для оранжевой Call-to-Action кнопки "Buy"
+ */
+.btn-cta-orange {
+  background-color: #fd7e14; /* Яркий оранжевый цвет */
+  color: #fff !important;   /* Белый цвет текста (!important для надежности) */
+  border-radius: 5px;      /* Слегка скругленные углы */
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  transition: background-color 0.2s ease-in-out; /* Плавный переход цвета */
+}
+
+/* Стиль для кнопки при наведении на нее курсора мыши */
+.btn-cta-orange:hover {
+  background-color: #e36d0b; /* Чуть более темный оранжевый */
+}
+
+
+
 .form-control.success {
   color: green;
 }
