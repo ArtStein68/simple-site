@@ -31,7 +31,6 @@
           <img src="img/logo.png" alt="AI Gen Studio Logo" height="30" class="d-inline-block align-text-top">
           AI Gen Studio
         </a>
-        <!-- <ul class="navbar-nav me-auto"> -->
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="index.html">Home</a>
@@ -61,27 +60,26 @@
 
   <main class="container mt-5">
     <!-- Content for Contact page -->
-    <h1>Контакты</h1>
-    <p>Готовы воплотить свои идеи в жизнь с помощью ИИ? Есть вопросы о моих услугах? Я всегда открыта к новым проектам и
-      сотрудничеству.</br>Свяжитесь со мной любым удобным способом:</p></br>
-    <p><strong>Электронная почта:</strong> aivideoexpert.online@gmail.com</p>
-    <p><strong>Телефон:</strong> +995 571 30 38 99</p></br>
+    <h1 class="text-custom-orange">Contact</h1>
+    <p>Ready to bring your ideas to life with AI? Have questions about my services? I am always open to new projects and collaborations.<br>Contact me using any convenient method:</p><br>
+    <p class="text-custom-orange"><strong>Email:</strong> aivideoexpert.online@gmail.com</p>
+    <p class="text-custom-orange"><strong>Phone:</strong> +995 571 30 38 99</p><br>
 
-    <!--<h2>Социальные сети:</h2>
+    <!--<h2>Social media:</h2>
     <ul>
-      <li><a href="[Ссылка на ваш Facebook]" target="_blank">Facebook</a></li>
-      <li><a href="[Ссылка на ваш Twitter]" target="_blank">Twitter</a></li>
-      <li><a href="[Ссылка на ваш Instagram]" target="_blank">Instagram</a></li>
-      <li><a href="[Ссылка на ваш LinkedIn (если есть)]" target="_blank">LinkedIn</a></li>
+      <li><a href="[Your Facebook Link]" target="_blank">Facebook</a></li>
+      <li><a href="[Your Twitter Link]" target="_blank">Twitter</a></li>
+      <li><a href="[Your Instagram Link]" target="_blank">Instagram</a></li>
+      <li><a href="[Your LinkedIn Link (if any)]" target="_blank">LinkedIn</a></li>
     </ul> 
 
-    <p>Или просто заполните форму обратной связи ниже, и я отвечу вам в ближайшее время.</p>
+    <p>Or simply fill out the contact form below, and I will get back to you shortly.</p>
 
      -->
 
-    <p>С нетерпением жду ваших сообщений и готова обсудить, как ИИ-технологии могут помочь вам достичь ваших целей!</br></p>
-    <p>С уважением,</br>Алёна Логунова</p>
-    </br>
+    <p>I look forward to your messages and am ready to discuss how AI technologies can help you achieve your goals!<br></p>
+    <p>Best regards,<br>Alena Logunova</p>
+    <br>
 
   </main>
 
@@ -102,15 +100,15 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content bg-dark text-light">
         <div class="modal-header">
-          <h5 class="modal-title" id="leadFormModalLabel">Закажи прямо сейчас</h5>
+          <h5 class="modal-title" id="leadFormModalLabel">Order Right Now</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
-          <!-- Первая страница формы -->
+          <!-- Form Page 1 -->
           <div id="formPage1">
             <div class="container-fluid">
-              <h5>Выбери уникальный подарок для себя, родных или близких.</h5>
+              <h5>Choose a unique gift for yourself, family, or loved ones.</h5>
               <hr class="text-light">
               <div class="row">
                 <div class="col-md-6">
@@ -134,9 +132,9 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <h4>Video Show</h4>
+                  <h4>VideoShow</h4>
                   <div>
-                    <!-- (все ваши чекбоксы для VideoShow здесь) -->
+                    <!-- (all your checkboxes for VideoShow here) -->
                     <div class="form-check"><input class="form-check-input" type="checkbox"
                         value="tree_of_life_videoshow" id="treeOfLifeVideoshow"><label class="form-check-label"
                         for="treeOfLifeVideoshow">Tree of Life</label></div>
@@ -157,62 +155,59 @@
               </div>
               <div class="row mt-4">
                 <div class="col-12">
-                  <h4>Другое / Ваши пожелания</h4>
+                  <h4>Other / Your Wishes</h4>
                   <textarea class="form-control" id="otherOptionText" rows="3"
-                    placeholder="Если вы не нашли подходящую услугу, опишите ваши пожелания здесь..."></textarea>
+                    placeholder="If you didn't find a suitable service, please describe your wishes here..."></textarea>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Вторая страница формы (скрыта по умолчанию) -->
+          <!-- Form Page 2 (hidden by default) -->
           <div id="formPage2" style="display: none;">
             <div class="container-fluid">
-              <h5>Оставьте ваши контакты</h5>
+              <h5>Leave your contact details</h5>
               <p></p>
               <div class="row">
                 <div class="col-md-4">
-                  <label for="fullName" class="form-label">Имя</label>
+                  <label for="fullName" class="form-label">Name</label>
                   <div class="mb-3">
-                    <input type="text" class="form-control" id="fullName" placeholder="Введите ваше имя">
-                    <div class="form-text">Пожалуйста, вводите только буквы.</div>
-                    <div id="nameError" class="text-danger mt-1" style="display: none;">Имя не должно содержать
-                      цифры.
+                    <input type="text" class="form-control" id="fullName" placeholder="Enter your name">
+                    <div class="form-text">Please enter letters only.</div>
+                    <div id="nameError" class="text-danger mt-1" style="display: none;">Name should not contain numbers.
                     </div>
                   </div>
                 </div>
                 <div class="col-md-8">
-                  <label for="phone" class="form-label">Телефон / Whatsapp</label>
+                  <label for="phone" class="form-label">Phone / Whatsapp</label>
                   <div class="mb-3">
                     <input type="tel" class="form-control" id="phone">
-                    <div class="form-text">Номер будет отформатирован автоматически.</div>
-                    <div id="phoneError" class="text-danger mt-1" style="display: none;">Пожалуйста, введите
-                      корректный
-                      номер.</div>
+                    <div class="form-text">The number will be formatted automatically.</div>
+                    <div id="phoneError" class="text-danger mt-1" style="display: none;">Please enter a valid number.</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Блоки для сообщений об успехе/ошибке -->
+          <!-- Success/Error Message Blocks -->
           <div id="formSuccessMessage" style="display: none;" class="alert alert-success">
-            <h4>Спасибо!</h4>
-            <p>Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.</p>
+            <h4>Thank you!</h4>
+            <p>Your request has been successfully sent. I will contact you shortly.</p>
           </div>
           <div id="formErrorMessage" style="display: none;" class="alert alert-danger">
-            <h4>Произошла ошибка</h4>
-            <p>Не удалось отправить заявку. Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую.</p>
+            <h4>An error occurred</h4>
+            <p>Failed to send the request. Please try again or contact me directly.</p>
           </div>
         </div>
 
         <div class="modal-footer">
-          <!-- Кнопки футера -->
+          <!-- Footer Buttons -->
           <span class="modal-page-indicator me-auto">1/2</span>
-          <button type="button" class="btn btn-secondary" id="minimizeModalButton">Закрыть</button>
-          <button type="button" class="btn btn-primary" id="nextPageBtn">Далее</button>
-          <button type="button" class="btn btn-secondary" id="backPageBtn" style="display: none;">Назад</button>
-          <button type="button" class="btn btn-success" id="submitOrderBtn" style="display: none;">Отправить</button>
+          <button type="button" class="btn btn-secondary" id="minimizeModalButton">Close</button>
+          <button type="button" class="btn btn-primary" id="nextPageBtn">Next</button>
+          <button type="button" class="btn btn-secondary" id="backPageBtn" style="display: none;">Back</button>
+          <button type="button" class="btn btn-success" id="submitOrderBtn" style="display: none;">Submit</button>
         </div>
       </div>
     </div>
