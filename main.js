@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // --- 1. ПОЛУЧАЕМ ВСЕ НУЖНЫЕ ЭЛЕМЕНТЫ СО СТРАНИЦЫ ---
+    // --- 1. GET ALL NEEDED ELEMENTS ---
     const leadFormModalElement = document.getElementById('leadFormModal');
     const leadFormModal = bootstrap.Modal.getOrCreateInstance(leadFormModalElement, {
         backdrop: 'static',
@@ -7,191 +7,200 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     const minimizedLeadForm = document.getElementById('minimizedLeadForm');
     const showModalIcon = document.getElementById('showModalIcon');
+    
+    // Form elements
+    const formPage1 = document.getElementById('formPage1');
+    const formPage2 = document.getElementById('formPage2');
     const fullNameInput = document.getElementById('fullName');
-    const nameError = document.getElementById('nameError');
     const phoneInput = document.getElementById('phone');
-    const phoneError = document.getElementById('phoneError');
     const submitOrderBtn = document.getElementById('submitOrderBtn');
+    
+    // Navigation elements
+    const nextPageBtn = document.getElementById('nextPageBtn');
+    const backPageBtn = document.getElementById('backPageBtn');
+    const pageIndicator = document.querySelector('.modal-page-indicator');
+    const minimizeModalButton = document.getElementById('minimizeModalButton');
 
-    // --- 2. ИНИЦИАЛИЗАЦИЯ БИБЛИОТЕКИ (ПЕРЕМЕННАЯ, НО НЕ ВЫЗОВ!) ---
-    let iti = null;
+    let iti = null; // To hold the intl-tel-input instance
 
-    // --- 3. ФУНКЦИИ ВАЛИДАЦИИ И УПРАВЛЕНИЯ КНОПКОЙ ---
-    function validateName(name) {
-        return !/\d/.test(name) && name.length > 0;
+    // --- 2. DYNAMIC CATEGORY TOGGLE LOGIC ---
+    const mainCategoryToggles = document.querySelectorAll('.main-category-toggle');
+    mainCategoryToggles.forEach(toggle => {
+        toggle.addEventListener('change', function() {
+            const targetId = this.dataset.bsTarget;
+            const subcategoryList = document.querySelector(targetId);
+            if (subcategoryList) {
+                if (this.checked) {
+                    slideDown(subcategoryList);
+                } else {
+                    slideUp(subcategoryList);
+                }
+            }
+        });
+    });
+
+    // --- 3. PAGE NAVIGATION ---
+    function showPage(pageNumber) {
+        if (pageNumber === 1) {
+            formPage1.style.display = 'block';
+            formPage2.style.display = 'none';
+            pageIndicator.textContent = '1/2';
+            backPageBtn.style.display = 'none';
+            nextPageBtn.style.display = 'block';
+            submitOrderBtn.style.display = 'none';
+        } else if (pageNumber === 2) {
+            formPage1.style.display = 'none';
+            formPage2.style.display = 'block';
+            pageIndicator.textContent = '2/2';
+            backPageBtn.style.display = 'block';
+            nextPageBtn.style.display = 'none';
+            submitOrderBtn.style.display = 'block';
+            
+            if (!iti) {
+                initializeIntlTelInput();
+            }
+            updateSubmitButtonState();
+        }
     }
 
+    nextPageBtn.addEventListener('click', function() {
+        const anySubcategoryChecked = document.querySelector('.subcategory-list input[type="checkbox"]:checked');
+        const otherText = document.getElementById('otherOptionText').value;
+
+        if (!anySubcategoryChecked && !otherText.trim()) {
+            alert('Please select at least one service or describe your wishes.');
+            return;
+        }
+        showPage(2);
+    });
+
+    backPageBtn.addEventListener('click', function() {
+        showPage(1);
+    });
+
+    // --- 4. MODAL VISIBILITY AND RESETS ---
+    minimizeModalButton.addEventListener('click', () => leadFormModal.hide());
+    showModalIcon.addEventListener('click', () => {
+        minimizedLeadForm.style.display = 'none';
+        leadFormModal.show();
+    });
+
+    leadFormModalElement.addEventListener('shown.bs.modal', () => {
+        showPage(1);
+        // Reset form state on open
+        document.querySelectorAll('.main-category-toggle, .subcategory-list input[type="checkbox"]').forEach(el => el.checked = false);
+        document.querySelectorAll('.subcategory-list').forEach(el => el.style.display = 'none');
+        document.getElementById('otherOptionText').value = '';
+    });
+
+    leadFormModalElement.addEventListener('hidden.bs.modal', function () {
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) backdrop.remove();
+        minimizedLeadForm.style.display = 'block';
+    });
+
+    if (window.location.pathname === '/' || window.location.pathname.endsWith('/index.html')) {
+        leadFormModal.show();
+    }
+
+    // --- 5. VALIDATION & SUBMIT LOGIC ---
     function updateSubmitButtonState() {
         if (!submitOrderBtn || !fullNameInput || !iti) return;
-        const isNameValid = validateName(fullNameInput.value);
+        const isNameValid = !/\d/.test(fullNameInput.value) && fullNameInput.value.length > 0;
         const isPhoneValid = iti.isValidNumber();
         submitOrderBtn.disabled = !(isNameValid && isPhoneValid);
     }
 
-    // --- 4. ВАЛИДАЦИЯ ИМЕНИ ---
+    function initializeIntlTelInput() {
+        if (phoneInput && !iti) {
+            iti = intlTelInput(phoneInput, {
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+                initialCountry: "auto",
+                geoIpLookup: cb => fetch("https://ipapi.co/json").then(r => r.json()).then(d => cb(d.country_code)).catch(() => cb("us")),
+                separateDialCode: true,
+                dropdownContainer: leadFormModalElement
+            });
+            phoneInput.addEventListener('input', updateSubmitButtonState);
+            phoneInput.addEventListener('countrychange', updateSubmitButtonState);
+        }
+    }
+    
     if (fullNameInput) {
-        fullNameInput.addEventListener('input', function () {
-            const isValid = validateName(this.value);
-            if (isValid) {
-                this.classList.remove('is-invalid');
-                this.classList.add('is-valid');
-                if (nameError) nameError.style.display = 'none';
-            } else {
-                this.classList.remove('is-valid');
-                if (this.value.length > 0) {
-                    this.classList.add('is-invalid');
-                    if (nameError) nameError.style.display = 'block';
-                } else {
-                    this.classList.remove('is-invalid');
-                    if (nameError) nameError.style.display = 'none';
-                }
-            }
-            if (iti) updateSubmitButtonState();
+        fullNameInput.addEventListener('input', updateSubmitButtonState);
+    }
+
+    submitOrderBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        if (submitOrderBtn.disabled) return;
+
+        submitOrderBtn.disabled = true;
+        submitOrderBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Sending...';
+        
+        const formData = new FormData();
+        const selectedServices = [];
+        
+        document.querySelectorAll('.subcategory-list input[type="checkbox"]:checked').forEach(checkbox => {
+            // value="Project Name_ServiceType" -> "Project Name - ServiceType"
+            selectedServices.push(checkbox.value.replace('_', ' - '));
         });
+
+        formData.append('name', fullNameInput.value);
+        formData.append('phone', iti.getNumber());
+        formData.append('selected_services', selectedServices.join('; '));
+        formData.append('other_details', document.getElementById('otherOptionText').value);
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxxDLgpbYZzN0Q2L-xEyOQY9vPnBU5-RVJbRTipeRCGBlGvPBa961VX7opuf75r_6cHig/exec'; 
+        fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+        .then(() => {
+            formPage1.style.display = 'none';
+            formPage2.style.display = 'none';
+            document.querySelector('.modal-footer').style.display = 'none';
+            document.getElementById('formSuccessMessage').style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            document.getElementById('formErrorMessage').style.display = 'block';
+            submitOrderBtn.disabled = false;
+            submitOrderBtn.textContent = 'Submit';
+        });
+    });
+
+    // --- 6. HELPER FUNCTIONS FOR ANIMATION ---
+    function slideUp(element) {
+        element.style.transition = 'height 0.3s ease-out, opacity 0.3s ease-out';
+        element.style.height = element.scrollHeight + 'px';
+        element.offsetHeight; // Trigger reflow
+        element.style.opacity = '0';
+        element.style.height = '0';
+        setTimeout(() => {
+            element.style.display = 'none';
+        }, 300);
     }
 
-    // --- 5. ОСНОВНАЯ ЛОГИКА МОДАЛЬНОГО ОКНА И КНОПОК ---
-    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-        leadFormModal.show();
+    function slideDown(element) {
+        element.style.display = 'block';
+        let height = element.scrollHeight + 'px';
+        element.style.height = '0';
+        element.style.opacity = '0';
+        element.offsetHeight; // Trigger reflow
+        element.style.transition = 'height 0.3s ease-in, opacity 0.3s ease-in';
+        element.style.height = height;
+        element.style.opacity = '1';
+        element.addEventListener('transitionend', () => {
+            element.style.height = null;
+        }, { once: true });
     }
-    showModalIcon.addEventListener('click', function () {
-        minimizedLeadForm.style.display = 'none';
-        leadFormModal.show();
-    });
-    leadFormModalElement.addEventListener('hidden.bs.modal', function () {
-        const b = document.querySelector('.modal-backdrop');
-        if (b) b.remove();
-        minimizedLeadForm.style.display = 'block';
-    });
 
-    leadFormModalElement.addEventListener('shown.bs.modal', function () {
-        const formPage1 = document.getElementById('formPage1');
-        const formPage2 = document.getElementById('formPage2');
-        const nextPageBtn = document.getElementById('nextPageBtn');
-        const pageIndicator = document.querySelector('.modal-page-indicator');
-        const backPageBtn = document.getElementById('backPageBtn');
-        const minimizeModalButton = document.getElementById('minimizeModalButton');
-
-        if (minimizeModalButton) {
-            minimizeModalButton.addEventListener('click', function () {
-                leadFormModal.hide();
-            });
-        }
-
-        if (nextPageBtn) {
-            nextPageBtn.addEventListener('click', function () {
-                const anyCheckboxChecked = document.querySelector('#formPage1 input[type="checkbox"]:checked');
-                const otherText = document.getElementById('otherOptionText').value;
-                if (!anyCheckboxChecked && !otherText) {
-                    alert('Пожалуйста, выберите хотя бы одну услугу или опишите ваши пожелания.');
-                    return;
-                }
-
-                formPage1.style.display = 'none';
-                formPage2.style.display = 'block';
-
-                if (!iti && phoneInput) {
-                    iti = intlTelInput(phoneInput, {
-                        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
-                        initialCountry: "auto",
-                        geoIpLookup: function (callback) {
-                            fetch("https://ipapi.co/json")
-                                .then(res => res.json())
-                                .then(data => callback(data.country_code))
-                                .catch(() => callback("us"));
-                        },
-                        separateDialCode: true,
-                        dropdownContainer: leadFormModalElement
-                    });
-
-                    phoneInput.addEventListener('input', function () {
-                        if (iti.isValidNumber()) {
-                            phoneInput.classList.remove('is-invalid');
-                            phoneInput.classList.add('is-valid');
-                            if (phoneError) phoneError.style.display = 'none';
-                        } else {
-                            phoneInput.classList.remove('is-valid');
-                            if (phoneInput.value.trim().length > 0) {
-                                phoneInput.classList.add('is-invalid');
-                                if (phoneError) phoneError.style.display = 'block';
-                            } else {
-                                phoneInput.classList.remove('is-invalid');
-                                if (phoneError) phoneError.style.display = 'none';
-                            }
-                        }
-                        updateSubmitButtonState();
-                    });
-                }
-
-                nextPageBtn.style.display = 'none';
-                submitOrderBtn.style.display = 'block';
-                backPageBtn.style.display = 'block';
-                if (pageIndicator) pageIndicator.textContent = '2/2';
-                updateSubmitButtonState();
-            });
-        }
-
-        if (backPageBtn) {
-            backPageBtn.addEventListener('click', function () {
-                formPage2.style.display = 'none';
-                formPage1.style.display = 'block';
-                backPageBtn.style.display = 'none';
-                submitOrderBtn.style.display = 'none';
-                nextPageBtn.style.display = 'block';
-                if (pageIndicator) pageIndicator.textContent = '1/2';
-            });
-        }
-
-        if (submitOrderBtn) {
-            submitOrderBtn.addEventListener('click', function (event) {
-                event.preventDefault();
-                if (submitOrderBtn.disabled) return;
-
-                // ... остальной код отправки формы остается без изменений
-                const formSuccessMessage = document.getElementById('formSuccessMessage');
-                const formErrorMessage = document.getElementById('formErrorMessage');
-                submitOrderBtn.disabled = true;
-                submitOrderBtn.textContent = 'Отправка...';
-
-                const formData = new FormData();
-                formData.append('name', fullNameInput.value);
-                formData.append('phone', iti.getNumber());
-                formData.append('other_details', document.getElementById('otherOptionText').value);
-                document.querySelectorAll('#formPage1 input[type="checkbox"]:checked').forEach(c => formData.append(c.value, 'true'));
-
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbxxDLgpbYZzN0Q2L-xEyOQY9vPnBU5-RVJbRTipeRCGBlGvPBa961VX7opuf75r_6cHig/exec';
-
-                fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-                    .then(() => {
-                        formPage1.style.display = 'none';
-                        formPage2.style.display = 'none';
-                        document.querySelector('.modal-footer').style.display = 'none';
-                        if (formSuccessMessage) formSuccessMessage.style.display = 'block';
-                    })
-                    .catch(error => {
-                        console.error('Критическая ошибка при отправке:', error);
-                        if (formErrorMessage) formErrorMessage.style.display = 'block';
-                        submitOrderBtn.disabled = false;
-                        submitOrderBtn.textContent = 'Отправить';
-                    });
-            });
-        }
-    });
-
-    // --- 6. ЗАГРУЗКА ФУТЕРА ---
+    // --- 7. FOOTER LOADING ---
     async function loadFooter() {
-        const footerPlaceholder = document.getElementById('footer-placeholder');
-        if (footerPlaceholder) {
+        const placeholder = document.getElementById('footer-placeholder');
+        if (placeholder) {
             try {
                 const path = window.location.pathname.includes('/examples/') ? '../footer.html' : 'footer.html';
                 const response = await fetch(path);
-                if (response.ok) {
-                    footerPlaceholder.innerHTML = await response.text();
-                } else {
-                    console.error('Ошибка загрузки футера (файл не найден):', response.statusText);
-                }
+                if (response.ok) placeholder.innerHTML = await response.text();
             } catch (error) {
-                console.error('Ошибка при получении файла футера (сетевая ошибка):', error);
+                console.error('Failed to load footer:', error);
             }
         }
     }

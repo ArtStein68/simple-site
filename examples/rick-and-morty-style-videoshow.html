@@ -118,128 +118,136 @@
 
 
         <!-- Lead Form Modal -->
-        <div class="modal fade" id="leadFormModal" tabindex="-1" aria-labelledby="leadFormModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content bg-dark text-light">
-              <div class="modal-header">
-                <h5 class="modal-title" id="leadFormModalLabel">Закажи прямо сейчас</h5>
+<div class="modal fade" id="leadFormModal" tabindex="-1" aria-labelledby="leadFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="leadFormModalLabel">Select Your Projects</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                  aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-                <!-- Первая страница формы -->
+                <!-- ШАГ 1: ВЫБОР ПРОЕКТОВ -->
                 <div id="formPage1">
-                  <div class="container-fluid">
-                    <h5>Выбери уникальный подарок для себя, родных или близких.</h5>
-                    <hr class="text-light">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <h4>PhotoShow</h4>
-                        <div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="tree_of_life_photoshow" id="treeOfLifePhotoshow"><label class="form-check-label"
-                              for="treeOfLifePhotoshow">Tree of Life</label></div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="road_to_the_future_photoshow" id="roadToTheFuturePhotoshow"><label
-                              class="form-check-label" for="roadToTheFuturePhotoshow">Road to the Future</label></div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="another_world_photoshow" id="anotherWorldPhotoshow"><label class="form-check-label"
-                              for="anotherWorldPhotoshow">Another World</label></div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="luxury_photoshow" id="luxuryPhotoshow"><label class="form-check-label"
-                              for="luxuryPhotoshow">Luxury</label></div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="social_media_photoshow" id="socialMediaPhotoshow"><label class="form-check-label"
-                              for="socialMediaPhotoshow">Social Media</label></div>
+                    <div class="container-fluid">
+                        <h5>Step 1: Choose the services you are interested in</h5>
+                        <p class="text-white-50">Enable a category to see available projects and select a service type.</p>
+                        <hr class="text-light">
+
+                        <!-- Категория: PERSONAL -->
+                        <div class="form-check form-switch fs-5 mb-2">
+                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="togglePersonal" data-bs-target="#details-personal">
+                            <label class="form-check-label" for="togglePersonal">PERSONAL</label>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <h4>Video Show</h4>
-                        <div>
-                          <!-- (все ваши чекбоксы для VideoShow здесь) -->
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="tree_of_life_videoshow" id="treeOfLifeVideoshow"><label class="form-check-label"
-                              for="treeOfLifeVideoshow">Tree of Life</label></div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="road_to_the_future_videoshow" id="roadToTheFutureVideoshow"><label
-                              class="form-check-label" for="roadToTheFutureVideoshow">Road to the Future</label></div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="another_world_videoshow" id="anotherWorldVideoshow"><label class="form-check-label"
-                              for="anotherWorldVideoshow">Another World</label></div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="luxury_videoshow" id="luxuryVideoshow"><label class="form-check-label"
-                              for="luxuryVideoshow">Luxury</label></div>
-                          <div class="form-check"><input class="form-check-input" type="checkbox"
-                              value="social_media_videoshow" id="socialMediaVideoshow"><label class="form-check-label"
-                              for="socialMediaVideoshow">Social Media</label></div>
+                        <div class="subcategory-list ps-4 mt-2" id="details-personal" style="display: none;">
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Tree of Life</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Tree of Life_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Tree of Life_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">A Look into the Future</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="A Look into the Future_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="A Look into the Future_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Another World</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Another World_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Another World_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Luxury</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Luxury_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Luxury_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Social Media</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Social Media_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Social Media_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Cosplay</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Cosplay_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Cosplay_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
                         </div>
-                      </div>
+
+                        <!-- Категория: HISTORY -->
+                        <div class="form-check form-switch fs-5 mb-2 mt-3">
+                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleHistory" data-bs-target="#details-history">
+                            <label class="form-check-label" for="toggleHistory">HISTORY</label>
+                        </div>
+                        <div class="subcategory-list ps-4 mt-2" id="details-history" style="display: none;">
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Historical Epochs</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Epochs_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Epochs_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Historical Interview</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Interview_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Interview_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Great Scientists</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Great Scientists_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Great Scientists_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Myths and Legends</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Myths and Legends_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Myths and Legends_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                        </div>
+                        
+                        <!-- Категория: TRAVELLERS -->
+                        <div class="form-check form-switch fs-5 mb-2 mt-3">
+                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleTravellers" data-bs-target="#details-travellers">
+                            <label class="form-check-label" for="toggleTravellers">TRAVELLERS</label>
+                        </div>
+                        <div class="subcategory-list ps-4 mt-2" id="details-travellers" style="display: none;">
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Around the World</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Around the World_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Around the World_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Cities</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Cities_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Cities_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Buildings</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Buildings_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Buildings_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Sights</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Sights_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Sights_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                        </div>
+
+                        <!-- Категория: COMMERCIAL -->
+                        <div class="form-check form-switch fs-5 mb-2 mt-3">
+                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleCommercial" data-bs-target="#details-commercial">
+                            <label class="form-check-label" for="toggleCommercial">COMMERCIAL</label>
+                        </div>
+                        <div class="subcategory-list ps-4 mt-2" id="details-commercial" style="display: none;">
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Business Presentation</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Business Presentation_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Business Presentation_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Product Presentation</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Product Presentation_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Product Presentation_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Architecture</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Architecture_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Architecture_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                        </div>
+
+                        <!-- Категория: INSIDE FANTASY WORLD -->
+                        <div class="form-check form-switch fs-5 mb-2 mt-3">
+                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleFantasy" data-bs-target="#details-fantasy">
+                            <label class="form-check-label" for="toggleFantasy">INSIDE FANTASY WORLD</label>
+                        </div>
+                        <div class="subcategory-list ps-4 mt-2" id="details-fantasy" style="display: none;">
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Star Wars style</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Star Wars style_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Star Wars style_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Rick and Morty style</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Rick and Morty style_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Rick and Morty style_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
+                        </div>
+
+                        <!-- Поле для пожеланий -->
+                         <div class="row mt-4">
+                            <div class="col-12">
+                                <h4>Other / Your Wishes</h4>
+                                <textarea class="form-control" id="otherOptionText" rows="3" placeholder="If you have any special requests, please describe them here..."></textarea>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row mt-4">
-                      <div class="col-12">
-                        <h4>Другое / Ваши пожелания</h4>
-                        <textarea class="form-control" id="otherOptionText" rows="3"
-                          placeholder="Если вы не нашли подходящую услугу, опишите ваши пожелания здесь..."></textarea>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
-                <!-- Вторая страница формы (скрыта по умолчанию) -->
+                <!-- ШАГ 2: КОНТАКТНАЯ ИНФОРМАЦИЯ -->
                 <div id="formPage2" style="display: none;">
-                  <div class="container-fluid">
-                    <h5>Оставьте ваши контакты</h5>
-                    <p></p>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <label for="fullName" class="form-label">Имя</label>
-                        <div class="mb-3">
-                          <input type="text" class="form-control" id="fullName" placeholder="Введите ваше имя">
-                          <div class="form-text">Пожалуйста, вводите только буквы.</div>
-                          <div id="nameError" class="text-danger mt-1" style="display: none;">Имя не должно содержать
-                            цифры.
-                          </div>
+                    <div class="container-fluid">
+                        <h5>Step 2: Leave your contact details</h5>
+                        <p class="text-white-50">I will contact you shortly to confirm the order.</p>
+                        <hr class="text-light">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="fullName" class="form-label">Name</label>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" id="fullName" placeholder="Enter your name">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="phone" class="form-label">Phone / Whatsapp</label>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-md-8">
-                        <label for="phone" class="form-label">Телефон / Whatsapp</label>
-                        <div class="mb-3">
-                          <input type="tel" class="form-control" id="phone">
-                          <div class="form-text">Номер будет отформатирован автоматически.</div>
-                          <div id="phoneError" class="text-danger mt-1" style="display: none;">Пожалуйста, введите
-                            корректный
-                            номер.</div>
-                        </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
 
-                <!-- Блоки для сообщений об успехе/ошибке -->
+                <!-- Сообщения об успехе/ошибке -->
                 <div id="formSuccessMessage" style="display: none;" class="alert alert-success">
-                  <h4>Спасибо!</h4>
-                  <p>Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.</p>
+                    <h4>Thank you!</h4>
+                    <p>Your request has been successfully sent. I will contact you shortly.</p>
                 </div>
                 <div id="formErrorMessage" style="display: none;" class="alert alert-danger">
-                  <h4>Произошла ошибка</h4>
-                  <p>Не удалось отправить заявку. Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую.</p>
+                    <h4>An error occurred</h4>
+                    <p>Failed to send the request. Please try again or contact me directly.</p>
                 </div>
-              </div>
-
-              <div class="modal-footer">
-                <!-- Кнопки футера -->
-                <span class="modal-page-indicator me-auto">1/2</span>
-                <button type="button" class="btn btn-secondary" id="minimizeModalButton">Закрыть</button>
-                <button type="button" class="btn btn-primary" id="nextPageBtn">Далее</button>
-                <button type="button" class="btn btn-secondary" id="backPageBtn" style="display: none;">Назад</button>
-                <button type="button" class="btn btn-success" id="submitOrderBtn"
-                  style="display: none;">Отправить</button>
-              </div>
             </div>
-          </div>
+
+            <div class="modal-footer">
+                <span class="modal-page-indicator me-auto">1/2</span>
+                <button type="button" class="btn btn-secondary" id="minimizeModalButton">Close</button>
+                <button type="button" class="btn btn-secondary" id="backPageBtn" style="display: none;">Back</button>
+                <button type="button" class="btn btn-primary" id="nextPageBtn">Next</button>
+                <button type="button" class="btn btn-success" id="submitOrderBtn" style="display: none;">Submit</button>
+            </div>
         </div>
+    </div>
+</div>
 
         <!-- Minimized Icon -->
           <div id="minimizedLeadForm" class="position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;">
