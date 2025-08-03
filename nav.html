@@ -1,0 +1,42 @@
+<!-- nav.html -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <!-- Путь к логотипу теперь от корня сайта -->
+      <a class="navbar-brand" href="/index.html">
+        <img src="/img/logo.png" alt="AI Gen Studio Logo" height="30" class="d-inline-block align-text-top">
+        AI Gen Studio
+      </a>
+      <ul class="navbar-nav">
+        <!-- Все пути к страницам теперь от корня сайта -->
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/features.html">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pricing.html">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/examples.html">Examples</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <!-- Эта кнопка открывает модальное окно, тут путь не нужен -->
+          <a class="nav-link btn btn-cta-orange" href="#" data-bs-toggle="modal"
+            data-bs-target="#leadFormModal">Buy</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

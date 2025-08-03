@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Вокруг Света. Видеошоу | AI Gen Studio</title>
+  <meta name="description"
+    content="Experience a cinematic journey with the 'Around the World' Videoshow. Our AI-powered service creates dynamic, high-definition videos of the globe's most iconic destinations, perfect for presentations, social media, or inspiring your next adventure.">
+  <meta name="keywords"
+    content="travel video, cinematic travel video, AI video enhancement, virtual world tour, drone footage, travel documentary, famous landmarks video, world travel video, video montage, travel inspiration video">
+  <title>Around the World Videoshow | AI Gen Studio</title>
   <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
   <link rel="shortcut icon" href="/img/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
   <link rel="manifest" href="/img/site.webmanifest" />
-  <link rel="manifest" href="/site.webmanifest" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href='/style.css' rel='stylesheet'>
@@ -21,47 +24,14 @@
 </head>
 
 <body class="bg-dark text-light">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-        <a class="navbar-brand" href="index.html">
-          <img src="img/logo.png" alt="AI Gen Studio Logo" height="30" class="d-inline-block align-text-top">
-          AI Gen Studio
-        </a>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../features.html">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pricing.html">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../examples.html">Examples</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../contact.html">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn btn-cta-orange" href="#" data-bs-toggle="modal" data-bs-target="#leadFormModal">Buy</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
+  <!-- Main Menu -->
+  <div id="navbar-placeholder"></div>
+
 
   <div class="container-fluid mt-4">
     <div class="row">
-      <!-- Боковое меню -->
+      <!-- Sidebar Menu -->
       <div class="col-md-2">
         <div class="sticky-top" style="top: 30px;">
           <div class="accordion" id="thisPageAccordion">
@@ -70,20 +40,21 @@
                 <button class="accordion-button collapsed bg-secondary text-light" type="button"
                   data-bs-toggle="collapse" data-bs-target="#thisPageCollapse" aria-expanded="false"
                   aria-controls="thisPageCollapse">
-                  Вокруг Света. Видеошоу
+                  Around the World. Videoshow
                 </button>
               </h2>
               <div id="thisPageCollapse" class="accordion-collapse collapse show" aria-labelledby="thisPageHeading"
                 data-bs-parent="#thisPageAccordion">
                 <div class="accordion-body p-2">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="#about" class="text-light">О проекте</a></li>
-                    <li><a href="#how-to-order" class="text-light">Как заказать</a></li>
-                    <li><a href="#what-i-will-do" class="text-light">Что я сделаю</a></li>
-                    <li><a href="#result" class="text-light">Результат</a></li>
-                  </br>
-                    <li><a href="../index.html" class="text-light">На главную</a></li>
-                    <li><a href="../examples.html" class="text-light">Все примеры</a></li>
+                    <li><a href="#about" class="text-light">About the Project</a></li>
+                    <li><a href="#why-choose" class="text-light">Why Choose a Videoshow?</a></li>
+                    <li><a href="#how-to-order" class="text-light">How to Order</a></li>
+                    <li><a href="#what-i-will-do" class="text-light">What I Will Do</a></li>
+                    <li><a href="#result" class="text-light">The Result</a></li>
+                    </br>
+                    <li><a href="../index.html" class="text-light">Back to Home</a></li>
+                    <li><a href="../examples.html" class="text-light">All Examples</a></li>
                   </ul>
                 </div>
               </div>
@@ -92,191 +63,68 @@
         </div>
       </div>
 
-      <!-- Основной контент -->
+      <!-- Main Content -->
       <div class="col-md-9">
-        <h1>Вокруг Света. Видеошоу</h1>
-        <!-- Замените img на video -->
-        <video src="/video/around-the-world.mp4" class="img-fluid rounded-start mb-4" autoplay loop muted style="max-width:350px;"></video>
+        <h1 class="text-custom-orange">Around the World. Videoshow</h1>
+        <video src="/video/around-the-world.mp4" class="img-fluid rounded-start mb-4" autoplay loop muted
+          style="max-width:350px;"
+          alt="A cinematic AI-enhanced video montage of world travel destinations, including drone-style shots of cities and nature."></video>
 
         <div id="about" class="mb-4">
-          <h2>О проекте</h2>
-          <p>Это видеошоу - захватывающее погружение в культуру и природу разных стран мира. Динамичный монтаж, потрясающие кадры и атмосферная музыка создадут ощущение полного присутствия.</p>
+          <h2>About the Project</h2>
+          <p>The "Around the World" Videoshow is a breathtaking, immersive dive into the cultures and natural wonders of our planet. This is far more than a slideshow; it's a dynamic, cinematic experience. With stunning footage, dynamic editing, and an atmospheric soundtrack, we create the sensation of being there, whether you're soaring over the Amazon rainforest, navigating the crowded markets of Marrakesh, or watching the Northern Lights dance in Iceland.</p>
+        </div>
+
+        <div id="why-choose" class="mb-4">
+          <h2>Why Choose a Videoshow?</h2>
+          <p>Video captures the soul of a place in a way that still images cannot. The movement of people, the flow of water, the shifting of light—these are the elements that make a destination feel alive. Our videoshow brings these elements to the forefront, creating a much more engaging and emotionally resonant experience. It's the perfect way to create a powerful presentation, a viral social media post, or simply to lose yourself in the beauty of the world and find inspiration for your next real-life journey.</p>
         </div>
 
         <div id="how-to-order" class="mb-4">
-          <h2>Как заказать</h2>
-          <p>Оформите заказ через форму на сайте или свяжитесь со мной напрямую. Мы обсудим ваши предпочтения по странам и достопримечательностям, чтобы создать персонализированное видеопутешествие.</p>
+          <h2 class="text-custom-orange">How to Order</h2>
+          <p>To commission your personalized world tour, contact me via the site's order form or directly. We will discuss your travel preferences in detail. You can request specific countries, cities, or natural landmarks, or you can choose a theme such as "Majestic Mountains," "Historic European Capitals," or "Exotic Islands." This consultation ensures that your final video journey is a perfect reflection of your travel dreams.</p>
         </div>
 
         <div id="what-i-will-do" class="mb-4">
-          <h2>Что я сделаю</h2>
-          <p>Я подберу лучшие видеоматериалы, обработаю их с помощью AI для улучшения качества и спецэффектов, выполню профессиональный монтаж, добавлю подходящую музыку и, при необходимости, голосовое сопровождение.</p>
+          <h2>What I Will Do</h2>
+          <p>I will source the best available video footage for your chosen destinations. Using AI-powered tools, I will enhance the quality of each clip, ensuring vibrant colors and sharp details. I will then professionally edit these clips into a seamless and compelling narrative, using dynamic transitions, pacing, and effects. A carefully selected musical score and, if desired, professional voice-over narration will be added to complete the cinematic experience.</p>
         </div>
 
         <div id="result" class="mb-4">
-          <h2>Результат</h2>
-          <p>Вы получите stunning видеошоу в Full HD или 4K, которое можно использовать для презентаций, делиться в социальных сетях или просто наслаждаться им дома, мечтая о новых путешествиях.</p>
+          <h2>The Result</h2>
+          <p>You will receive a stunning videoshow in Full HD or 4K resolution, ready for any purpose. Use it for impactful presentations, share it on social media to wow your followers, or simply enjoy it on a large screen at home, dreaming of your next adventure. This video will be a timeless piece of content that you can return to again and again for a dose of global inspiration and wonder.</p>
         </div>
 
 
-    <!-- Lead Form Modal -->
-<div class="modal fade" id="leadFormModal" tabindex="-1" aria-labelledby="leadFormModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-dark text-light">
-            <div class="modal-header">
-                <h5 class="modal-title" id="leadFormModalLabel">Select Your Projects</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <!-- ШАГ 1: ВЫБОР ПРОЕКТОВ -->
-                <div id="formPage1">
-                    <div class="container-fluid">
-                        <h5>Step 1: Choose the services you are interested in</h5>
-                        <p class="text-white-50">Enable a category to see available projects and select a service type.</p>
-                        <hr class="text-light">
-
-                        <!-- Категория: PERSONAL -->
-                        <div class="form-check form-switch fs-5 mb-2">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="togglePersonal" data-bs-target="#details-personal">
-                            <label class="form-check-label" for="togglePersonal">PERSONAL</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-personal" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Tree of Life</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Tree of Life_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Tree of Life_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">A Look into the Future</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="A Look into the Future_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="A Look into the Future_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Another World</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Another World_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Another World_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Luxury</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Luxury_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Luxury_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Social Media</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Social Media_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Social Media_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Cosplay</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Cosplay_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Cosplay_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-
-                        <!-- Категория: HISTORY -->
-                        <div class="form-check form-switch fs-5 mb-2 mt-3">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleHistory" data-bs-target="#details-history">
-                            <label class="form-check-label" for="toggleHistory">HISTORY</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-history" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Historical Epochs</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Epochs_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Epochs_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Historical Interview</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Interview_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Interview_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Great Scientists</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Great Scientists_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Great Scientists_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Myths and Legends</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Myths and Legends_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Myths and Legends_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-                        
-                        <!-- Категория: TRAVELLERS -->
-                        <div class="form-check form-switch fs-5 mb-2 mt-3">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleTravellers" data-bs-target="#details-travellers">
-                            <label class="form-check-label" for="toggleTravellers">TRAVELLERS</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-travellers" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Around the World</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Around the World_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Around the World_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Cities</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Cities_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Cities_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Buildings</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Buildings_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Buildings_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Sights</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Sights_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Sights_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-
-                        <!-- Категория: COMMERCIAL -->
-                        <div class="form-check form-switch fs-5 mb-2 mt-3">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleCommercial" data-bs-target="#details-commercial">
-                            <label class="form-check-label" for="toggleCommercial">COMMERCIAL</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-commercial" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Business Presentation</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Business Presentation_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Business Presentation_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Product Presentation</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Product Presentation_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Product Presentation_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Architecture</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Architecture_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Architecture_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-
-                        <!-- Категория: INSIDE FANTASY WORLD -->
-                        <div class="form-check form-switch fs-5 mb-2 mt-3">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleFantasy" data-bs-target="#details-fantasy">
-                            <label class="form-check-label" for="toggleFantasy">INSIDE FANTASY WORLD</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-fantasy" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Star Wars style</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Star Wars style_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Star Wars style_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Rick and Morty style</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Rick and Morty style_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Rick and Morty style_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-
-                        <!-- Поле для пожеланий -->
-                         <div class="row mt-4">
-                            <div class="col-12">
-                                <h4>Other / Your Wishes</h4>
-                                <textarea class="form-control" id="otherOptionText" rows="3" placeholder="If you have any special requests, please describe them here..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ШАГ 2: КОНТАКТНАЯ ИНФОРМАЦИЯ -->
-                <div id="formPage2" style="display: none;">
-                    <div class="container-fluid">
-                        <h5>Step 2: Leave your contact details</h5>
-                        <p class="text-white-50">I will contact you shortly to confirm the order.</p>
-                        <hr class="text-light">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="fullName" class="form-label">Name</label>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" id="fullName" placeholder="Enter your name">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <label for="phone" class="form-label">Phone / Whatsapp</label>
-                                <div class="mb-3">
-                                    <input type="tel" class="form-control" id="phone">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Сообщения об успехе/ошибке -->
-                <div id="formSuccessMessage" style="display: none;" class="alert alert-success">
-                    <h4>Thank you!</h4>
-                    <p>Your request has been successfully sent. I will contact you shortly.</p>
-                </div>
-                <div id="formErrorMessage" style="display: none;" class="alert alert-danger">
-                    <h4>An error occurred</h4>
-                    <p>Failed to send the request. Please try again or contact me directly.</p>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <span class="modal-page-indicator me-auto">1/2</span>
-                <button type="button" class="btn btn-secondary" id="minimizeModalButton">Close</button>
-                <button type="button" class="btn btn-secondary" id="backPageBtn" style="display: none;">Back</button>
-                <button type="button" class="btn btn-primary" id="nextPageBtn">Next</button>
-                <button type="button" class="btn btn-success" id="submitOrderBtn" style="display: none;">Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
+        <div id="modal-placeholder"></div>
         <!-- Minimized Icon -->
-          <div id="minimizedLeadForm" class="position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;">
-      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" id="showModalIcon"
-        style="width: 50px; height: 50px;">
+        <div id="minimizedLeadForm" class="position-fixed bottom-0 end-0 mb-3 me-3"
+          style="display: none; z-index: 1050;">
+          <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center"
+            id="showModalIcon" style="width: 50px; height: 50px;">
 
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-          class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
-          <path
-            d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
-          <path
-            d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
-        </svg>
-      </button>
-    </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+              class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+              <path
+                d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+              <path
+                d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
+            </svg>
+          </button>
+        </div>
 
       </div>
     </div>
   </div>
 
-  
+
   <div id="footer-placeholder"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <script defer type="text/javascript" src="../main.js"></script>
 </body>
 
 </html>

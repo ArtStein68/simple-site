@@ -4,15 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Архитектура. Фотошоу | AI Gen Studio</title>
+  <meta name="description"
+    content="Explore the world's architectural marvels with our AI-enhanced 'Architecture' Photoshow. We create stunning, high-definition images of iconic buildings and intricate details, perfect for designers, students, and architecture enthusiasts.">
+  <meta name="keywords"
+    content="architecture photoshow, AI architectural visualization, iconic buildings photography, architectural details, virtual architecture tour, building design, architectural styles, AI photo enhancement, architecture portfolio, design inspiration">
+  <title>Architecture Photoshow | AI Gen Studio</title>
   <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
   <link rel="shortcut icon" href="/img/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="manifest" href="/img/site.webmanifest" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href='/style.css' rel='stylesheet'>
+  <link href='../style.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,47 +24,12 @@
 </head>
 
 <body class="bg-dark text-light">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-        <a class="navbar-brand" href="index.html">
-          <img src="../img/logo.png" alt="AI Gen Studio Logo" height="30" class="d-inline-block align-text-top">
-          AI Gen Studio
-        </a>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../features.html">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pricing.html">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../examples.html">Examples</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../contact.html">Contact</a>
-          </li>
-          <li class="nav-item">
-           <a class="nav-link btn btn-cta-orange" href="#" data-bs-toggle="modal" data-bs-target="#leadFormModal">Buy</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Main Menu -->
+  <div id="navbar-placeholder"></div>
 
   <div class="container-fluid mt-4">
     <div class="row">
-      <!-- Боковое меню -->
+      <!-- Sidebar Menu -->
       <div class="col-md-2">
         <div class="sticky-top" style="top: 30px;">
           <div class="accordion" id="thisPageAccordion">
@@ -69,20 +38,21 @@
                 <button class="accordion-button collapsed bg-secondary text-light" type="button"
                   data-bs-toggle="collapse" data-bs-target="#thisPageCollapse" aria-expanded="false"
                   aria-controls="thisPageCollapse">
-                  Архитектура. Фотошоу
+                  Architecture. Photoshow
                 </button>
               </h2>
               <div id="thisPageCollapse" class="accordion-collapse collapse show" aria-labelledby="thisPageHeading"
                 data-bs-parent="#thisPageAccordion">
                 <div class="accordion-body p-2">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="#about" class="text-light">О проекте</a></li>
-                    <li><a href="#how-to-order" class="text-light">Как заказать</a></li>
-                    <li><a href="#what-i-will-do" class="text-light">Что я сделаю</a></li>
-                    <li><a href="#result" class="text-light">Результат</a></li>
-                  </br>
-                    <li><a href="../index.html" class="text-light">На главную</a></li>
-                    <li><a href="../examples.html">Все примеры</a></li>
+                    <li><a href="#about" class="text-light">About the Project</a></li>
+                    <li><a href="#why-choose" class="text-light">Why Choose This Project?</a></li>
+                    <li><a href="#how-to-order" class="text-light">How to Order</a></li>
+                    <li><a href="#what-i-will-do" class="text-light">What I Will Do</a></li>
+                    <li><a href="#result" class="text-light">The Result</a></li>
+                    </br>
+                    <li><a href="../index.html" class="text-light">Back to Home</a></li>
+                    <li><a href="../examples.html" class="text-light">All Examples</a></li>
                   </ul>
                 </div>
               </div>
@@ -91,183 +61,57 @@
         </div>
       </div>
 
-      <!-- Основной контент -->
+      <!-- Main Content -->
       <div class="col-md-9">
-        <h1>Архитектура. Фотошоу</h1>
+        <h1 class="text-custom-orange">Architecture. Photoshow</h1>
         <img src="/webp/architecture.webp" class="img-fluid rounded-start mb-4" style="max-width:350px;"
-          alt="Архитектура фотошоу">
+          alt="A stunning AI-enhanced image showcasing futuristic architectural design, representing the Architecture Photoshow.">
 
         <div id="about" class="mb-4">
-          <h2>О проекте</h2>
-          <p>Исследуйте архитектурные стили и шедевры разных эпох с этим фотошоу. Я создам stunning изображения iconic зданий и architectural details.</p>
+          <h2>About the Project</h2>
+          <p>The "Architecture" Photoshow is a visual exploration of the world's most incredible man-made structures. This project is a celebration of design, engineering, and artistry, from ancient wonders to futuristic skyscrapers. [9, 16] I will create a stunning collection of images that showcase iconic buildings, highlight breathtaking details, and explore a variety of architectural styles. Whether for professional presentation, academic study, or pure aesthetic appreciation, this photoshow is your curated gallery of architectural genius.</p>
+        </div>
+
+        <div id="why-choose" class="mb-4">
+          <h2>Why Choose This Project?</h2>
+          <p>Architectural photography has the power to transform buildings into art, telling stories of culture, innovation, and human ambition. [9, 13] This project harnesses that power, enhanced by AI, to present architecture in its most ideal form. We can bring conceptual designs to photorealistic life, restore ancient structures to their former glory, or simply capture existing buildings in perfect lighting and composition. It’s an invaluable tool for architects to visualize concepts, for students to study form and function, and for anyone who appreciates the beauty of structural design. [1, 5]</p>
         </div>
 
         <div id="how-to-order" class="mb-4">
-          <h2>Как заказать</h2>
-          <p>Свяжитесь со мной, чтобы выбрать архитектурные стили или здания, которые вы хотите увидеть в фотошоу. Вы можете предоставить свои фотографии или доверить мне подбор изображений.</p>
+          <h2 class="text-custom-orange">How to Order</h2>
+          <p>To commission your architectural collection, simply get in touch to discuss your focus. You can specify particular buildings, architectural movements (like Brutalism, Art Deco, or Modernism), or even conceptual themes you wish to explore. You can provide your own architectural plans, sketches, or photographs for enhancement, or you can entrust me to source and curate a collection of high-quality images based on your criteria. Our consultation will ensure the final photoshow aligns perfectly with your professional or personal interests.</p>
         </div>
 
         <div id="what-i-will-do" class="mb-4">
-          <h2>Что я сделаю</h2>
-          <p>Я подберу высококачественные изображения архитектуры, обработаю их с помощью AI для улучшения деталей и цветопередачи, и скомпоную в captivating фотошоу.</p>
+          <h2>What I Will Do</h2>
+          <p>I will meticulously source, generate, or process high-resolution images of architectural subjects. Using advanced AI tools, I can enhance details, correct perspectives, optimize lighting and color, and even generate realistic visualizations from 2D plans or sketches. [4, 6] Each image is treated as a work of art, ensuring that every line, texture, and shadow contributes to a powerful and captivating composition. The final images are then curated into a cohesive and compelling photoshow that tells a visual story about the selected architectural theme. [9]</p>
         </div>
 
         <div id="result" class="mb-4">
-          <h2>Результат</h2>
-          <p>Вы получите stunning фотошоу, которое позволит вам полюбоваться архитектурными шедеврами мира. Это будет visual journey по самым impressive buildings и styles планеты.</p>
+          <h2>The Result</h2>
+          <p>You will receive a stunning, high-definition digital photoshow that serves as a beautiful and informative visual journey through the world of architecture. This collection will be a source of inspiration, a valuable presentation tool, or simply a gallery for your personal enjoyment. It will allow you to appreciate the masterpieces of architectural design in breathtaking detail, providing a visual feast for anyone passionate about the built environment. [1, 5]</p>
         </div>
 
-
- <!-- Lead Form Modal -->
-<div class="modal fade" id="leadFormModal" tabindex="-1" aria-labelledby="leadFormModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-dark text-light">
-            <div class="modal-header">
-                <h5 class="modal-title" id="leadFormModalLabel">Select Your Projects</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <!-- ШАГ 1: ВЫБОР ПРОЕКТОВ -->
-                <div id="formPage1">
-                    <div class="container-fluid">
-                        <h5>Step 1: Choose the services you are interested in</h5>
-                        <p class="text-white-50">Enable a category to see available projects and select a service type.</p>
-                        <hr class="text-light">
-
-                        <!-- Категория: PERSONAL -->
-                        <div class="form-check form-switch fs-5 mb-2">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="togglePersonal" data-bs-target="#details-personal">
-                            <label class="form-check-label" for="togglePersonal">PERSONAL</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-personal" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Tree of Life</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Tree of Life_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Tree of Life_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">A Look into the Future</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="A Look into the Future_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="A Look into the Future_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Another World</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Another World_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Another World_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Luxury</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Luxury_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Luxury_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Social Media</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Social Media_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Social Media_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Cosplay</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Cosplay_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Cosplay_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-
-                        <!-- Категория: HISTORY -->
-                        <div class="form-check form-switch fs-5 mb-2 mt-3">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleHistory" data-bs-target="#details-history">
-                            <label class="form-check-label" for="toggleHistory">HISTORY</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-history" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Historical Epochs</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Epochs_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Epochs_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Historical Interview</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Interview_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Historical Interview_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Great Scientists</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Great Scientists_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Great Scientists_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Myths and Legends</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Myths and Legends_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Myths and Legends_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-                        
-                        <!-- Категория: TRAVELLERS -->
-                        <div class="form-check form-switch fs-5 mb-2 mt-3">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleTravellers" data-bs-target="#details-travellers">
-                            <label class="form-check-label" for="toggleTravellers">TRAVELLERS</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-travellers" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Around the World</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Around the World_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Around the World_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Cities</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Cities_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Cities_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Buildings</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Buildings_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Buildings_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Famous Sights</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Sights_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Famous Sights_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-
-                        <!-- Категория: COMMERCIAL -->
-                        <div class="form-check form-switch fs-5 mb-2 mt-3">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleCommercial" data-bs-target="#details-commercial">
-                            <label class="form-check-label" for="toggleCommercial">COMMERCIAL</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-commercial" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Business Presentation</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Business Presentation_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Business Presentation_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Product Presentation</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Product Presentation_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Product Presentation_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Architecture</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Architecture_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Architecture_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-
-                        <!-- Категория: INSIDE FANTASY WORLD -->
-                        <div class="form-check form-switch fs-5 mb-2 mt-3">
-                            <input class="form-check-input main-category-toggle" type="checkbox" role="switch" id="toggleFantasy" data-bs-target="#details-fantasy">
-                            <label class="form-check-label" for="toggleFantasy">INSIDE FANTASY WORLD</label>
-                        </div>
-                        <div class="subcategory-list ps-4 mt-2" id="details-fantasy" style="display: none;">
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Star Wars style</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Star Wars style_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Star Wars style_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                            <div class="row align-items-center mb-2"><div class="col-sm-6 project-name-label">Rick and Morty style</div><div class="col-sm-6"><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Rick and Morty style_Photoshow"><label class="form-check-label">Photoshow</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Rick and Morty style_Videoshow"><label class="form-check-label">Videoshow</label></div></div></div>
-                        </div>
-
-                        <!-- Поле для пожеланий -->
-                         <div class="row mt-4">
-                            <div class="col-12">
-                                <h4>Other / Your Wishes</h4>
-                                <textarea class="form-control" id="otherOptionText" rows="3" placeholder="If you have any special requests, please describe them here..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ШАГ 2: КОНТАКТНАЯ ИНФОРМАЦИЯ -->
-                <div id="formPage2" style="display: none;">
-                    <div class="container-fluid">
-                        <h5>Step 2: Leave your contact details</h5>
-                        <p class="text-white-50">I will contact you shortly to confirm the order.</p>
-                        <hr class="text-light">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="fullName" class="form-label">Name</label>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" id="fullName" placeholder="Enter your name">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <label for="phone" class="form-label">Phone / Whatsapp</label>
-                                <div class="mb-3">
-                                    <input type="tel" class="form-control" id="phone">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Сообщения об успехе/ошибке -->
-                <div id="formSuccessMessage" style="display: none;" class="alert alert-success">
-                    <h4>Thank you!</h4>
-                    <p>Your request has been successfully sent. I will contact you shortly.</p>
-                </div>
-                <div id="formErrorMessage" style="display: none;" class="alert alert-danger">
-                    <h4>An error occurred</h4>
-                    <p>Failed to send the request. Please try again or contact me directly.</p>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <span class="modal-page-indicator me-auto">1/2</span>
-                <button type="button" class="btn btn-secondary" id="minimizeModalButton">Close</button>
-                <button type="button" class="btn btn-secondary" id="backPageBtn" style="display: none;">Back</button>
-                <button type="button" class="btn btn-primary" id="nextPageBtn">Next</button>
-                <button type="button" class="btn btn-success" id="submitOrderBtn" style="display: none;">Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
+        <!-- Lead Form Modal Placeholder -->
+        <div id="modal-placeholder"></div>
+        
         <!-- Minimized Icon -->
-          <div id="minimizedLeadForm" class="position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;">
-      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" id="showModalIcon"
-        style="width: 50px; height: 50px;">
-
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
-          class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
-          <path
-            d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
-          <path
-            d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
-        </svg>
-      </button>
-    </div>
-
+        <div id="minimizedLeadForm" class="position-fixed bottom-0 end-0 mb-3 me-3"
+          style="display: none; z-index: 1050;">
+          <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center"
+            id="showModalIcon" style="width: 50px; height: 50px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+              class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+              <path
+                d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+              <path
+                d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-
 
   <div id="footer-placeholder"></div>
 
@@ -275,7 +119,7 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <script defer type="text/javascript" src="../main.js"></script>
 </body>
 
 </html>
