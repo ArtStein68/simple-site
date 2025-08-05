@@ -75,7 +75,7 @@
               </div>
             </div>
 
-            <!-- HISTORY -->
+            <!-- HISTORY 
             <div class="accordion-item bg-secondary text-light">
               <h2 class="accordion-header" id="historyHeading">
                 <button class="accordion-button collapsed bg-secondary text-light" type="button"
@@ -99,7 +99,7 @@
                   </ul>
                 </div>
               </div>
-            </div>
+            </div>-->
 
           </div>
         </div>
@@ -122,6 +122,7 @@
             those who see a problem and instinctively think, "I can write a function for that."</p>
           <img src="https://mintlify.s3.us-west-1.amazonaws.com/dripart/images/concepts/node/status.jpg"
             class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
             alt="Node status in ComfyUI, showing the node's name, inputs, outputs, and status.">
 
           <h4>A Node is Just a Python Class: The Developer's On-Ramp</h4>
@@ -211,22 +212,226 @@
         <!-- 2. Implementation of custom precision features -->
         <div id="precision-features" class="article-section mb-5 pt-4">
           <h2 class="text-custom-orange">2. Implementation of custom precision features</h2>
-          <p>Content for this section will be here...</p>
+          <p>From a developer’s perspective, a LoRA (Low-Rank Adaptation) is not an artistic filter; it's a
+            high-efficiency patch for a massive, pre-compiled binary (the checkpoint model). It’s a targeted,
+            lightweight modification that alters the model's behavior at runtime. ComfyUI excels by providing the tools
+            to apply and orchestrate these "patches" with surgical precision, turning model customization into an
+            engineering discipline.</p>
+
+          <h4>The Technical Breakdown: Patching the Right Modules</h4>
+          <p>A LoRA doesn't just "add a style"; it injects small, trained weight matrices into specific, massive modules
+            of the diffusion model. Understanding which module to patch is critical for achieving the desired result.
+            The two primary targets are:</p>
+          <ul>
+            <li><strong>The UNet:</strong> This is the "backend" rendering engine of the model, responsible for the
+              actual denoising process that forms the image structure, composition, and visual style. Patching the UNet
+              affects <em>what you see</em>.</li>
+            <li><strong>The CLIP Text Encoder:</strong> This is the "frontend" command parser. It's the component that
+              interprets your text prompt and translates it into a mathematical representation the UNet can understand.
+              Patching the CLIP model affects <em>how the model understands your words</em>.</li>
+          </ul>
+          <p>A LoRA for a specific character needs to teach the UNet what that character looks like, while a LoRA for a
+            new artistic style might need to modify both the UNet (for the visual look) and the CLIP (to associate the
+            style with a new trigger word).</p>
+
+          <img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-Impact-Pack/master/preview/lora_stack.png"
+            class="img-fluid rounded my-3"
+            alt="A ComfyUI workflow showing multiple Load LoRA nodes chained together, each applying a patch to the model sequentially.">
+          <p class="text-center small"><em>Chaining LoRAs in ComfyUI is equivalent to a sequential patching
+              pipeline.</em></p>
+
+          <h4>The `Load LoRA` Node: Your Patching API</h4>
+          <p>The `Load LoRA` node is a developer's interface for this process. It takes the base model and CLIP objects
+            as inputs and outputs the patched versions. Its key parameters are your arguments for the patching function:
+          </p>
+          <ul>
+            <li><code>strength_model</code>: A float that controls the intensity of the patch applied to the UNet. A
+              value of 1.0 is a full application; 0.5 is a partial blend.</li>
+            <li><code>strength_clip</code>: A float controlling the patch intensity for the CLIP text encoder.</li>
+          </ul>
+          <p>This separation is crucial. You might want to apply a style LoRA's visual patch (UNet) at full strength but
+            only slightly modify the text encoder's understanding of your prompt.</p>
+
+          <h4>Orchestrating LoRAs: Building a Specialised Pipeline</h4>
+          <p>ComfyUI's true power lies in its ability to chain these patching operations. You can construct a pipeline
+            where a model is progressively modified by specialized LoRAs, much like a CI/CD pipeline applies sequential
+            build steps:</p>
+          <ol>
+            <li><strong>Start with a Base Model:</strong> Load your foundational checkpoint (e.g., SDXL).</li>
+            <li><strong>Apply Character LoRA:</strong> Pass the model through a `Load LoRA` node configured with a
+              character LoRA to teach the model a specific person or object.</li>
+            <li><strong>Apply Style LoRA:</strong> Take the output of the first patch and feed it into a second `Load
+              LoRA` node to apply a consistent artistic style (e.g., "anime" or "impressionistic oil painting").</li>
+            <li><strong>Apply Detailer LoRA:</strong> Finally, pass the styled model through a third LoRA trained
+              specifically to fix common problems, like improving the rendering of hands or eyes.</li>
+          </ol>
+          <p>The final "model" object that gets passed to the KSampler is a sophisticated, in-memory composite of the
+            base model and all the patches you applied, each with its own precisely controlled strength.</p>
+
+          <img
+            src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/e88e2270-3a55-4d37-8178-3a9d7bb957a1/width=1200/00001-20230526142751.jpeg"
+            class="img-fluid rounded my-3"
+            alt="An example of a style LoRA applied to an image, dramatically changing its aesthetic from photorealistic to illustrative.">
+          <p class="text-center small"><em>The effect of a Style LoRA: a targeted patch that completely alters the
+              visual output of the UNet. (Source: Civitai)</em></p>
+
+          <p class="mt-3">This modular, transparent, and controllable approach to model modification is what makes
+            ComfyUI a true developer's tool for precision generative AI.</p>
         </div>
 
         <!-- 3. Prompt design and development -->
         <div id="prompt-design" class="article-section mb-5 pt-4">
-          <h2 class="text-custom-orange">3. Prompt design and development</h2>
-          <p>Content for this section will be here...</p>
+          <h2 class="text-custom-orange">3. Prompt Engineering as Code</h2>
+          <p>For a developer, a prompt in ComfyUI is not just a text field; it's a string literal passed as a key
+            argument to the core text encoder function. How you format that string—its syntax and content—is a form of
+            lightweight programming. ComfyUI gives you raw, direct access to this process, allowing you to engineer your
+            inputs with a precision that is impossible in more abstracted tools.</p>
+
+          <h4>Syntax is Model-Dependent: Know Your "Compiler"</h4>
+          <p>A crucial detail for any developer is that there is no single, universal prompt syntax. The correct syntax
+            is determined by the text encoder of the model you are using. Treating the model as your "runtime" or
+            "compiler" is key. Using the wrong syntax is like passing an incorrectly formatted argument—it may not throw
+            an error, but it won't produce the intended result.</p>
+          <ul>
+            <li><strong>Classic Syntax (Stable Diffusion 1.5/2.1, SDXL):</strong> Most standard models use the syntax
+              popularized by Automatic1111. Here, you use parentheses and a numerical weight to increase a token's
+              influence and square brackets to decrease it. This gives you fine-grained, numerical control.
+              <pre><code style="background-color: #444343; border-radius: 5px; padding: 10px; display: block;">(masterpiece:1.3), best quality, a [man] in a (red:1.2) suit.</code></pre>
+            </li>
+            <li><strong>Modern Syntax (FLUX.1):</strong> Newer, highly advanced models like <a
+                href="https://huggingface.co/black-forest-labs/FLUX.1-dev" target="_blank">FLUX.1-dev</a> from Black
+              Forest Labs simplify this. They are trained to understand Markdown-style emphasis. This is more intuitive
+              but less numerically precise. Knowing this distinction is essential for getting the model to perform as
+              expected.
+              <pre><code style="background-color: #444343; border-radius: 5px; padding: 10px; display: block;">A **masterpiece** of a man in a **red** suit.</code></pre>
+            </li>
+          </ul>
+          <p>A developer understands that this is not arbitrary; it's a change in the model's "API contract." ComfyUI
+            lets you work with either, as long as you provide the correct input for the chosen model.</p>
+
+          <h4>The Model is Your Runtime: Prompting for Different Architectures</h4>
+          <p>How you write a prompt should change based on the model's architecture. It's the difference between writing
+            for a high-level language with a rich standard library versus writing for a low-level, high-performance
+            environment.</p>
+          <ul>
+            <li><strong>Large, Language-Rich Models (e.g., FLUX.1 14B):</strong> These models have a more nuanced
+              understanding of natural language. You can write more descriptive, complex sentences and trust the model
+              to parse the meaning. For a developer, this means you can focus on writing a clear "spec" in your prompt
+              rather than hacking together keywords.</li>
+            <li><strong>Speed-Optimized Models (e.g., SDXL Turbo, LCMs):</strong> These models are designed for
+              high-throughput, low-latency generation. The trade-off is often a reduced sensitivity to complex prompts.
+              The prompt for these "fast" models should be treated like a highly optimized API call: short, direct, and
+              potent. Long, descriptive sentences can be ignored or misinterpreted.</li>
+          </ul>
+
+          <h4>Programmatic Prompt Construction</h4>
+          <p>This is where a developer truly shines. ComfyUI's node-based system means a prompt doesn't have to be a
+            static string. It can be dynamically constructed:</p>
+          <ul>
+            <li><strong>Concatenation:</strong> Use multiple text nodes as variables and combine them. You can have a
+              base "style" node and append different subject nodes to it in a loop.</li>
+            <li><strong>Wildcards & Dynamic Payloads:</strong> Use custom nodes like "Wildcards" to pull random lines
+              from text files, creating dynamic and varied prompts automatically. This is the equivalent of
+              template-based code generation.</li>
+            <li><strong>API-Driven Prompts:</strong> The ultimate form of control. Write a custom node that calls an
+              external API (like a local LLM server or a weather service) to generate a prompt based on real-time data,
+              then feeds that string into the text encoder.</li>
+          </ul>
+          <img src="img/pack200.png" class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
+            alt="Node status in ComfyUI, showing the node's name, inputs, outputs, and status.">
+          <p class="mt-3">In ComfyUI, you are not just a prompter; you are a prompt developer. You have the low-level
+            control over syntax, the high-level understanding of different runtimes (models), and the tools for
+            programmatic construction, allowing for a truly engineered approach to creative generation.</p>
+
+          <hr>
+          <p class="small"><strong>Sources:</strong><br>
+            1. The official Hugging Face page for the <strong>FLUX.1-dev</strong> model, detailing its capabilities: <a
+              href="https://huggingface.co/black-forest-labs/FLUX.1-dev"
+              target="_blank">https://huggingface.co/black-forest-labs/FLUX.1-dev</a><br>
+            2. ComfyUI Documentation provides examples of basic and advanced prompting techniques.
+          </p>
         </div>
 
         <!-- 4. Developers' control over sampler -->
         <div id="sampler-control" class="article-section mb-5 pt-4">
-          <h2 class="text-custom-orange">4. Developers' control over sampler</h2>
-          <p>Content for this section will be here...</p>
+          <h2 class="text-custom-orange">4. Algorithmic Control Over the Generation Process</h2>
+          <p>For a user, the sampler is often just a dropdown list of esoteric names. For a developer, ComfyUI exposes
+            it for what it truly is: the core, swappable algorithm of the diffusion process. This isn't just about
+            picking a style; it's about having direct, programmatic control over the numerical method used to solve the
+            generative task. This is a level of control that speaks directly to an engineering mindset.</p>
+
+          <h4>Sampler & Scheduler: The Algorithm and its Strategy</h4>
+          <p>In the context of diffusion models, generating an image is an iterative process of removing noise from a
+            random tensor. From a developer's perspective, this can be understood as:</p>
+          <ul>
+            <li><strong>The Sampler:</strong> This is the numerical algorithm (an ODE or SDE solver) that performs the
+              denoising at each step. Different samplers (like <code>Euler</code>, <code>DPM++ 2M</code>, or
+              <code>Heun</code>) represent different mathematical methods for traversing the path from pure noise to a
+              clean image. Some are faster but less accurate; others are more stable but computationally intensive.
+            </li>
+            <li><strong>The Scheduler:</strong> This is the "strategy" that guides the sampler. It dictates the size and
+              number of steps (the "noise schedule" or "sigmas") the algorithm will take. It answers the question: "At
+              step 5 out of 20, how much noise should we expect to remove?" The separation of sampler and scheduler is a
+              powerful design pattern, allowing you to pair different algorithms with different step-progression
+              strategies.</li>
+          </ul>
+          <p>ComfyUI doesn't hide this relationship. It gives you direct access to both components, primarily through
+            the <strong>KSampler</strong> node family.</p>
+
+          <h4>The KSampler Node: Your API for Generation</h4>
+          <p>The <code>KSampler</code> node is your primary interface for controlling this process. A developer should
+            see its inputs not as simple settings, but as arguments to a core function:</p>
+          <ul>
+            <li><code>steps</code>: The number of iterative calls to the sampler algorithm.</li>
+            <li><code>cfg</code>: The "Classifier-Free Guidance" scale. Think of it as a scalar multiplier controlling
+              how strongly the algorithm should adhere to the prompt.</li>
+            <li><code>sampler_name</code> & <code>scheduler</code>: The direct selection of the algorithm and its
+              strategy.</li>
+            <li><code>denoise</code>: This is a crucial parameter, ranging from 0.0 to 1.0. It determines the "strength"
+              of the operation. A value of 1.0 means the input latent image is completely ignored (starting from pure
+              noise), while a value of 0.5 means the process starts halfway, preserving much of the original latent
+              structure. This is your main tool for img2img-style operations.</li>
+          </ul>
+          <p>This granular control allows for advanced, programmatic techniques like chaining samplers: you can run the
+            first 10 steps with a fast, exploratory sampler like <code>Euler</code>, and then pipe the resulting latent
+            into a second KSampler that uses a more detailed sampler like <code>DPM++ 2M SDE</code> for the final 15
+            steps of refinement.</p>
+
+          <h4>Visualizing the Impact of Your Choices</h4>
+          <p>The choice of sampler and scheduler is not trivial; it has a dramatic and often non-intuitive impact on the
+            final image, even when all other parameters are identical. The image below compares various combinations,
+            demonstrating how different algorithms interpret the same starting noise and prompt.</p>
+
+          <img src="img/flux-dev-samplers-and-schedulers-comparison-v0-7egmnrhlc3hd1.webp"
+            class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
+            alt="A grid comparing the visual output of different sampler and scheduler combinations in ComfyUI for the FLUX model.">
+
+          <p>Furthermore, the number of steps required for a quality result varies wildly between algorithms. Some, like
+            traditional <code>Euler</code>, show clear improvement with more steps. Others, like the highly optimized
+            <code>LCM</code>, are designed to produce excellent results in as few as 4-8 steps, making them ideal for
+            rapid generation. Understanding this trade-off between speed and quality is key to optimizing any generative
+            pipeline.
+          </p>
+
+          <img src="img/flux-dev-comparison-of-steps-for-euler-heunpp2-lcm-ipndm-v0-79z26k3hbehd1.webp"
+            class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
+            alt="A comparison showing how different samplers (Euler, Heun++, LCM, IPNDM) converge on a final image with an increasing number of steps.">
+
+          <p class="mt-3">In conclusion, ComfyUI provides a developer with what they value most: precise control over
+            core algorithms. It turns the mysterious art of sampling into a concrete engineering problem of selecting
+            and configuring the right numerical methods for the task at hand.</p>
+
+          <hr>
+          <p class="small"><strong>Sources:</strong><br>
+            For a deeper dive, developers can inspect the KSampler implementation directly in the ComfyUI source code,
+            which is the ultimate documentation.<br>
+            1. KSampler implementation details: <a href="https://github.com/comfyanonymous/ComfyUI/blob/master/nodes.py"
+              target="_blank">ComfyUI `nodes.py` on GitHub</a>
+          </p>
         </div>
-
-
 
         <!-- 5. Managing Workflow with Python Code -->
         <div id="python-workflow" class="article-section mb-5 pt-4">
@@ -378,7 +583,9 @@
             structure of the JSON graph.</p>
 
           <img src="https://raw.githubusercontent.com/pydn/ComfyUI-to-Python-Extension/main/images/save_as_script.png"
-            class="img-fluid rounded my-3" alt="The 'Save As Script' button in the ComfyUI interface">
+            class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
+            alt="The 'Save As Script' button in the ComfyUI interface">
 
           <h4>Practical Use Cases</h4>
           <ul>
@@ -405,17 +612,161 @@
 
         <!-- 6. Use the experience of community developers -->
         <div id="community-experience" class="article-section mb-5 pt-4">
-          <h2 class="text-custom-orange">6. Use the experience of community developers for AI-based photo and video
-            generation</h2>
-          <p>Content for this section will be here...</p>
+          <h2 class="text-custom-orange">6. Leverage the Community as an Open-Source Ecosystem</h2>
+          <p>No developer builds a modern application from scratch. We use frameworks, libraries, and open-source
+            packages to accelerate our work. In the world of generative AI, the community serves the exact same purpose.
+            For a programmer, engaging with the community is not about scrolling through forums; it's about
+            strategically leveraging a vast, distributed repository of code, pre-trained models, and shared knowledge to
+            build better, faster.</p>
+
+          <h4>The "Package Managers" for AI Assets: Civitai & Hugging Face</h4>
+          <p>These platforms are the `npm` or `PyPI` of the AI generation world. They are structured repositories where
+            you can find pre-built components for your projects.</p>
+          <ul>
+            <li><strong><a href="https://civitai.com/" target="_blank">Civitai</a>:</strong> This is the de-facto hub
+              for community-trained models. From a developer's perspective, it’s a massive asset database where you can
+              find specialized Checkpoints, LoRAs, Textual Inversions, and VAEs. The key is that these are not just
+              downloads; they come with structured metadata—trigger words, base model dependencies, and licenses—which
+              is essential for programmatic use.</li>
+            <li><strong><a href="https://huggingface.co/" target="_blank">Hugging Face</a>:</strong> If Civitai is a
+              community-focused asset store, Hugging Face is the professional, academic-grade repository. This is where
+              foundational models (like Stable Diffusion itself and FLUX) are officially released. For a developer, it's
+              the primary source for core model files, research papers, and datasets.</li>
+          </ul>
+          <img
+            src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/e7e83533-356c-4977-86b3-68d745772300/width=2048/00169-322199735.jpeg"
+            class="img-fluid rounded my-3"
+            alt="The interface of a model page on Civitai, showing example images, download links, and metadata.">
+          <p class="text-center small"><em>Civitai provides not just models, but the crucial metadata needed to use them
+              effectively.</em></p>
+
+          <h4>The "Frameworks" and Cross-Compatibility: ComfyUI & A1111</h4>
+          <p>The communities around major tools like ComfyUI and the Automatic1111 WebUI function like ecosystems around
+            different software frameworks (e.g., React vs. Vue). While their internal extension systems are different
+            (ComfyUI's custom nodes vs. A1111's extensions), the core assets are often universal.</p>
+          <ul>
+            <li><strong>Asset Portability:</strong> A <code>.safetensors</code> LoRA file trained by a user in the A1111
+              community will work perfectly in ComfyUI. A developer understands this is like a shared library (`.dll` or
+              `.so`) that can be loaded by different host applications. This cross-compatibility massively expands the
+              pool of available resources.</li>
+          </ul>
+
+          <h4>The "Source Code" Hub: GitHub</h4>
+          <p>This is the true heart of the community for any developer. While Civitai hosts the compiled models, GitHub
+            hosts the source code that creates and uses them. This is where you find the most valuable assets:</p>
+          <ul>
+            <li><strong>Custom Nodes:</strong> This is the most critical resource. The entire extended functionality of
+              ComfyUI lives in GitHub repositories. You don't just download a node; you <code>git clone</code> a
+              repository. This means you can read the source code to understand exactly how it works, fork it to make
+              your own modifications, or submit pull requests to fix bugs.</li>
+            <li><strong>ComfyUI Manager:</strong> This popular extension is essentially a package manager for custom
+              nodes. It automates the process of finding, installing, and updating nodes by managing their Git
+              repositories for you. It's the `apt` or `brew` for ComfyUI.</li>
+          </ul>
+          <img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/web/images/main_menu.png"
+            class="img-fluid rounded my-3"
+            alt="The interface of the ComfyUI Manager, showing lists of installed and available custom nodes.">
+
+          <h4>The "Forums" and Knowledge Bases: Reddit & Discord</h4>
+          <p>These are the Stack Overflow and Slack channels of the AI community. They are invaluable for debugging,
+            learning advanced techniques, and staying on the cutting edge.</p>
+          <ul>
+            <li><strong>Subreddits:</strong> <code>r/ComfyUI</code> and <code>r/StableDiffusion</code> are essential.
+              You can find solutions to complex workflow problems, discover new tools, and see what's possible.</li>
+            <li><strong>Discord Servers:</strong> Offer real-time discussion with other developers and artists. This is
+              where you can ask highly specific technical questions about node development or API integration.</li>
+          </ul>
+
+          <p class="mt-3">For a developer, the community is not a passive resource. It is an active, open-source
+            ecosystem to be integrated into your development lifecycle, dramatically reducing redundant work and
+            accelerating innovation.</p>
         </div>
 
         <!-- 7. Achieve better solutions and results -->
         <div id="better-solutions" class="article-section mb-5 pt-4">
-          <h2 class="text-custom-orange">7. Achieve better solutions and results using dev tools and APIs</h2>
-          <p>Content for this section will be here...</p>
-        </div>
+          <h2 class="text-custom-orange">7. Architecting Solutions via the API</h2>
+          <p>For a developer, the most critical feature of ComfyUI is that its web interface is entirely optional. The
+            UI is just one client that consumes a powerful backend API. Understanding and leveraging this API is the key
+            to moving beyond manual generation and architecting robust, automated, and scalable solutions. This is where
+            you stop being a user and start being a systems builder.</p>
+          <h4>The ComfyUI API: Your Direct Backend Access</h4>
+          <p>ComfyUI exposes a powerful API that allows for full programmatic control. Developers can interact with it
+            directly, bypassing the UI entirely. The core components, as detailed in the <a
+              href="https://github.com/comfyanonymous/ComfyUI_examples/tree/master/api" target="_blank">official API
+              documentation</a>, are:</p>
+          <ul>
+            <li><strong>HTTP Endpoint:</strong> You can send a workflow (as a JSON object) to the <code>/prompt</code>
+              endpoint to queue a new task. This is the primary mechanism for triggering generations programmatically.
+            </li>
+            <li><strong>WebSockets:</strong> After queuing a task, you can connect via WebSockets to receive real-time
+              updates on the progress, including previews of the image as it's being generated or notifications upon
+              completion.</li>
+          </ul>
+          <p>A simple Python script using the `requests` library can trigger a complex workflow, demonstrating how
+            easily ComfyUI integrates into a standard developer toolchain:</p>
+          <pre><code class="language-python" style="background-color: #2e2e2e; border-radius: 5px; padding: 15px; display: block; white-space: pre-wrap;">
+import requests
+import json
 
+# Your ComfyUI server address
+server_address = "127.0.0.1:8188"
+
+# Load your workflow from a JSON file
+with open("workflow.json", "r") as f:
+    prompt_workflow = json.load(f)
+
+# Send the workflow to the API
+response = requests.post(f"http://{server_address}/prompt", json={"prompt": prompt_workflow})
+  </code></pre>
+
+          <h4>Why Call an External API from a Local Tool?</h4>
+          <p>This hybrid approach combines the best of both worlds:</p>
+          <ul>
+            <li><strong>Access to Proprietary Models & Speed:</strong> Services like <strong><a href="https://flux1.ai/"
+                  target="_blank">FLUX1.ai</a></strong> or
+              <strong><a href="https://openart.ai/create?mode=videos" target="_blank">OpenArt</a></strong> offer highly
+              optimized, managed versions of cutting-edge models. They handle the hardware, dependency management, and
+              scaling, often providing results with lower latency than a local setup could achieve.
+            </li>
+            <li><strong>Zero Hardware Dependency:</strong> You can design a complex workflow on a laptop without a
+              powerful GPU. The heavy lifting—the actual image generation—is offloaded to the cloud service via an API
+              call.</li>
+            <li><strong>The Hybrid Pipeline (The Killer Feature):</strong> This is where the developer's mindset creates
+              unmatched solutions. You can build a workflow that:
+              <ol>
+                <li>Uses an external API (like FLUX1.ai) to generate a high-quality "base" image from a simple prompt.
+                </li>
+                <li>Takes the returned image as an input for local processing.</li>
+                <li>Applies intricate ControlNets, local LoRAs, face detailing, or inpainting using ComfyUI's granular
+                  tools to modify the externally-generated image.</li>
+              </ol>
+            </li>
+          </ul>
+          <p>You get the raw quality and speed of a commercial service, combined with the infinite control and
+            customization of your local ComfyUI setup.</p>
+
+
+          <h4>Building Your Own Services on Top</h4>
+          <p>While you can call the ComfyUI API directly, the real power comes from building your own API wrapper around
+            it using frameworks like FastAPI or Flask. This allows you to:</p>
+          <ul>
+            <li><strong>Create Simplified Endpoints:</strong> Expose a clean endpoint like
+              <code>/generate-character</code> that only requires a few parameters (like character class and art style),
+              while hiding the complexity of the full ComfyUI workflow JSON internally.
+            </li>
+            <li><strong>Implement Business Logic:</strong> Add authentication, user management, rate limiting, and
+              logging—all the features required for a production-grade application.</li>
+            <li><strong>Integrate State-of-the-Art Models:</strong> When a new, powerful model like <strong><a
+                  href="https://huggingface.co/black-forest-labs/FLUX.1-dev" target="_blank">FLUX.1</a></strong> is
+              released, you don't need to wait for a service to support it. You can download the model, build a ComfyUI
+              workflow around it, and immediately expose its capabilities through your API. The model becomes a backend
+              component you control.</li>
+          </ul>
+
+          <img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-Impact-Pack/master/preview/api_driven.png"
+            class="img-fluid rounded my-3"
+            alt="A diagram showing how a custom API can serve multiple clients like a web app or a Discord bot by sending jobs to a ComfyUI backend.">
+        </div>
         <!-- 8. Using full developers Toolchain -->
         <div id="dev-tools" class="article-section mb-5 pt-4">
           <h2 class="text-custom-orange">8. Using full developers Toolchain</h2>
@@ -450,8 +801,11 @@
               power of your IDE, turning a one-off process into a clean, reusable module.</li>
             <li><strong>Debug Efficiently:</strong> Use the integrated debugger to set breakpoints inside your custom
               node's code, step through the logic, and inspect variables in real-time.</li>
-              <img src="https://user-images.githubusercontent.com/39628662/85937113-06656380-b933-11ea-984e-01c887050812.png" class="img-fluid rounded my-3">
-              <a href="https://code.visualstudio.com/docs/python/debugging">VSCode Debugger official documentation</a>
+            <img
+              src="https://user-images.githubusercontent.com/39628662/85937113-06656380-b933-11ea-984e-01c887050812.png"
+              class="img-fluid rounded my-3"
+              style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;">
+            <a href="https://code.visualstudio.com/docs/python/debugging">VSCode Debugger official documentation</a>
           </ul>
 
 
@@ -466,8 +820,10 @@
               contribute via pull requests, report issues, and benefit from your work, while you maintain control over
               the codebase.</li>
           </ul>
-          <img src="https://user-images.githubusercontent.com/44003176/103466403-36a81780-4d45-11eb-90cc-167d210d7a52.png"
+          <img
+            src="https://user-images.githubusercontent.com/44003176/103466403-36a81780-4d45-11eb-90cc-167d210d7a52.png"
             class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
             alt="The GitHub repository interface showing commit history and branch activity.">
 
           <h4>3. Local LLM Servers: LM Studio / Ollama</h4>
@@ -482,7 +838,10 @@
               of 100 character ideas, then programmatically feeds each one into your ComfyUI workflow script to
               batch-generate a whole roster of characters.</li>
           </ul>
-          <img src="https://lmstudio.ai/images/server_screenshot.png" class="img-fluid rounded my-3"
+          <img
+            src="https://lmstudio.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhero-windows.4aec347a.webp&w=2048&q=75"
+            class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
             alt="The LM Studio interface showing the local server controls, providing an OpenAI-compatible API endpoint.">
 
           <h4>4. Containerization: Docker</h4>
@@ -494,6 +853,9 @@
             <li><strong>Deploy Anywhere:</strong> A containerized ComfyUI is the first step to deploying your creation
               as a scalable web service on platforms like AWS, Google Cloud, or a home server.</li>
           </ul>
+          <img src="https://www.docker.com/app/uploads/2025/05/DD-hiroko-2048x1285.png" class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
+            alt="The Postman interface showing an API request with headers and a JSON body.">
 
           <h4>5. API Client: Postman</h4>
           <p>ComfyUI runs on an API. A developer interacts with APIs using specialized tools like Postman. This allows
@@ -506,8 +868,9 @@
               and test the API calls in Postman to ensure your logic and authentication are correct.</li>
           </ul>
           <img
-            src="https://developer.hashicorp.com/static/dev-img/guides/postman-api-key-header-2b72c9bc67c3b2848245a7e6d2b389f2.png"
+            src="https://lh3.googleusercontent.com/yUHfFQ-E3pRi94NBIHDhJ2xENzGCeqe25xDpiARurt0flya-paYXTzNhQd3-pCznBk35LxmfU580Yoo8W07hosQRQMA=s1280-w1280-h800"
             class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;"
             alt="The Postman interface showing an API request with headers and a JSON body.">
 
           <h4>6. Interactive Computing: Jupyter Notebooks</h4>
@@ -521,9 +884,9 @@
               object for analysis. You can check histograms, color profiles, or run other image processing checks right
               in the notebook.</li>
           </ul>
-          <img src="https://jupyter.org/assets/main-logo.svg" class="img-fluid rounded my-3"
-            style="max-height: 150px; display: block; margin-left: auto; margin-right: auto;"
-            alt="Jupyter Notebook Logo.">
+          <img src="https://docs.posit.co/ide/server-pro/user/images/jupyter-notebook/notebook-example.png"
+            class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;" alt="Jupyter Notebook.">
 
           <h4>7. Package Management: Pip, Venv & Poetry</h4>
           <p>Properly managing your Python environment is fundamental. Relying on a global Python install is a recipe
@@ -536,6 +899,10 @@
               a tool like Poetry provides deterministic dependency locking, making your environment perfectly
               reproducible for collaborators.</li>
           </ul>
+          <img
+            src=" https://media.geeksforgeeks.org/wp-content/uploads/20240215132554/Screenshot-2024-02-14-174434-660.png"
+            class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;" alt="Jupyter Notebook.">
 
           <h4>8. Cloud Storage: AWS S3 / Google Cloud Storage</h4>
           <p>AI assets are massive. Checkpoint files are gigabytes, and you can generate thousands of images. Managing
@@ -549,6 +916,9 @@
             </li>
           </ul>
 
+          <img src="https://www.novelvista.com/resources/images/blogs/other/s3-gcs.jpg" class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;" alt="Jupyter Notebook.">
+
           <h4>9. CI/CD: GitHub Actions</h4>
           <p>Continuous Integration / Continuous Deployment is about automating your development workflow. For a ComfyUI
             project, this means setting up automated quality checks and builds for your custom nodes.</p>
@@ -559,9 +929,10 @@
               container with your latest code and pushes it to a container registry, making it ready for deployment.
             </li>
           </ul>
-          <img
-            src="https://docs.github.com/assets/cb-72626/images/help/actions/continuous-integration-overview-annotated.png"
-            class="img-fluid rounded my-3" alt="An example of a GitHub Actions workflow running tests and builds.">
+
+          <img src="https://docs.github.com/assets/cb-95207/images/help/repository/actions-quickstart-logs.png"
+            class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;" alt="Jupyter Notebook.">
 
           <h4>10. The Code Debugger</h4>
           <p>When `print()` statements aren't enough, a real debugger is essential. This is especially true when working
@@ -574,12 +945,67 @@
               VS Code. Set a breakpoint, run the workflow, and when the code pauses, you can inspect the entire program
               state, view the shape and type of tensors, and step through your logic line by line.</li>
           </ul>
+
+
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*1Og3r1c1eRolnLKgHC6rpA.png"
+            class="img-fluid rounded my-3"
+            style="max-height: 550px; display: block; margin-left: auto; margin-right: auto;" alt="Jupyter Notebook.">
+
         </div>
 
         <!-- 9. User-controlled audio settings -->
         <div id="audio-settings" class="article-section mb-5 pt-4">
-          <h2 class="text-custom-orange">9. User-controlled audio settings</h2>
-          <p>Content for this section will be here...</p>
+          <h2 class="text-custom-orange">9. Audio as Data: Programmatic Sound Control</h2>
+          <p>For a programmer, ComfyUI's capabilities extend far beyond the visual domain. Audio is not just sound; it's
+            another form of time-series data that can be loaded, processed, and manipulated through a data pipeline.
+            ComfyUI, particularly with custom node packs, provides the tools to treat audio as a first-class citizen in
+            your generative workflows, enabling powerful applications like source separation and audio-reactive
+            animations.</p>
+
+          <h4>The Core Tool: ComfyUI-Vextra and the Demucs Model</h4>
+          <p>Most advanced audio capabilities in ComfyUI are enabled by comprehensive custom node packs. The most
+            prominent among these is <strong>ComfyUI-Vextra</strong>. From a developer's standpoint, this pack is a
+            library that adds a suite of audio processing functions to your environment.</p>
+          <p>The key model used for source separation within this pack is <strong>Demucs</strong>, a state-of-the-art
+            deep learning model for Music Source Separation. When you use a Demucs node, you are essentially calling a
+            powerful function:</p>
+          <p><code>stems = demucs_model.separate(input_audio_waveform)</code></p>
+          <p>This function takes a mixed audio track as input and returns separated data streams for different
+            instruments. The most common model variant, `htdemucs_ft`, is trained to effectively isolate vocals, drums,
+            bass, and "other" sounds. This is not just an audio filter; it's a powerful data extraction technique.</p>
+
+          <img src="https://raw.githubusercontent.com/diontimmer/ComfyUI-Vextra/main/previews/demucs.png"
+            class="img-fluid rounded my-3"
+            alt="A ComfyUI workflow showing an audio file being loaded, processed by a Demucs node to separate it into stems, and then saving the individual audio tracks.">
+          <p class="text-center small"><em>A typical Demucs workflow in ComfyUI: load audio, separate stems, save
+              outputs.</em></p>
+
+          <h4>Developer Use Cases: From Separation to Control</h4>
+          <p>Once you treat audio as data, you unlock several advanced, programmatic applications:</p>
+          <ul>
+            <li><strong>Automated Stemming:</strong> Create a batch processing workflow that takes a folder of audio
+              files, separates the vocals and instrumentals from each, and saves them to designated output folders. This
+              is a classic ETL (Extract, Transform, Load) pipeline, applied to audio.</li>
+            <li><strong>Audio-Reactive Generation:</strong> This is the most powerful application. The output of an
+              audio node is a data tensor. You can write custom nodes or use existing ones to analyze this data and use
+              it to drive other parameters. For example:
+              <ol>
+                <li>Load an audio track and separate the drum stem using Demucs.</li>
+                <li>For each frame of a video generation, calculate the amplitude (volume) of the drum waveform.</li>
+                <li>Normalize this value (e.g., to a 0.0-1.0 range).</li>
+                <li>Feed this value directly into the `noise` or `CFG` input of a KSampler node.</li>
+              </ol>
+              The result is a video where the visual effects pulse in perfect sync with the drum beat. You are not just
+              playing audio; you are using it as a data-driven controller for your visual generation algorithm.
+            </li>
+            <li><strong>Data Visualization:</strong> Use audio data streams to generate visual representations like
+              spectrograms or waveforms directly within the ComfyUI canvas for analysis or artistic effect.</li>
+          </ul>
+
+          <p class="mt-3">In ComfyUI, manual audio control is not about having a simple "play" button. It’s about giving
+            developers the low-level access needed to deconstruct audio signals with ML models and use the resulting
+            data to programmatically drive any other part of the generative process.</p>
+          <hr>
         </div>
 
         <!-- 10. Maximum manual control -->
