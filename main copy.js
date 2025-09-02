@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- ГЛАВНАЯ ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ МОДАЛЬНОГО ОКНА (С УЛУЧШЕННОЙ ВАЛИДАЦИЕЙ) ---
-    // --- ГЛАВНАЯ ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ МОДАЛЬНОГО ОКНА (С ВАЛИДАЦИЕЙ ТЕЛЕФОНА) ---
+    // --- ГЛАВНАЯ ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ МОДАЛЬНОГО ОКНА ---
     function initializeModalLogic() {
         // --- 1. GET ALL NEEDED ELEMENTS ---
         const leadFormModalElement = document.getElementById('leadFormModal');
         if (!leadFormModalElement) {
             console.error("Modal element #leadFormModal not found. Initialization aborted.");
-            return null;
+            return;
         }
 
         const leadFormModal = bootstrap.Modal.getOrCreateInstance(leadFormModalElement, {
@@ -16,46 +15,86 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         const minimizedLeadForm = document.getElementById('minimizedLeadForm');
         const showModalIcon = document.getElementById('showModalIcon');
-
-        const leadFormContent = document.getElementById('leadFormContent');
+        
+        const formPage1 = document.getElementById('formPage1');
+        const formPage2 = document.getElementById('formPage2');
         const fullNameInput = document.getElementById('fullName');
         const phoneInput = document.getElementById('phone');
-        const phoneFeedback = document.getElementById('phone-invalid-feedback'); // Получаем элемент для подсказки
-        const otherOptionText = document.getElementById('otherOptionText');
         const submitOrderBtn = document.getElementById('submitOrderBtn');
+        
+        const nextPageBtn = document.getElementById('nextPageBtn');
+        const backPageBtn = document.getElementById('backPageBtn');
+        const pageIndicator = document.querySelector('.modal-page-indicator');
+        const minimizeModalButton = document.getElementById('minimizeModalButton');
 
         let iti = null;
 
-        // --- КАРТА ОШИБОК ДЛЯ ТЕЛЕФОНА ---
-        const phoneErrorMap = {
-            1: "Invalid country code",
-            2: "Number is too short",
-            3: "Number is too long",
-            4: "Invalid number",
-            5: "Invalid number",
-        };
+        // --- 2. DYNAMIC CATEGORY TOGGLE LOGIC ---
+        const mainCategoryToggles = document.querySelectorAll('.main-category-toggle');
+        mainCategoryToggles.forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const targetId = this.dataset.bsTarget;
+                const subcategoryList = document.querySelector(targetId);
+                if (subcategoryList) {
+                    if (this.checked) {
+                        slideDown(subcategoryList);
+                    } else {
+                        slideUp(subcategoryList);
+                    }
+                }
+            });
+        });
 
-        // --- 2. MODAL VISIBILITY AND RESETS ---
+        // --- 3. PAGE NAVIGATION ---
+        function showPage(pageNumber) {
+            if (pageNumber === 1) {
+                formPage1.style.display = 'block';
+                formPage2.style.display = 'none';
+                pageIndicator.textContent = '1/2';
+                backPageBtn.style.display = 'none';
+                nextPageBtn.style.display = 'block';
+                submitOrderBtn.style.display = 'none';
+            } else if (pageNumber === 2) {
+                formPage1.style.display = 'none';
+                formPage2.style.display = 'block';
+                pageIndicator.textContent = '2/2';
+                backPageBtn.style.display = 'block';
+                nextPageBtn.style.display = 'none';
+                submitOrderBtn.style.display = 'block';
+                
+                if (!iti) {
+                    initializeIntlTelInput();
+                }
+                updateSubmitButtonState();
+            }
+        }
+
+        nextPageBtn.addEventListener('click', function() {
+            const anySubcategoryChecked = document.querySelector('.subcategory-list input[type="checkbox"]:checked');
+            const otherText = document.getElementById('otherOptionText').value;
+            if (!anySubcategoryChecked && !otherText.trim()) {
+                alert('Please select at least one service or describe your wishes.');
+                return;
+            }
+            showPage(2);
+        });
+
+        backPageBtn.addEventListener('click', function() {
+            showPage(1);
+        });
+
+        // --- 4. MODAL VISIBILITY AND RESETS ---
+        minimizeModalButton.addEventListener('click', () => leadFormModal.hide());
         showModalIcon.addEventListener('click', () => {
             minimizedLeadForm.style.display = 'none';
             leadFormModal.show();
         });
 
         leadFormModalElement.addEventListener('shown.bs.modal', () => {
-            if (fullNameInput) {
-                fullNameInput.value = '';
-                fullNameInput.classList.remove('is-invalid', 'is-valid');
-            }
-            if (phoneInput) {
-                phoneInput.value = '';
-                phoneInput.classList.remove('is-invalid', 'is-valid'); // Сброс валидации телефона
-            }
-            if (otherOptionText) otherOptionText.value = '';
-
-            if (!iti) {
-                initializeIntlTelInput();
-            }
-            updateSubmitButtonState();
+            showPage(1);
+            document.querySelectorAll('.main-category-toggle, .subcategory-list input[type="checkbox"]').forEach(el => el.checked = false);
+            document.querySelectorAll('.subcategory-list').forEach(el => el.style.display = 'none');
+            document.getElementById('otherOptionText').value = '';
         });
 
         leadFormModalElement.addEventListener('hidden.bs.modal', function () {
@@ -64,48 +103,15 @@ document.addEventListener('DOMContentLoaded', function () {
             minimizedLeadForm.style.display = 'block';
         });
 
-        // --- 3. VALIDATION & SUBMIT LOGIC (САМАЯ НОВАЯ ВЕРСИЯ) ---
+        if (window.location.pathname === '/' || window.location.pathname.endsWith('/index.html')) {
+            leadFormModal.show();
+        }
+
+        // --- 5. VALIDATION & SUBMIT LOGIC ---
         function updateSubmitButtonState() {
-            if (!submitOrderBtn || !fullNameInput || !iti || !phoneInput) return;
-
-            // --- Валидация имени ---
-            const hasDigitsInName = /\d/.test(fullNameInput.value);
-            const isNameNotEmpty = fullNameInput.value.trim().length > 0;
-            if (isNameNotEmpty) {
-                if (hasDigitsInName) {
-                    fullNameInput.classList.add('is-invalid');
-                    fullNameInput.classList.remove('is-valid');
-                } else {
-                    fullNameInput.classList.add('is-valid');
-                    fullNameInput.classList.remove('is-invalid');
-                }
-            } else {
-                fullNameInput.classList.remove('is-invalid', 'is-valid');
-            }
-            const isNameValid = isNameNotEmpty && !hasDigitsInName;
-
-            // --- Валидация телефона ---
-            const isPhoneNotEmpty = phoneInput.value.trim().length > 0;
-            let isPhoneValid = false;
-            if (isPhoneNotEmpty) {
-                if (iti.isValidNumber()) {
-                    phoneInput.classList.add('is-valid');
-                    phoneInput.classList.remove('is-invalid');
-                    isPhoneValid = true;
-                } else {
-                    phoneInput.classList.add('is-invalid');
-                    phoneInput.classList.remove('is-valid');
-                    const errorCode = iti.getValidationError();
-                    // Обновляем текст ошибки, используя карту или текст по умолчанию
-                    if (phoneFeedback) {
-                        phoneFeedback.textContent = phoneErrorMap[errorCode] || 'Please enter a valid number.';
-                    }
-                }
-            } else {
-                phoneInput.classList.remove('is-invalid', 'is-valid');
-            }
-
-            // --- Управление состоянием кнопки ---
+            if (!submitOrderBtn || !fullNameInput || !iti) return;
+            const isNameValid = !/\d/.test(fullNameInput.value) && fullNameInput.value.length > 0;
+            const isPhoneValid = iti.isValidNumber();
             submitOrderBtn.disabled = !(isNameValid && isPhoneValid);
         }
 
@@ -122,44 +128,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 phoneInput.addEventListener('countrychange', updateSubmitButtonState);
             }
         }
-
+        
         if (fullNameInput) {
             fullNameInput.addEventListener('input', updateSubmitButtonState);
         }
 
-        submitOrderBtn.addEventListener('click', function (event) {
+        submitOrderBtn.addEventListener('click', function(event) {
             event.preventDefault();
             if (submitOrderBtn.disabled) return;
 
             submitOrderBtn.disabled = true;
             submitOrderBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Sending...';
-
+            
             const formData = new FormData();
+            const selectedServices = [];
+            
+            document.querySelectorAll('.subcategory-list input[type="checkbox"]:checked').forEach(checkbox => {
+                selectedServices.push(checkbox.value.replace('_', ' - '));
+            });
+
             formData.append('name', fullNameInput.value);
             formData.append('phone', iti.getNumber());
-            formData.append('other_details', otherOptionText.value);
-            formData.append('selected_services', 'N/A');
+            formData.append('selected_services', selectedServices.join('; '));
+            formData.append('other_details', document.getElementById('otherOptionText').value);
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxxDLgpbYZzN0Q2L-xEyOQY9vPnBU5-RVJbRTipeRCGBlGvPBa961VX7opuf75r_6cHig/exec';
-
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxxDLgpbYZzN0Q2L-xEyOQY9vPnBU5-RVJbRTipeRCGBlGvPBa961VX7opuf75r_6cHig/exec'; 
             fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-                .then(() => {
-                    leadFormContent.style.display = 'none';
-                    document.querySelector('.modal-footer').style.display = 'none';
-                    document.getElementById('formSuccessMessage').style.display = 'block';
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    document.getElementById('formErrorMessage').style.display = 'block';
-                    submitOrderBtn.disabled = false;
-                    submitOrderBtn.textContent = 'Submit';
-                });
+            .then(() => {
+                formPage1.style.display = 'none';
+                formPage2.style.display = 'none';
+                document.querySelector('.modal-footer').style.display = 'none';
+                document.getElementById('formSuccessMessage').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                document.getElementById('formErrorMessage').style.display = 'block';
+                submitOrderBtn.disabled = false;
+                submitOrderBtn.textContent = 'Submit';
+            });
         });
-
-        return leadFormModal;
     }
 
-    
     // --- ФУНКЦИЯ ДЛЯ ОБНОВЛЕНИЯ АКТИВНОЙ ССЫЛКИ В НАВИГАЦИИ ---
     function updateActiveNavLink() {
         const currentPath = window.location.pathname;
@@ -241,19 +250,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Загружаем МОДАЛЬНОЕ ОКНО и после этого запускаем его логику
     loadComponent(`${basePath}modal.html`, 'modal-placeholder').then(success => {
         if (success) {
-            // 1. Инициализируем логику НЕМЕДЛЕННО и получаем объект модального окна
-            const myModal = initializeModalLogic();
-
-            // 2. Проверяем, находимся ли мы на главной странице
-            const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
-
-            // 3. Если это главная страница, показываем окно с задержкой
-            if (isHomePage && myModal) {
-                setTimeout(() => {
-                    myModal.show();
-                }, 10000); // 10000 мс = 10 секунд
-            }
-            // На всех остальных страницах окно просто готово к вызову по кнопке, без задержки.
+           // Ждем 10 секунд (10000 миллисекунд) перед запуском логики модального окна
+        setTimeout(() => {
+            initializeModalLogic();
+        }, 10000); // 10000 мс = 10 секунд
         }
     });
 
