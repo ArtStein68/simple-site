@@ -12,53 +12,17 @@
   <meta name="description"
     content="Узнайте об Алене Логуновой и моей студии генеративного дизайна, AI Gen Studio. Откройте для себя мою философию, ключевые навыки и опыт в производстве ИИ-видео, создании ИИ-контента и визуальном сторителлинге.">
 
-    <!-- Favicon и иконки -->
+    <!-- Favicon и иконки (пути абсолютные, это правильно для ру-поддомена к основному домену) -->
     <link rel="icon" type="image/png" href="https://www.ai-video-expert.online/img/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="https://www.ai-video-expert.online/img/favicon.svg" />
     <link rel="shortcut icon" href="https://www.ai-video-expert.online/img/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="https://www.ai-video-expert.online/img/apple-touch-icon.png" />
     <link rel="manifest" href="https://www.ai-video-expert.online/site.webmanifest" />
 
-  <!-- Основные стили -->
+  <!-- Основные стили (путь абсолютный, это правильно) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://www.ai-video-expert.online/style.css" rel="stylesheet">
-
-  <!-- Сначала загружаем все необходимые библиотеки -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>
-
-  <!-- Затем наши скрипты -->
-  <script src="https://www.ai-video-expert.online/main.js"></script>
-
-  <!-- И только потом загрузка компонентов -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        Promise.all([
-            fetch('./navbar.html'),
-            fetch('./footer.html'),
-            fetch('./modal.html')
-        ])
-        .then(responses => Promise.all(responses.map(r => r.text())))
-        .then(([navbar, footer, modal]) => {
-            document.getElementById('navbar-placeholder').innerHTML = navbar;
-            document.getElementById('footer-placeholder').innerHTML = footer;
-            document.getElementById('modal-placeholder').innerHTML = modal;
-            
-            // После загрузки всех компонентов инициализируем модальную форму
-            if (typeof initializeModalLogic === 'function') {
-                initializeModalLogic();
-            } else {
-                console.error('Modal logic initialization function not found');
-            }
-
-            // Проверяем загрузку библиотеки телефонной валидации
-            if (typeof intlTelInput === 'undefined') {
-                console.error('Telephone input library not loaded!');
-            }
-        })
-        .catch(error => console.error('Error loading components:', error));
-    });
-</script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -68,7 +32,7 @@
   <link rel="canonical" href="https://ru.ai-video-expert.online/about.html" />
 
   <link rel="alternate" href="https://www.ai-video-expert.online/about.html" hreflang="en" />
-  <link rel="alternate" href="https://www.ru.ai-video-expert.online/about.html" hreflang="ru" />
+  <link rel="alternate" href="https://ru.ai-video-expert.online/about.html" hreflang="ru" />
   <link rel="alternate" href="https://www.ai-video-expert.online/about.html" hreflang="x-default" />
 
 
@@ -202,7 +166,7 @@
             <p>Я преуспеваю в создании уникальных визуальных материалов (фотографий, изображений). Это включает построение графов в ComfyUI для text2img, img2img, инпейнта (редактирование изображений с ИИ), переноса стиля и продвинутой генерации на основе лиц. Я специализируюсь на локальной генерации с использованием таких инструментов, как <strong>Flux</strong>, <strong>Stable Diffusion</strong> и <strong>Flux context</strong> для полного контроля и конфиденциальности данных.</p>
             <div class="row small-text mt-auto">
               <div class="col-lg-6 mb-2">✔️ Построение графов в ComfyUI</div>
-              <div class="col-lg-6 mb-2">✔️ Генерация на основе лиц</div>
+              <div class="lg-6 mb-2">✔️ Генерация на основе лиц</div>
               <div class="col-lg-6 mb-2">✔️ Обучение LoRA & IPAdapter</div>
               <div class="col-lg-6 mb-2">✔️ Смешивание и маскирование LoRA</div>
 			  <div class="col-lg-12 mb-2">✔️ Локальная генерация: Flux, Stable Diffusion, Flux context</div>
@@ -713,15 +677,15 @@
     </button>
 </div>
 
-<!-- Сначала загружаем все необходимые библиотеки -->
+<!-- Сначала загружаем все необходимые библиотеки (перемещены в конец body) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>
 
-<!-- Затем наши скрипты -->
+<!-- Затем наши скрипты (путь абсолютный, это правильно) -->
 <script src="https://www.ai-video-expert.online/main.js"></script>
 
-<!-- И только потом загрузка компонентов -->
+<!-- И только потом загрузка компонентов (перемещены в конец body) -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         Promise.all([
