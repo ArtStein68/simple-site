@@ -1,0 +1,63 @@
+<!-- Lead Form Modal -->
+<div class="modal fade" id="leadFormModal" tabindex="-1" aria-labelledby="leadFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="leadFormModalLabel">Свяжитесь со мной</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- UNIFIED FORM CONTENT -->
+                <div id="leadFormContent">
+                    <div class="container-fluid">
+                        <h5>Оставьте свои контактные данные и пожелания</h5>
+                        <p class="text-white-50">Я свяжусь с вами в ближайшее время для обсуждения деталей.</p>
+                        <hr class="text-light">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="fullName" class="form-label">Имя</label>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" id="fullName" placeholder="Введите ваше имя">
+                                    <div class="invalid-feedback">
+                                        Имя не должно содержать цифры.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="phone" class="form-label">Телефон / WhatsApp</label>
+                                <div id="phone-invalid-feedback" class="invalid-feedback">
+                                    Пожалуйста, введите корректный номер.
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <label for="otherOptionText" class="form-label">Ваши пожелания</label>
+                                <textarea class="form-control" id="otherOptionText" rows="4" 
+                                    placeholder="Если у вас есть особые пожелания, опишите их здесь..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success/Error Messages -->
+                <div id="formSuccessMessage" style="display: none;" class="alert alert-success">
+                    <h4>Спасибо!</h4>
+                    <p>Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.</p>
+                </div>
+                <div id="formErrorMessage" style="display: none;" class="alert alert-danger">
+                    <h4>Произошла ошибка</h4>
+                    <p>Не удалось отправить заявку. Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую.</p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-success" id="submitOrderBtn">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>

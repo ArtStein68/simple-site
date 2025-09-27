@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: Optimized Title for "About" page with a personal focus -->
+  <title>О создателе контента с ИИ Алене Логуновой | ИИ Художник, Видеопродюсер</title>
+
+  <!-- SEO: Meta Description reflecting the personal brand -->
+  <meta name="description"
+    content="Узнайте об Алене Логуновой и моей студии генеративного дизайна, AI Gen Studio. Откройте для себя мою философию, ключевые навыки и опыт в производстве ИИ-видео, создании ИИ-контента и визуальном сторителлинге.">
+
+    <!-- Favicon и иконки -->
+    <link rel="icon" type="image/png" href="https://www.ai-video-expert.online/img/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="https://www.ai-video-expert.online/img/favicon.svg" />
+    <link rel="shortcut icon" href="https://www.ai-video-expert.online/img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.ai-video-expert.online/img/apple-touch-icon.png" />
+    <link rel="manifest" href="https://www.ai-video-expert.online/site.webmanifest" />
+
+  <!-- Основные стили -->
+  <link href="https://www.ai-video-expert.online/style.css" rel="stylesheet">
+
+  <!-- Сначала загружаем все необходимые библиотеки -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>
+
+  <!-- Затем наши скрипты -->
+  <script src="https://www.ai-video-expert.online/main.js"></script>
+
+  <!-- И только потом загрузка компонентов -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Promise.all([
+            fetch('./navbar.html'),
+            fetch('./footer.html'),
+            fetch('./modal.html')
+        ])
+        .then(responses => Promise.all(responses.map(r => r.text())))
+        .then(([navbar, footer, modal]) => {
+            document.getElementById('navbar-placeholder').innerHTML = navbar;
+            document.getElementById('footer-placeholder').innerHTML = footer;
+            document.getElementById('modal-placeholder').innerHTML = modal;
+            
+            // После загрузки всех компонентов инициализируем модальную форму
+            if (typeof initializeModalLogic === 'function') {
+                initializeModalLogic();
+            } else {
+                console.error('Modal logic initialization function not found');
+            }
+
+            // Проверяем загрузку библиотеки телефонной валидации
+            if (typeof intlTelInput === 'undefined') {
+                console.error('Telephone input library not loaded!');
+            }
+        })
+        .catch(error => console.error('Error loading components:', error));
+    });
+</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+
+
+  <link rel="canonical" href="https://ru.ai-video-expert.online/about.html" />
+
+  <link rel="alternate" href="https://www.ai-video-expert.online/about.html" hreflang="en" />
+  <link rel="alternate" href="https://www.ru.ai-video-expert.online/about.html" hreflang="ru" />
+  <link rel="alternate" href="https://www.ai-video-expert.online/about.html" hreflang="x-default" />
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Об Алене Логуновой - Создатель контента с ИИ & Видеопродюсер | AI Gen Studio",
+  "description": "Узнайте об Алене Логуновой и моей студии генеративного дизайна, AI Gen Studio. Откройте для себя мою философию, ключевые навыки и опыт в производстве ИИ-видео, создании ИИ-контента и визуальном сторителлинге.",
+  "url": "https://www.ai-video-expert.online/about.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.ai-video-expert.online/about.html"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Алена Логунова",
+    "url": "https://www.ai-video-expert.online/about.html",
+    "jobTitle": "Создатель контента с ИИ, ComfyUI Разработчик, ИИ Инженер, Видеопродюсер",
+    "sameAs": [      
+      "https://www.youtube.com/channel/UC5Y71tTTNAlyVGgv871NzxA",
+      "https://www.ai-video-expert.online"
+    ]
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://www.ai-video-expert.online/img/alena-about-me.jpg"
+  },
+  "inLanguage": "ru-RU"
+}
+</script>
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YWNVGE18K1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-YWNVGE18K1');
+    gtag('config', 'AW-17491718267');
+  </script>
+
+
+</head>
+
+<body class="bg-dark text-light">
+  <!-- Main Menu -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- CONTAINER START -->
+  <div class="container my-5">
+
+    <!-- === INTRO SECTION === -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-3 text-center">
+        <!-- SEO: Descriptive alt-tag for the image -->
+        <img src="https://www.ai-video-expert.online/img/alena-about-me.jpg"
+          alt="Основатель и визуальный продюсер студии генеративного дизайна" class="img-fluid mb-3 rounded"
+          style="max-width: 200px;">
+      </div>
+      <div class="col-md-9">
+        <!-- SEO: Main headline focused on the individual -->
+        <h1 class="text-custom-orange">АЛЕНА ЛОГУНОВА</h1>
+
+        <!-- Wrapper for headline and underline -->
+        <div class="d-inline-block">
+          <h2 class="h3 mb-0">AI Создатель | ComfyUI Разработчик | AI Инженер | Видеопродюсер</h2>
+        </br>
+          <hr class="hr-custom-orange mt-1">
+        </div>
+
+        <p class="h3 mt-3">Слияние разработки ИИ и визуального искусства</p>
+        <p class="text-white-50">🔗 Открыта к сотрудничеству в области генеративных ИИ-систем, генерации аватаров,
+          персонализации с помощью ИИ, видеопроизводства и контента для социальных сетей. Давайте создавать захватывающие истории и креативный визуальный контент.</p>
+
+        <!-- === WHO I AM SECTION === -->
+        <p class="lead">Добро пожаловать в AI Gen Studio, мою современную творческую студию, специализирующуюся на генеративном дизайне и создании контента с использованием ИИ. Как
+          опытный специалист по контенту с ИИ (AI Creator) и разработчик ComfyUI, я сосредоточена на профессиональном создании изображений и
+          видео с помощью ИИ. Я использую новейшие технологии ИИ для создания персонализированного медиаконтента.
+          Мой опыт охватывает полный цикл производства ИИ-видео — от продвинутого промпт-инжиниринга до финальной
+          пост-продакшн (редактирование ИИ-видео).</p>
+      </div>
+    </div>
+
+      <!-- === MY EXPERTISE / SKILLS SECTION === -->
+      <div class="outlined-block p-4 my-5">
+        <div class="row justify-content-center text-center">
+          <div class="col-12">
+            <!-- SEO: Headline with a personal focus -->
+            <h2>💼 Мой опыт: Ключевые навыки и технологии</h2>
+            <p>Как специалист по генеративному дизайну, моя работа основана на глубоком понимании основных технологий
+              ИИ.
+              Я эксперт в создании убедительных визуальных историй с помощью создания контента с ИИ.</p>
+
+            <!-- TAG CLOUD OF SKILLS -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+              <span class="badge rounded-pill text-bg-secondary p-2">ComfyUI</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">Stable Diffusion SDXL/3.5</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">AnimateDiff</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">SVD-XT & Mochi</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">LoRA / LoCon / LyCORIS</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">kohya_ss</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">PEFT & Diffusers</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">Промпт-инжиниринг</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">Пользовательские ноды ComfyUI</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">DaVinci Resolve & Fusion</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">FastAPI & Gradio</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">Python & OpenCV</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">Runway & HeyGen</span>
+               <!-- Добавленные ключевые слова в теги -->
+              <span class="badge rounded-pill text-bg-secondary p-2">ИИ Художник</span>
+              <span class="badge rounded-pill text-bg-secondary p-2">ИИ-генерированное видео</span>
+			  <!-- Добавленные навыки -->
+			  <span class="badge rounded-pill text-bg-secondary p-2">Видеоредактор</span>
+			  <span class="badge rounded-pill text-bg-secondary p-2">Видеопроизводство</span>
+			  <span class="badge rounded-pill text-bg-secondary p-2">Видеомейкер</span>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+      <!-- === MY SERVICES SECTION === -->
+      <!-- Row 1: Core Services -->
+      <div class="row my-4">
+        <div class="col-md-6 mb-4 d-flex">
+          <div class="outlined-block w-100">
+            <!-- Обновлённый заголовок с ключевым словом -->
+            <h3 class="text-custom-orange">🖼️ Создание изображений с ИИ: Генерация изображений с ИИ</h3>
+            <!-- Обновлённое описание с ключевыми словами и информацией о локальной генерации -->
+            <p>Я преуспеваю в создании уникальных визуальных материалов (фотографий, изображений). Это включает построение графов в ComfyUI для text2img, img2img, инпейнта (редактирование изображений с ИИ), переноса стиля и продвинутой генерации на основе лиц. Я специализируюсь на локальной генерации с использованием таких инструментов, как <strong>Flux</strong>, <strong>Stable Diffusion</strong> и <strong>Flux context</strong> для полного контроля и конфиденциальности данных.</p>
+            <div class="row small-text mt-auto">
+              <div class="col-lg-6 mb-2">✔️ Построение графов в ComfyUI</div>
+              <div class="col-lg-6 mb-2">✔️ Генерация на основе лиц</div>
+              <div class="col-lg-6 mb-2">✔️ Обучение LoRA & IPAdapter</div>
+              <div class="col-lg-6 mb-2">✔️ Смешивание и маскирование LoRA</div>
+			  <div class="col-lg-12 mb-2">✔️ Локальная генерация: Flux, Stable Diffusion, Flux context</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4 d-flex">
+          <div class="outlined-block w-100">
+            <!-- Обновлённый заголовок с ключевым словом -->
+            <h3 class="text-custom-orange">🎬 Создание видео с ИИ: Производство видео с ИИ</h3>
+            <!-- Обновлённое описание с ключевыми словами и информацией о локальной генерации -->
+            <p>Я сочетаю ИИ и креативность для создания динамичных креативных видео (ИИ-генерированных видео). Я предлагаю все: от генерации лиц актеров до сложного переноса стиля видео-в-видео. Я использую инструменты локальной генерации, такие как <strong>wan2.2</strong> и <strong>wan2.1</strong>, для высококачественного, контролируемого создания видео.</p>
+            <div class="row small-text mt-auto">
+              <div class="col-lg-6 mb-2">✔️ LoRA + AnimateDiff</div>
+              <div class="col-lg-6 mb-2">✔️ IPAdapter & CogVideoX</div>
+              <div class="col-lg-6 mb-2">✔️ Слияние лиц по ключевым кадрам</div>
+              <div class="col-lg-6 mb-2">✔️ Стиль видео-в-видео</div>
+			  <div class="col-lg-12 mb-2">✔️ Локальная генерация: wan2.2, wan2.1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Technical Services -->
+	  <!-- Новый блок для AI Audio -->
+	  <div class="row my-4">
+		<div class="col-md-12 mb-4 d-flex">
+		  <div class="outlined-block w-100">
+			<h3 class="text-custom-orange">🎵 Создание аудио с ИИ: Генерация аудио с ИИ</h3>
+			<p>Как <strong>создатель аудио с ИИ</strong>, я специализируюсь на генерации высококачественного аудиоконтента с использованием продвинутых моделей ИИ. Будь то закадровый голос, звуковые эффекты или музыка, адаптированные к вашему визуальному контенту, я могу создать пользовательское аудио с помощью передовых инструментов <strong>генерации аудио с ИИ</strong> и <strong>ИИ-генераторов аудио</strong>.</p>
+			<div class="row small-text mt-auto">
+			  <div class="col-lg-4 mb-2">✔️ Пользовательская генерация голоса ИИ</div>
+			  <div class="col-lg-4 mb-2">✔️ Звуковой дизайн и SFX</div>
+			  <div class="col-lg-4 mb-2">✔️ Композиция музыки, сгенерированной ИИ</div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  
+      <div class="row my-4">
+        <div class="col-md-7 mb-4 d-flex">
+          <div class="outlined-block w-100">
+            <h3>🧠 Обучение пользовательских моделей (LoRA)</h3>
+            <p>Я предоставляю специализированные услуги по обучению моделей для захвата определенного лица, персонажа или стиля всего из 5-20 изображений, используя такие инструменты, как kohya_ss и автоматическое создание подписей с BLIP.</p>
+            <p class="small-text mt-auto"><strong>Инструменты:</strong> kohya_ss, PEFT, Colab, Diffusers,
+              Автоматическое создание подписей (BLIP, DeepBooru), Обрезка и улучшение.</p>
+          </div>
+        </div>
+        <div class="col-md-5 mb-4 d-flex">
+          <div class="outlined-block w-100">
+            <!-- Обновлённый заголовок с ключевым словом -->
+            <h3>✏️ Специалист по промптам: Продвинутый промпт-инжиниринг</h3>
+            <p>Я разрабатываю специфические промпты для контроля стиля, эмоций и позы, включая последовательные промпты для морфинга.</p>
+            <p class="small-text mt-auto">✔️ Генерация через BLIP, CLIP, LM Studio.</p>
+          </div>
+        </div>
+      </div>
+    
+    <!-- === SAMPLE PROJECTS & USE CASES SECTION === -->
+    <div class="my-5">
+      <div class="row justify-content-center text-center mb-4">
+        <div class="col-lg-8">
+          <h2>📂 Примеры проектов и варианты использования</h2>
+          <p class="lead text-white-50">Мое портфолио демонстрирует мою способность выполнять сложные проекты, от
+            генерации видео с лицом клиента до полностью автоматизированных веб-пайплайнов, которые обрабатывают все от загрузки фото до
+            экспорта видео. Я использую как инструменты локальной генерации, так и премиальные внешние API, такие как <strong>Veo 3</strong>, <strong>Sora</strong>, <strong>Runway</strong>, <strong>HeyGen</strong>, <strong>Seedance</strong> и <strong>Kling</strong>.</p>
+        </div>
+      </div>
+      <!-- CARD-STYLE LIST -->
+      <div class="row">
+        <!-- Обновлённый проект с ключевым словом -->
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="outlined-block text-center h-100">Генерация видео с лицом клиента (реклама) из фото/видео</div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="outlined-block text-center h-100">Пайплайн: 5 фото → LoRA → серия изображений → видео</div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="outlined-block text-center h-100">Веб-приложение: Загрузить → Сгенерировать → Предварительный просмотр и экспорт</div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="outlined-block text-center h-100">Автоматизация API: Промпт + Вставка лица + Морфинг</div>
+        </div>
+      </div>
+    </div>
+
+<!-- === CLIENT TESTIMONIALS CAROUSEL SECTION === -->
+<div class="my-5">
+  <div class="row justify-content-center text-center mb-4">
+    <div class="col-lg-8">
+      <h2>💬 Отзывы клиентов</h2>
+      <p class="lead text-white-50">Узнайте, что говорят клиенты о работе с AI Gen Studio.</p>
+    </div>
+  </div>
+
+  <!-- Bootstrap Carousel -->
+  <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
+
+    <!-- Wrapper for slides/items -->
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">ДЖ</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Джон Д.</h5>
+                  <small class="text-muted">Директор по маркетингу</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Алена полностью преобразила нашу маркетинговую кампанию с помощью потрясающих ИИ-генерированных
+                видео. Качество и скорость выполнения были просто невероятными, превзойдя все
+                ожидания!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">СМ</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Сара М.</h5>
+                  <small class="text-muted">Владелец E-commerce бренда</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Персонализированные видео продуктов от AI Gen Studio значительно увеличили наши
+                коэффициенты конверсии. Я изначально была скептически настроена, но результаты говорят сами за себя. Настоятельно рекомендую
+                для любого E-commerce бизнеса, ищущего конкурентное преимущество!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <!-- 4.5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">МР</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Майкл Р.</h5>
+                  <small class="text-muted">Основатель креативного агентства</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Работа с Аленой полностью изменила правила игры для нашего агентства. Ее опыт в ИИ
+                инструментах и невероятное творческое видение постоянно давали именно то, что нам было нужно, часто превосходя
+                наш первоначальный бриф. Настоящий профессионал!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End Slide 1 -->
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">ЭП</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Эмма П.</h5>
+                  <small class="text-muted">Генеральный директор стартапа</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Способность Алены воплощать нашу сложную историю бренда в жизнь с помощью ИИ-видео абсолютно
+                бесподобна. Конечные результаты не только соответствовали, но и значительно превосходили наши высокие ожидания. Фантастический
+                партнер для любого стартапа!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">ТР</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Томас Р.</h5>
+                  <small class="text-muted">Контент-стратег</small>
+                </div>
+              </div>
+              <p class="fst-italic">"ИИ-генерированные аватары и объясняющие видео были невероятно полезны. Это сэкономило нам
+                бесчисленные часы при создании контента. Хотя потребовались небольшие корректировки, рабочий процесс Алены
+                удивительно эффективен."</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="far fa-star"></i> <!-- 4 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">ЛВ</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Лиза В.</h5>
+                  <small class="text-muted">Планировщик мероприятий</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Для нашего недавнего виртуального мероприятия Алена создала по-настоящему увлекательный рекламный контент.
+                Визуальные эффекты, созданные с помощью ИИ, были свежими, захватывающими и действительно поразили наших участников. Фантастическая работа и очень
+                отзывчивое общение на протяжении всего проекта!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End Slide 2 -->
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">АК</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Алекс К.</h5>
+                  <small class="text-muted">Менеджер по продукту</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Пользовательские ИИ-аватары для наших демонстраций продуктов были идеально точными и невероятно уникальными.
+                Алена не только отлично поняла наше видение, но и предложила ценные творческие идеи. Очень
+                впечатлен!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <!-- 4.5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">НД</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Нина Д.</h5>
+                  <small class="text-muted">Влиятельный человек в социальных сетях</small>
+                </div>
+              </div>
+              <p class="fst-italic">"ИИ-контент Алены действительно помог мне выделиться в переполненном пространстве. Мои подписчики абсолютно
+                любят креативные и визуально потрясающие видео, которые она произвела. Это изменило правила игры для моего вовлечения!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">ДР</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Дэвид Р.</h5>
+                  <small class="text-muted">Образовательные технологии</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Объясняющие видео для нашего невероятно сложного программного обеспечения были прекрасно
+                упрощены с использованием ИИ. Студия Алены отличается отличной коммуникацией и предоставила фантастические,
+                легкие для понимания результаты, которые действительно помогли нашим пользователям."</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End Slide 3 -->
+
+      <!-- Slide 4 -->
+      <div class="carousel-item">
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">МЗ</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Мария З.</h5>
+                  <small class="text-muted">Директор некоммерческой организации</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Алена создала мощное и глубоко трогательное видео для нашей кампании по повышению осведомленности
+                с помощью ИИ. Оно было не только эффективным, но и по-настоящему нашло отклик у нашей аудитории, помогая нам достичь
+                наших целей. Настоятельно рекомендую ее чуткий и профессиональный подход."</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">КМ</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Кайл М.</h5>
+                  <small class="text-muted">Разработчик игр</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Мне нужны были уникальные дизайны существ для нового игрового проекта. Алена превзошла
+                мои ожидания, предоставив несколько удивительных моделей LORA. Ее творческий вклад и технические навыки были на высшем уровне.
+                Я обязательно вернусь за новыми заказами!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">ГВ</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Гиа В.</h5>
+                  <small class="text-muted">Кинопродюсер</small>
+                </div>
+              </div>
+              <p class="fst-italic">"VFX эффекты, сгенерированные Аленой для нашего инди-фильма, были потрясающими. Мы добились
+                голливудского вида за малую часть бюджета. Ее понимание кинематографического качества в сочетании с возможностями ИИ
+                действительно замечательно."</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End Slide 4 -->
+
+      <!-- Slide 5 -->
+      <div class="carousel-item">
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">АДж</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Алекс Дж.</h5>
+                  <small class="text-muted">Специалист по маркетингу</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Время выполнения для ИИ-генерированных рекламных креативов было поразительным. Мы могли проводить A/B
+                тестирования намного быстрее, что привело к значительному улучшению производительности кампании. Отличный сервис!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <!-- 4.5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">СФ</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">София Ф.</h5>
+                  <small class="text-muted">Независимый создатель</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Я независимый художник, и Алена помогла мне визуализировать мои концепции так, как я никогда
+                не думала, что это возможно. Инструменты ИИ, которые она использует, мощны, но ее художественный взгляд — это то, что действительно имеет значение.
+                Очень благодарна за сотрудничество!"</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="fas fa-star"></i> <!-- 5 stars -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="outlined-block h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white me-3"
+                  style="width: 50px; height: 50px; min-width: 50px;">
+                  <span class="fw-bold">ДМ</span>
+                </div>
+                <div>
+                  <h5 class="mb-0">Даниэль М.</h5>
+                  <small class="text-muted">Директор по маркетингу</small>
+                </div>
+              </div>
+              <p class="fst-italic">"Хотя результаты в целом были хорошими и быстрыми, было несколько случаев, когда незначительные исправления занимали немного больше времени, чем ожидалось. В целом, твердые 4 звезды с большим потенциалом."</p>
+              <div class="text-warning">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                  class="fas fa-star"></i><i class="far fa-star"></i> <!-- 4 stars -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End Slide 5 -->
+
+    </div> <!-- End carousel-inner -->
+
+    <!-- Carousel Indicators (Dots) -->
+    <div class="d-flex flex-column align-items-center mt-3">
+        <div class="carousel-indicators mb-2" style="position: relative; bottom: 0; margin-bottom: 1rem;">
+          <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+          <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+          <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+          <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="3" aria-label="Слайд 4"></button>
+          <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="4" aria-label="Слайд 5"></button>
+        </div>
+
+        <!-- Carousel Navigation Arrows -->
+        <div>
+          <button class="btn btn-outline-light btn-sm mx-1" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Предыдущий</span>
+          </button>
+          <button class="btn btn-outline-light btn-sm mx-1" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Следующий</span>
+          </button>
+        </div>
+    </div>
+
+  </div>
+</div>
+<!-- === END CLIENT TESTIMONIALS CAROUSEL === -->
+
+
+
+
+
+    <!-- === COLLABORATE SECTION === -->
+    <div class="my-5 p-5 text-center bg-dark rounded-3" style="--bs-bg-opacity: .2;">
+      <h2>✅ Давайте сотрудничать</h2>
+      <p>Как преданный визуальный художник и разработчик ИИ, я в настоящее время открыта для фриланса и сотрудничества по проектам,
+        включающим:</p>
+      <div class="d-inline-flex gap-4 small-text justify-content-center">
+        <span>✔️ Мультимодальный ИИ и персонализация</span>
+        <span>✔️ Генерация аватаров и на основе лиц</span>
+        <!-- Обновлённая строка с ключевым словом -->
+        <span>✔️ Пайплайны ИИ-видео и контента для соцсетей & визуальный сторителлинг</span>
+		<span>✔️ Создание аудиоконтента с ИИ</span>
+      </div>
+      <div class="mt-4">
+        <button class="btn btn-cta-orange btn-lg" data-bs-toggle="modal" data-bs-target="#leadFormModal">Связаться
+          сейчас</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- CONTAINER END -->
+  <div id="footer-placeholder"></div>
+  <div id="modal-placeholder"></div>
+
+<!-- Minimized Icon -->
+<div id="minimizedLeadForm" class="position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;">
+    <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" id="showModalIcon"
+      style="width: 50px; height: 50px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-envelope-at-fill"
+        viewBox="0 0 16 16">
+        <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+        <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
+      </svg>
+    </button>
+</div>
+
+<!-- Сначала загружаем все необходимые библиотеки -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>
+
+<!-- Затем наши скрипты -->
+<script src="https://www.ai-video-expert.online/main.js"></script>
+
+<!-- И только потом загрузка компонентов -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Promise.all([
+            fetch('./navbar.html'),
+            fetch('./footer.html'),
+            fetch('./modal.html')
+        ])
+        .then(responses => Promise.all(responses.map(r => r.text())))
+        .then(([navbar, footer, modal]) => {
+            document.getElementById('navbar-placeholder').innerHTML = navbar;
+            document.getElementById('footer-placeholder').innerHTML = footer;
+            document.getElementById('modal-placeholder').innerHTML = modal;
+            
+            // После загрузки всех компонентов инициализируем модальную форму
+            if (typeof initializeModalLogic === 'function') {
+                initializeModalLogic();
+            } else {
+                console.error('Modal logic initialization function not found');
+            }
+
+            // Проверяем загрузку библиотеки телефонной валидации
+            if (typeof intlTelInput === 'undefined') {
+                console.error('Telephone input library not loaded!');
+            }
+        })
+        .catch(error => console.error('Error loading components:', error));
+    });
+</script>
+
+</body>
+
+</html>
