@@ -4,14 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- SEO: Title для страницы контактов -->
   <title>Contact Our Creative Studio | AI Gen Studio</title>
-
-  <!-- SEO: Meta Description, призывающий к действию -->
   <meta name="description"
     content="Contact our generative design studio to discuss your project. We're open for collaboration on AI content creation, video production, and personalized photo slideshows. Get a quote today.">
-
   <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
   <link rel="shortcut icon" href="/img/favicon.ico" />
@@ -24,52 +19,40 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
-
-
   <link rel="canonical" href="https://www.ai-video-expert.online/contact.html" />
-
   <link rel="alternate" href="https://www.ai-video-expert.online/contact.html" hreflang="en" />
-<link rel="alternate" href="https://www.ru.ai-video-expert.online/contact.html" hreflang="ru" />
-<link rel="alternate" href="https://www.ai-video-expert.online/contact.html" hreflang="x-default" />
-
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "AI Gen Studio",
-  "image": "https://www.ai-video-expert.online/img/logo.png",
-  "@id": "https://www.ai-video-expert.online/",
-  "url": "https://www.ai-video-expert.online/contact.html",
-  "telephone": "+995 501 00 19 45",
-  "email": "aivideoexpert.online@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Batumi",
-    "addressRegion": "Adjara", 
-    "addressCountry": "GE"
-
-  },
-  "description": "Contact AI Gen Studio for generative design, AI video production, and creative content creation services. Located in Batumi, Georgia.",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+995 501 00 19 45",
-    "contactType": "customer service",
-    "email": "aivideoexpert.online@gmail.com",
-    "areaServed": ["GE", "US", "RU", "WW"], 
-    "availableLanguage": ["English"] 
-  },
-  "sameAs": [
-    "https://www.youtube.com/channel/UC5Y71tTTNAlyVGgv871NzxA"
-
-  ]
-}
-</script>
-
-
-    
-  <!-- Google tag (gtag.js) -->
+  <link rel="alternate" href="https://ru.ai-video-expert.online/contact.html" hreflang="ru" />
+  <link rel="alternate" href="https://www.ai-video-expert.online/contact.html" hreflang="x-default" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "AI Gen Studio",
+      "image": "https://www.ai-video-expert.online/img/logo.png",
+      "@id": "https://www.ai-video-expert.online/",
+      "url": "https://www.ai-video-expert.online/contact.html",
+      "telephone": "+995 501 00 19 45",
+      "email": "aivideoexpert.online@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Batumi",
+        "addressRegion": "Adjara",
+        "addressCountry": "GE"
+      },
+      "description": "Contact AI Gen Studio for generative design, AI video production, and creative content creation services. Located in Batumi, Georgia.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+995 501 00 19 45",
+        "contactType": "customer service",
+        "email": "aivideoexpert.online@gmail.com",
+        "areaServed": ["GE", "US", "RU", "WW"],
+        "availableLanguage": ["English"]
+      },
+      "sameAs": [
+        "https://www.youtube.com/channel/UC5Y71tTTNAlyVGgv871NzxA"
+      ]
+    }
+  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YWNVGE18K1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -78,19 +61,24 @@
     gtag('config', 'G-YWNVGE18K1');
     gtag('config', 'AW-17491718267');
   </script>
-
-
-
 </head>
 
 <body class="bg-dark text-light">
 
-  <!-- Main Menu -->
+  <!-- Main Menu Placeholder -->
   <div id="navbar-placeholder"></div>
+  <!-- SCRIPT TO LOAD HEADER.HTML -->
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading header.html:', error));
+  </script>
 
 
   <main class="container mt-5">
-    <!-- Content for Contact page -->
     <h1 class="text-custom-orange">Contact AI Gen Studio: Get Your AI Video & Photo Quote</h1>
     <br>
     <p>Ready to bring your ideas to life with AI? Have questions about my services? I am always open to new projects and
@@ -105,7 +93,7 @@
       <img src="img/georgia.jpg" class="img-fluid rounded-3" style="width: 480px;" alt="Contact map Georgia">
       <img src="img/batumi.jpg" class="img-fluid rounded-3" style="width: 420px;" alt="Batumi skyscappers">
     </div>
-<br>
+    <br>
     <p>I look forward to your messages and am ready to discuss how AI technologies can help you achieve your goals!<br>
     </p>
     <p style="text-indent: 30px;">Best regards, Alena Logunova</p>
@@ -116,15 +104,6 @@
 
   <div id="footer-placeholder"></div>
 
-  <script>
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
-  </script>
-
-
   <!-- Lead Form Modal -->
   <div id="modal-placeholder"></div>
 
@@ -132,7 +111,6 @@
   <div id="minimizedLeadForm" class="position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;">
     <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" id="showModalIcon"
       style="width: 50px; height: 50px;">
-
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-envelope-at-fill"
         viewBox="0 0 16 16">
         <path
@@ -143,12 +121,39 @@
     </button>
   </div>
 
-
+  <!-- ВСЕ ОБЩИЕ СКРИПТЫ ДОЛЖНЫ БЫТЬ ПОДКЛЮЧЕНЫ ЗДЕСЬ, В КОНЦЕ BODY -->
+  <!-- Bootstrap и другие основные скрипты -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
   <script defer type="text/javascript" src="/main.js"></script>
+
+  <!-- ПОДКЛЮЧАЕМ language-switcher.js - ОН ДОЛЖЕН БЫТЬ ЗАГРУЖЕН ПЕРЕД ВЫЗОВОМ initializeLanguageSwitcher() -->
+  <script defer src="/js/language-switcher.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof initializeLanguageSwitcher === 'function') {
+            initializeLanguageSwitcher();
+        }
+    });
+  </script>
+
+  <!-- ЗАГРУЗКА ФУТЕРА И ВЫЗОВ initializeLanguageSwitcher() -->
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+        // Гарантируем, что initializeLanguageSwitcher() существует, прежде чем вызывать
+        if (typeof initializeLanguageSwitcher === 'function') {
+          initializeLanguageSwitcher(); 
+        } else {
+          console.error("Error: initializeLanguageSwitcher function is not defined. language-switcher.js might not be loaded correctly.");
+        }
+      })
+      .catch(error => console.error('Error loading footer.html:', error));
+  </script>
 
 </body>
 
